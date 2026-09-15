@@ -1,0 +1,1 @@
+Jared, 2026-09-15: "Yep, run Codex through it now." (review of the motion pass built from the HyperFrames motion rules, plus the phone header rebuild, phone section-rule wrap and drawing copy change made in the same pass)

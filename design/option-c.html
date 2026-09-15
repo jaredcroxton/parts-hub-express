@@ -1,0 +1,1314 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parts Hub Express, Option C: Counter Sheet</title>
+<meta name="description" content="Crusher, screen and conveyor wear parts. Search by part number or machine, see price and stock, buy online or request a quote. Australia Crushing and Belting Group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------
+   Option C: Counter Sheet
+   Tokens per design/DESIGN_CHARACTERISTICS.md section 6.
+   One saturated colour (Chromate Yellow) on exactly four actions.
+   No shadows anywhere. Depth by surface stepping only.
+------------------------------------------------------------------ */
+:root{
+  --canvas:#fafafa;
+  --bench:#ededed;
+  --band:#0f0e12;
+  --band-rule:#333333;
+  --band-hover:#1a1a1e;
+  --ink:#0a0a0a;
+  --muted:#6c6c6c;
+  --tert:#b3b3b3;
+  --rule:#d9d9d9;
+  --accent:#e8c000;
+  --accent-press:#d1ad00;
+  --ok:#1f7a3a;
+  --white:#ffffff;
+  --fd:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
+  --fb:'Barlow','Helvetica Neue',Arial,sans-serif;
+  --fm:'Geist Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  --gutter:24px;
+  --gap:16px;
+  --section:48px;
+  --control:48px;
+  --t:150ms ease-out;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:var(--fb);
+  font-size:14px;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit;margin:0}
+button{cursor:pointer;background:none;border:0;padding:0}
+h1,h2,h3{text-wrap:balance}
+p{max-width:65ch}
+svg{display:block}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.mono{font-family:var(--fm);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:var(--gutter)}
+
+/* Focus: visible, ink on light, white on ink bands */
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.hdr :focus-visible,.hero :focus-visible,.foot :focus-visible{outline-color:var(--white)}
+
+/* ---------- Controls: 1px stroke, 4px radius, 48px tall ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:var(--control);padding:0 20px;
+  border:1px solid var(--ink);border-radius:4px;
+  font-family:var(--fb);font-weight:600;font-size:14px;line-height:1;
+  color:var(--ink);background:transparent;white-space:nowrap;
+  transition:background-color var(--t),color var(--t),border-color var(--t);
+}
+.btn-accent{background:var(--accent);border-color:var(--ink)}
+.btn-accent:active{background:var(--accent-press);transition-duration:100ms}
+.btn-ghost{background:transparent}
+.btn-ghost:hover{background:var(--white)}
+.btn-ghost-w{border-color:var(--white);color:var(--white)}
+.btn-ghost-w:hover{background:var(--band-hover)}
+.btn-ink{background:var(--ink);color:var(--white)}
+.link{font-weight:500;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.sel{position:relative}
+.sel select,.sel .combo-btn{
+  width:100%;height:var(--control);
+  padding:0 40px 0 14px;
+  border:1px solid var(--ink);border-radius:4px;
+  background:var(--white);color:var(--ink);
+  font-family:var(--fm);font-size:13px;font-weight:500;
+  appearance:none;-webkit-appearance:none;
+  text-align:left;
+  transition:color var(--t),border-color var(--t),background-color var(--t);
+}
+.sel select:disabled,.sel .combo-btn:disabled{color:var(--tert);border-color:var(--tert);cursor:not-allowed}
+.sel .chev{position:absolute;right:14px;top:50%;width:14px;height:14px;margin-top:-7px;pointer-events:none;color:var(--ink);transition:color var(--t)}
+.sel select:disabled + .chev,.sel .combo-btn:disabled + .chev{color:var(--tert)}
+.sel .placeholder{color:var(--muted)}
+.cap{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+.cap:empty{display:none}
+.js-machine-cap{min-height:17px}
+
+/* ---------- Section head: 2px ink top rule ---------- */
+.sec{padding-block:var(--section)}
+.sec-head{
+  border-top:2px solid var(--ink);
+  padding-top:16px;margin-bottom:24px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+}
+.sec-head h2{font-family:var(--fd);font-weight:700;font-size:28px;line-height:1.1;letter-spacing:-0.005em}
+.sec-head .count{font-family:var(--fm);font-size:13px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* ---------- Header ---------- */
+.hdr{background:var(--band);color:var(--white)}
+.util{height:32px;border-bottom:1px solid var(--band-rule)}
+.util-in{height:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--fm);font-size:12px;font-variant-numeric:tabular-nums}
+.util a{display:inline-flex;align-items:center;gap:6px;color:var(--white);white-space:nowrap}
+.util a:hover{color:var(--tert)}
+.util .u-left,.util .u-right{display:flex;align-items:center;gap:20px}
+.gst{display:inline-flex;align-items:center;gap:0;border:1px solid var(--band-rule);border-radius:4px;overflow:hidden}
+.gst-lab{padding:0 8px 0 10px;color:var(--tert)}
+.gst button{height:22px;padding:0 10px;font-family:var(--fm);font-size:12px;color:var(--tert);border-left:1px solid var(--band-rule);white-space:nowrap;transition:color var(--t),background-color var(--t)}
+.gst button[aria-pressed="true"]{color:var(--band);background:var(--white)}
+.main-in{min-height:72px;display:flex;align-items:center;gap:24px;padding-block:12px}
+.wordmark{
+  font-family:var(--fd);font-weight:800;font-size:28px;line-height:1;
+  letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);
+  white-space:nowrap;flex:0 0 auto;
+}
+.search{flex:1 1 auto;display:flex;align-items:stretch;position:relative;min-width:0}
+.search .chip{
+  display:none;align-items:center;gap:8px;height:var(--control);padding:0 12px;margin-right:12px;
+  background:var(--accent);color:var(--ink);border:1px solid var(--ink);border-radius:4px;
+  font-family:var(--fm);font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;
+}
+.search .chip.is-set{display:inline-flex}
+.search .chip button{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border-radius:2px;color:var(--ink)}
+.search .chip button:hover{background:var(--accent-press)}
+.search input{
+  flex:1 1 auto;min-width:0;height:var(--control);
+  padding:0 14px;border:1px solid var(--ink);border-right:0;border-radius:4px 0 0 4px;
+  background:var(--white);color:var(--ink);font-family:var(--fb);font-size:15px;
+}
+.search input::placeholder{color:var(--muted);opacity:1}
+.search .s-btn{
+  height:var(--control);padding:0 20px;border:1px solid var(--ink);border-radius:0 4px 4px 0;
+  background:var(--accent);color:var(--ink);font-weight:600;font-size:14px;
+  display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;
+  transition:background-color 100ms ease-out;
+}
+.search .s-btn:active{background:var(--accent-press)}
+.hdr-right{display:flex;align-items:center;gap:20px;flex:0 0 auto}
+.icon-btn{display:inline-flex;align-items:center;gap:6px;color:var(--white);font-family:var(--fm);font-size:12px;font-variant-numeric:tabular-nums}
+.icon-btn:hover{color:var(--tert)}
+.icon-btn svg{width:22px;height:22px}
+.hdr nav{display:flex;gap:16px;font-weight:500;font-size:13px}
+.hdr nav a:hover{color:var(--tert)}
+
+/* Autocomplete: white panel, 1px ink border, no shadow */
+.ac{
+  position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:30;
+  background:var(--white);color:var(--ink);border:1px solid var(--ink);border-radius:4px;
+  padding:4px 0;opacity:0;transform:translateY(4px);pointer-events:none;
+  transition:opacity 120ms ease-out,transform 120ms ease-out;
+}
+.ac.is-open{opacity:1;transform:none;pointer-events:auto}
+.ac-group{padding:6px 0}
+.ac-group + .ac-group{border-top:1px solid var(--rule)}
+.ac-title{padding:4px 14px;font-size:12px;font-weight:600;color:var(--muted)}
+.ac-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 14px;width:100%;text-align:left;font-size:14px;transition:background-color var(--t)}
+.ac-row:hover,.ac-row:focus-visible{background:var(--bench);outline:none}
+.ac-row .ac-ref{font-family:var(--fm);font-size:13px;font-weight:500;font-variant-numeric:tabular-nums;flex:0 0 auto}
+.ac-row .ac-name{color:var(--muted);flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ac-row .ac-count{font-family:var(--fm);font-size:12px;color:var(--muted);flex:0 0 auto;font-variant-numeric:tabular-nums}
+.ac-row.is-super .ac-name{color:var(--ink);font-weight:500}
+.ac-empty{padding:10px 14px;color:var(--muted);font-size:13px}
+
+/* ---------- Bench: the selector ---------- */
+.bench{background:var(--bench);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.bench-in{display:flex;align-items:flex-start;gap:16px;padding-block:16px;flex-wrap:wrap}
+.bench-label{font-family:var(--fd);font-weight:700;font-size:14px;line-height:1.2;height:var(--control);display:flex;align-items:center;white-space:nowrap;flex:0 0 auto}
+.bench .field{flex:1 1 180px;min-width:0}
+.bench .field.cat{flex:1 1 220px}
+.bench-actions{display:flex;align-items:center;gap:16px;flex:0 0 auto}
+.bench-actions .reset{font-weight:500;color:var(--muted);height:var(--control);display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:3px;transition:color var(--t)}
+.bench-actions .reset:hover{color:var(--ink)}
+
+/* Machine combobox (Chargetrip pattern): grouped rows with mono counts, type-ahead inside */
+.combo{position:relative}
+.combo-btn{display:flex;align-items:center;justify-content:space-between}
+.combo-panel{
+  position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:25;
+  background:var(--white);border:1px solid var(--ink);border-radius:4px;padding:8px;
+  display:none;
+}
+.combo-panel.is-open{display:block}
+.combo-panel input{
+  width:100%;height:40px;padding:0 12px;border:1px solid var(--ink);border-radius:4px;
+  font-family:var(--fm);font-size:13px;background:var(--white);
+}
+.combo-panel input::placeholder{color:var(--muted);opacity:1}
+.combo-list{max-height:320px;overflow:auto;margin-top:8px}
+.combo-group{padding:6px 6px 2px;font-size:12px;font-weight:600;color:var(--muted);border-top:1px solid var(--rule);margin-top:4px}
+.combo-group:first-child{border-top:0;margin-top:0}
+.combo-row{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:0 8px;height:40px;border-radius:2px;font-family:var(--fm);font-size:13px;font-weight:500;transition:background-color var(--t)}
+.combo-row:hover,.combo-row:focus-visible{background:var(--bench);outline:none}
+.combo-row[aria-selected="true"]{background:var(--bench);font-weight:600}
+.combo-row .c-count{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.combo-empty{padding:10px 8px;font-size:13px;color:var(--muted)}
+
+/* ---------- Hero: the docket ---------- */
+.hero{background:var(--band);color:var(--white)}
+.hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);gap:48px;padding-block:48px;align-items:start}
+.hero h1{font-family:var(--fd);font-weight:800;font-size:56px;line-height:1.0;letter-spacing:-0.01em;max-width:17ch;font-variant-numeric:tabular-nums}
+.hero-actions{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
+.hero-sub{margin-top:24px;font-size:16px;color:var(--tert);max-width:44ch}
+.docket h2{font-family:var(--fd);font-weight:700;font-size:20px;line-height:1.2;margin-bottom:12px}
+.docket-list{border-top:1px solid var(--band-rule)}
+.docket-list li{border-bottom:1px solid var(--band-rule)}
+.docket-row{
+  display:grid;grid-template-columns:1fr auto 20px;align-items:center;gap:16px;
+  width:100%;height:var(--control);padding:0 12px;text-align:left;
+  font-family:var(--fm);font-size:14px;font-weight:500;color:var(--white);font-variant-numeric:tabular-nums;
+  transition:background-color var(--t);
+}
+.docket-row:hover,.docket-row:focus-visible{background:var(--band-hover)}
+.docket-row .d-count{color:var(--tert)}
+.docket-row .d-count::before{content:"\00B7\00A0";color:var(--band-rule)}
+.docket-row svg{width:16px;height:16px;color:var(--white)}
+.docket-foot{margin-top:12px;font-family:var(--fm);font-size:12px;color:var(--tert);font-variant-numeric:tabular-nums}
+
+/* ---------- Parts to suit ---------- */
+.makes-wrap{position:relative;min-width:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.makes{display:flex;align-items:center;flex-wrap:wrap;scrollbar-width:none;-ms-overflow-style:none}
+.makes::-webkit-scrollbar{display:none}
+.makes li{flex:0 0 auto;border-left:1px solid var(--rule)}
+.makes li:first-child{border-left:0}
+.makes a{display:inline-flex;align-items:baseline;gap:8px;padding:14px 16px;font-family:var(--fd);font-weight:700;font-size:22px;line-height:1;color:var(--ink);white-space:nowrap;transition:color var(--t)}
+.makes a:hover{color:var(--muted)}
+.makes a .mono{font-size:13px;font-weight:500;color:var(--muted)}
+.makes-wrap::after{content:"";position:absolute;top:0;right:0;bottom:0;width:40px;pointer-events:none;background:linear-gradient(to right,rgba(250,250,250,0),var(--canvas));opacity:0}
+.suit-note{margin-top:12px;font-size:13px;color:var(--muted)}
+
+/* ---------- Hairline grids: cells share borders, 0 gap, 0 radius ---------- */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:1px 0 0 1px}
+.cell{border:1px solid var(--rule);margin:-1px 0 0 -1px;padding:16px;background:var(--canvas);transition:border-color var(--t);position:relative}
+.cell:hover{border-color:var(--ink);z-index:1}
+.cell:focus-within{z-index:1}
+
+/* Category cells */
+.cat-cell{display:block;color:var(--ink)}
+.cat-frame{width:96px;height:96px;background:var(--bench);position:relative;margin-bottom:16px}
+.cat-frame img{position:absolute;inset:8px;margin:auto;width:auto;height:auto;max-width:calc(100% - 18px);max-height:calc(100% - 18px);border:1px solid var(--rule)}
+.cat-frame .big{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:28px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.cat-name{font-family:var(--fd);font-weight:700;font-size:22px;line-height:1.1;text-wrap:balance}
+.cat-count{font-family:var(--fm);font-size:13px;font-weight:500;color:var(--ink);margin-top:4px;font-variant-numeric:tabular-nums}
+.cat-kids{font-family:var(--fm);font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5;font-variant-numeric:tabular-nums}
+
+/* Shelf tabs: hairline text tabs, ink underline, no pills */
+.tabs-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--rule);margin-bottom:24px;flex-wrap:wrap}
+.tabs{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:14px 0 12px;font-weight:500;font-size:14px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color var(--t),border-color var(--t)}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tab .mono{font-size:12px;color:var(--muted);margin-left:4px}
+.sort{display:flex;align-items:center;gap:10px;padding-bottom:8px}
+.sort label{font-size:13px;color:var(--muted);white-space:nowrap}
+.sort .sel{width:200px}
+
+/* Product tiles */
+.tile{display:flex;flex-direction:column;gap:8px}
+.tile.is-hidden{display:none}
+.frame{position:relative;aspect-ratio:4/3;background:var(--bench);display:block;width:100%;max-width:100%}
+.frame img{position:absolute;inset:12px;margin:auto;width:auto;height:auto;max-width:calc(100% - 26px);max-height:calc(100% - 26px);border:1px solid var(--rule)}
+.frame-spec{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px}
+.frame-spec .spec-ref{font-family:var(--fm);font-size:16px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;word-break:break-all}
+.frame-spec .spec-cat{font-size:12px;color:var(--muted);margin-top:4px}
+.frame-spec .spec-note{position:absolute;right:8px;bottom:6px;font-family:var(--fm);font-size:11px;color:var(--muted)}
+.tile .ref{font-family:var(--fm);font-size:13px;font-weight:500;color:var(--ink);margin-top:8px;font-variant-numeric:tabular-nums;word-break:break-all}
+.tile .name{font-family:var(--fb);font-weight:500;font-size:15px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(15px * 1.3 * 2)}
+.tile .name a{color:var(--ink)}
+.tile .fit{font-size:12px;font-weight:600;color:var(--ink);min-height:17px}
+.tile .fit .mono{font-weight:500}
+.tile .fit.is-empty{color:var(--muted);font-weight:400}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:4px}
+.price .p-main{font-family:var(--fm);font-size:18px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.price .p-lab{font-family:var(--fm);font-size:12px;color:var(--muted)}
+.price .p-alt{font-family:var(--fm);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.price .tag{font-family:var(--fm);font-size:11px;color:var(--muted);flex-basis:100%}
+.stock{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500}
+.stock .sq{width:6px;height:6px;flex:0 0 auto}
+.stock-ok{color:var(--ok)}.stock-ok .sq{background:var(--ok)}
+.stock-low{color:var(--ink)}.stock-low .sq{border:1px solid var(--ink);background:transparent}
+.stock-grey{color:var(--muted)}.stock-grey .sq{background:var(--muted)}
+.action{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+.stepper{display:inline-flex;align-items:stretch;height:var(--control);border:1px solid var(--ink);border-radius:4px;overflow:hidden;flex:0 0 auto;background:var(--white)}
+.stepper button{width:36px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:16px;color:var(--ink);transition:background-color var(--t)}
+.stepper button:hover{background:var(--bench)}
+.stepper input{width:40px;text-align:center;border:0;border-left:1px solid var(--ink);border-right:1px solid var(--ink);font-family:var(--fm);font-size:14px;font-weight:500;background:var(--white);padding:0;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.action .btn{flex:1 1 auto;padding-inline:12px}
+.action .btn-accent:active{background:var(--accent-press)}
+
+/* ---------- Ledger ---------- */
+.ledger{border-bottom:1px solid var(--rule)}
+.ledger li{display:grid;grid-template-columns:64px 1fr;gap:16px;border-top:1px solid var(--rule);padding:20px 0}
+.ledger .idx{font-family:var(--fm);font-size:13px;color:var(--muted);padding-top:4px;font-variant-numeric:tabular-nums}
+.ledger .fact{font-size:20px;font-weight:600;line-height:1.3}
+.ledger .sup{font-size:14px;color:var(--muted);margin-top:4px}
+
+/* ---------- Trade and quote band ---------- */
+.trade{background:var(--bench);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.trade-in{display:grid;grid-template-columns:1fr 1fr;padding-block:48px}
+.trade-col{padding-right:48px}
+.trade-col + .trade-col{border-left:1px solid var(--ink);padding-left:48px;padding-right:0}
+.trade h2{font-family:var(--fd);font-weight:700;font-size:28px;line-height:1.1;margin-bottom:12px}
+.trade p{font-size:15px;max-width:52ch}
+.trade .btn{margin-top:20px}
+.trade textarea{
+  display:block;width:100%;height:120px;margin-top:16px;padding:12px 14px;resize:vertical;
+  border:1px solid var(--ink);border-radius:4px;background:var(--white);
+  font-family:var(--fm);font-size:13px;line-height:1.6;color:var(--ink);
+}
+.trade textarea::placeholder{color:var(--muted);opacity:1}
+.trade-quote .btn{margin-top:16px}
+.trade-quote .cap{margin-top:8px}
+
+/* ---------- Finder repeated ---------- */
+.finder{background:var(--bench);border-top:1px solid var(--ink)}
+.finder-in{padding-block:32px 16px}
+.finder h2{font-family:var(--fd);font-weight:700;font-size:28px;line-height:1.1;margin-bottom:16px}
+.finder .search{max-width:820px}
+.finder .search input{border-color:var(--ink)}
+.finder .bench{border-top:0;border-bottom:0}
+
+/* ---------- Footer ---------- */
+.foot{background:var(--band);color:var(--white)}
+.foot-in{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:32px;padding-block:48px}
+.foot .wordmark{display:inline-block;margin-bottom:16px}
+.foot h3{font-weight:600;font-size:14px;margin-bottom:12px}
+.foot-meta{font-family:var(--fm);font-size:12px;line-height:1.7;color:var(--tert);font-variant-numeric:tabular-nums}
+.foot-meta strong{color:var(--white);font-weight:500}
+.foot ul li{margin-bottom:6px}
+.foot ul a{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--white);transition:color var(--t)}
+.foot ul a:hover{color:var(--tert)}
+.foot ul a .mono{font-size:12px;color:var(--tert)}
+.foot .note{font-size:13px;color:var(--tert);margin-top:12px}
+.foot-bottom{border-top:1px solid var(--band-rule)}
+.foot-bottom-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px;font-size:12px;color:var(--tert);flex-wrap:wrap}
+.foot-bottom-in a{color:var(--white)}
+.foot-bottom-in a:hover{color:var(--tert)}
+.foot-links{display:flex;gap:16px;flex-wrap:wrap}
+.pay{display:inline-flex;align-items:center;gap:10px}
+.pay svg{width:28px;height:18px;color:var(--white)}
+.foot-note{font-family:var(--fm);font-size:12px;color:var(--tert);margin-top:8px}
+
+/* ---------- Option switcher ---------- */
+.opt{
+  position:fixed;right:16px;bottom:16px;z-index:50;
+  display:inline-flex;align-items:stretch;
+  background:var(--canvas);border:1px solid var(--ink);border-radius:4px;overflow:hidden;
+  font-family:var(--fm);font-size:12px;
+}
+.opt a{display:inline-flex;align-items:center;padding:0 12px;height:32px;color:var(--ink);border-left:1px solid var(--ink);transition:background-color var(--t),color var(--t)}
+.opt a:first-child{border-left:0}
+.opt a:hover{background:var(--bench)}
+.opt a[aria-current="page"]{background:var(--ink);color:var(--white)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero-in{grid-template-columns:minmax(0,1fr) minmax(300px,380px);gap:32px}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .hero-in{grid-template-columns:1fr}
+  .hero h1{max-width:none}
+  .main-in{flex-wrap:wrap;gap:12px 16px;min-height:56px;padding-block:10px 12px}
+  .wordmark{flex:1 1 auto}
+  .hdr nav{display:none}
+  .search{flex:1 1 100%;order:3}
+  .search .chip{margin-right:8px}
+  .hdr-right{flex:0 0 auto;order:2}
+  .util .u-left span{display:none}
+  .util .gst-lab{display:none}
+  .makes{flex-wrap:nowrap;overflow-x:auto}
+  .makes-wrap::after{opacity:1}
+  .trade-in{grid-template-columns:1fr;padding-block:40px}
+  .trade-col{padding-right:0}
+  .trade-col + .trade-col{border-left:0;padding-left:0}
+  .trade-quote{order:-1;border-bottom:1px solid var(--ink);padding-bottom:40px;margin-bottom:40px}
+  .bench-in{flex-direction:column;align-items:stretch;gap:12px}
+  .bench .field,.bench .field.cat{flex:0 0 auto}
+  .bench-label{height:auto}
+  .bench-actions{position:sticky;bottom:0;background:var(--bench);padding-block:12px 4px;margin-top:4px;border-top:1px solid var(--rule)}
+  .bench-actions .btn{flex:1 1 auto}
+}
+@media (max-width:640px){
+  :root{--gutter:16px;--section:40px}
+  .sec-head h2,.trade h2,.finder h2{font-size:22px}
+  .hero h1{font-size:40px}
+  .hero-in{padding-block:40px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .action{flex-direction:column}
+  .stepper{width:100%}
+  .stepper input{flex:1 1 auto}
+  .action .btn{width:100%}
+  .ledger li{grid-template-columns:40px 1fr}
+  .foot-in{gap:24px}
+  .util-in{font-size:11px}
+  .util .u-right{gap:12px}
+  .util .u-right a:first-child{display:none}
+  .gst button{padding:0 8px}
+  .sort .sel{width:160px}
+}
+@media (max-width:420px){
+  .hdr-right{gap:12px}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .foot-in > div:first-child{grid-column:1 / -1}
+  .foot .wordmark{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none !important}
+  .ac{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER: ink band. Utility row (32px) + main row (72px).
+     ============================================================ -->
+<header class="hdr">
+  <div class="util">
+    <div class="wrap util-in">
+      <div class="u-left">
+        <a href="#contact" aria-label="Call the counter">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          <span>Call the counter</span>
+        </a>
+      </div>
+      <div class="gst" role="group" aria-label="Price display">
+        <span class="gst-lab">Prices</span>
+        <button type="button" data-gst="inc" aria-pressed="true">inc GST</button>
+        <button type="button" data-gst="ex" aria-pressed="false">ex GST</button>
+      </div>
+      <div class="u-right">
+        <a href="#trade">Trade login</a>
+        <a href="#quote">Quote list · <span class="js-quote-count">0</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="wrap main-in">
+      <a class="wordmark" href="#" aria-label="Parts Hub Express, home">Parts Hub Express</a>
+
+      <form class="search js-search" role="search" autocomplete="off">
+        <span class="chip js-chip" hidden>
+          <span class="js-chip-label"></span>
+          <button type="button" class="js-chip-clear" aria-label="Clear machine">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </span>
+        <label class="sr-only" for="q-top">Search by part number, machine or keyword</label>
+        <input id="q-top" class="js-q" type="search" name="q" placeholder="Part number, machine or keyword" aria-autocomplete="list" aria-controls="ac-top" aria-expanded="false">
+        <button class="s-btn" type="submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          Search
+        </button>
+        <div class="ac js-ac" id="ac-top" role="listbox" aria-label="Suggestions"></div>
+      </form>
+
+      <div class="hdr-right">
+        <a class="icon-btn" href="#quote" aria-label="Quote list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="1"/><path d="M9 4V3h6v1M8.5 10h7M8.5 14h7M8.5 18h4"/></svg>
+          <span class="js-quote-count">0</span>
+        </a>
+        <a class="icon-btn" href="#" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11h11.2L21 7H7"/><circle cx="9" cy="19" r="1.25"/><circle cx="17" cy="19" r="1.25"/></svg>
+          <span class="js-cart-count">0</span>
+        </a>
+        <nav aria-label="Primary">
+          <a href="#suit">Brands</a>
+          <a href="#docket">Machines</a>
+          <a href="#trade">Trade</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     BENCH: Brand > Machine model > Category > Show parts
+     ============================================================ -->
+<section class="bench js-bench" aria-label="Find parts to fit your machine">
+  <div class="wrap bench-in">
+    <p class="bench-label">Find parts to fit your machine</p>
+
+    <div class="field">
+      <label class="sr-only" for="brand-top">Brand</label>
+      <div class="sel">
+        <select id="brand-top" class="js-brand">
+          <option value="">Brand</option>
+        </select>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <span class="cap"></span>
+    </div>
+
+    <div class="field">
+      <div class="sel combo js-combo">
+        <button type="button" class="combo-btn js-combo-btn" id="machine-top" disabled aria-haspopup="listbox" aria-expanded="false" aria-label="Machine model">
+          <span class="placeholder js-combo-val">Machine model</span>
+        </button>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        <div class="combo-panel js-combo-panel">
+          <label class="sr-only" for="machine-top-q">Type a machine model</label>
+          <input id="machine-top-q" class="js-combo-q" type="text" placeholder="Type a model, e.g. HP300">
+          <div class="combo-list js-combo-list" role="listbox" aria-label="Machine models"></div>
+        </div>
+      </div>
+      <span class="cap js-machine-cap">Pick a brand first</span>
+    </div>
+
+    <div class="field cat">
+      <label class="sr-only" for="cat-top">Category</label>
+      <div class="sel">
+        <select id="cat-top" class="js-cat">
+          <option value="">Category</option>
+        </select>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <span class="cap"></span>
+    </div>
+
+    <div class="bench-actions">
+      <button type="button" class="btn btn-accent js-show">Show parts</button>
+      <button type="button" class="reset js-reset">Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HERO: the docket. Ink band, headline left, machines right.
+     ============================================================ -->
+<section class="hero" id="docket">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <h1>5,702 crusher, screen and conveyor wear parts. Priced, in stock, shipped from Australia.</h1>
+      <p class="hero-sub">Search by part number or tap your machine. Price and stock are stated before you ask. Prices inc GST, ex GST shown beside.</p>
+      <div class="hero-actions">
+        <button type="button" class="btn btn-accent js-focus-search">Search parts</button>
+        <a class="btn btn-ghost-w" href="#quote">Request a quote</a>
+      </div>
+    </div>
+
+    <div class="docket">
+      <h2>Tap your machine</h2>
+      <ul class="docket-list js-docket">
+        <!-- Eleven machine tokens from the Odoo export, ordered by part count.
+             The "ST 45" token in brand_model_tokens.json is a screen mesh angle
+             ("Mesh ST 45o", 345 of 395 rows are Wire), not a machine, so it is
+             excluded here and LT106 (8) takes the eleventh row. -->
+      </ul>
+      <p class="docket-foot">5,702 parts · 214 categories · 1,156 photographed</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARTS TO SUIT: text wordmarks with counts, non-affiliation line
+     ============================================================ -->
+<section class="sec" id="suit">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Parts to suit</h2>
+      <span class="count">10 makes</span>
+    </div>
+    <div class="makes-wrap">
+      <ul class="makes js-makes"></ul>
+    </div>
+    <p class="suit-note">Independent supplier. OEM names are used for fitment reference only. ACBG is not an authorised dealer.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     BROWSE BY PART TYPE: 12 equal hairline cells
+     ============================================================ -->
+<section class="sec" id="browse" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Browse by part type</h2>
+      <span class="count">214 categories</span>
+    </div>
+    <div class="grid js-cats"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ON THE SHELF: product tiles
+     ============================================================ -->
+<section class="sec" id="shelf" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>On the shelf</h2>
+      <span class="count js-shelf-count">12 parts</span>
+    </div>
+    <div class="tabs-row">
+      <div class="tabs" role="tablist" aria-label="Filter the shelf">
+        <button class="tab" role="tab" type="button" data-filter="all" aria-selected="true">All</button>
+        <button class="tab" role="tab" type="button" data-filter="fits" aria-selected="false">Fits my machine</button>
+        <button class="tab" role="tab" type="button" data-filter="stock" aria-selected="false">In stock</button>
+        <button class="tab" role="tab" type="button" data-filter="photo" aria-selected="false">Has photo</button>
+      </div>
+      <div class="sort">
+        <label for="sort">Sort</label>
+        <div class="sel">
+          <select id="sort" class="js-sort">
+            <option value="shelf">Shelf order</option>
+            <option value="ref">Part number</option>
+            <option value="price">Price, low to high</option>
+            <option value="stock">In stock first</option>
+          </select>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="grid js-shelf"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY QUARRIES BUY HERE: the ledger
+     ============================================================ -->
+<section class="sec" id="why" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Why quarries buy here</h2>
+      <span class="count">6 facts</span>
+    </div>
+    <ol class="ledger">
+      <li><span class="idx">01</span><div><p class="fact">5,702 parts listed with a searchable part number, synced from Odoo.</p><p class="sup">Search the ACBG reference or the OEM cross-reference. Both resolve to the same part.</p></div></li>
+      <li><span class="idx">02</span><div><p class="fact">Stock counts shown on every tile, so in stock means in stock.</p><p class="sup">One live read from Odoo before payment. No stock, no sale.</p></div></li>
+      <li><span class="idx">03</span><div><p class="fact">Manganese grade stated on every casting as it is in the name.</p><p class="sup">18%Mn, 22%Mn, 27%Cr. XT710 and XT720 where the name says so.</p></div></li>
+      <li><span class="idx">04</span><div><p class="fact">Superseded part numbers resolve to the current part.</p><p class="sup">Search MM1006270 and land on MM1155334. Never a dead end.</p></div></li>
+      <li><span class="idx">05</span><div><p class="fact">Fitment stated only where confirmed, never guessed from a name.</p><p class="sup">Where fitment is not listed the page says so and you can ask.</p></div></li>
+      <li><span class="idx">06</span><div><p class="fact">Quotes and trade accounts for anything not priced online.</p><p class="sup">Paste a parts list, get a priced reply. Order on account once approved.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRADE ACCOUNT AND PARTS LIST
+     ============================================================ -->
+<section class="trade" id="trade">
+  <div class="wrap trade-in">
+    <div class="trade-col trade-account">
+      <h2>Open a trade account</h2>
+      <p>Order on account subject to approval. Saved machines, order history from Odoo, and a quote list you can send from the yard.</p>
+      <a class="btn btn-ghost" href="#contact">Apply for trade</a>
+    </div>
+    <div class="trade-col trade-quote" id="quote">
+      <form class="js-quote-form">
+        <h2>Got a parts list?</h2>
+        <p>Paste it here. One part number per line, with a quantity if you have one. We price it and reply.</p>
+        <label class="sr-only" for="parts-list">Paste part numbers, one per line</label>
+        <textarea id="parts-list" name="parts" placeholder="Paste part numbers, one per line" spellcheck="false"></textarea>
+        <button type="submit" class="btn btn-accent">Send for quote</button>
+        <span class="cap js-quote-cap"></span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINDER REPEATED: same search and bench component
+     ============================================================ -->
+<section class="finder" aria-label="Find a part">
+  <div class="wrap finder-in">
+    <h2>Find a part</h2>
+    <form class="search js-search" role="search" autocomplete="off">
+      <span class="chip js-chip" hidden>
+        <span class="js-chip-label"></span>
+        <button type="button" class="js-chip-clear" aria-label="Clear machine">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </span>
+      <label class="sr-only" for="q-bottom">Search by part number, machine or keyword</label>
+      <input id="q-bottom" class="js-q" type="search" name="q" placeholder="Part number, machine or keyword" aria-autocomplete="list" aria-controls="ac-bottom" aria-expanded="false">
+      <button class="s-btn" type="submit">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        Search
+      </button>
+      <div class="ac js-ac" id="ac-bottom" role="listbox" aria-label="Suggestions"></div>
+    </form>
+  </div>
+  <div class="bench js-bench" aria-label="Find parts to fit your machine">
+    <div class="wrap bench-in">
+      <p class="bench-label">Find parts to fit your machine</p>
+      <div class="field">
+        <label class="sr-only" for="brand-bottom">Brand</label>
+        <div class="sel">
+          <select id="brand-bottom" class="js-brand"><option value="">Brand</option></select>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <span class="cap"></span>
+      </div>
+      <div class="field">
+        <div class="sel combo js-combo">
+          <button type="button" class="combo-btn js-combo-btn" id="machine-bottom" disabled aria-haspopup="listbox" aria-expanded="false" aria-label="Machine model">
+            <span class="placeholder js-combo-val">Machine model</span>
+          </button>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <div class="combo-panel js-combo-panel">
+            <label class="sr-only" for="machine-bottom-q">Type a machine model</label>
+            <input id="machine-bottom-q" class="js-combo-q" type="text" placeholder="Type a model, e.g. HP300">
+            <div class="combo-list js-combo-list" role="listbox" aria-label="Machine models"></div>
+          </div>
+        </div>
+        <span class="cap js-machine-cap">Pick a brand first</span>
+      </div>
+      <div class="field cat">
+        <label class="sr-only" for="cat-bottom">Category</label>
+        <div class="sel">
+          <select id="cat-bottom" class="js-cat"><option value="">Category</option></select>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <span class="cap"></span>
+      </div>
+      <div class="bench-actions">
+        <button type="button" class="btn btn-accent js-show">Show parts</button>
+        <button type="button" class="reset js-reset">Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="foot" id="contact">
+  <div class="wrap foot-in">
+    <div>
+      <a class="wordmark" href="#" aria-label="Parts Hub Express, home">Parts Hub Express</a>
+      <div class="foot-meta">
+        <strong>Australia Crushing &amp; Belting Group</strong><br>
+        Dispatch address · to confirm<br>
+        Trading hours · to confirm<br>
+        Phone · to confirm<br>
+        Email · sales@partshubexpress.com<br>
+        ABN · to confirm<br>
+        All prices AUD. GST shown ex and inc.
+      </div>
+    </div>
+    <div>
+      <h3>Part types</h3>
+      <ul class="js-foot-cats"></ul>
+    </div>
+    <div>
+      <h3>Parts to suit</h3>
+      <ul class="js-foot-brands"></ul>
+      <p class="note">Independent supplier. OEM names are used for fitment reference only. ACBG is not an authorised dealer.</p>
+    </div>
+    <div>
+      <h3>Counter</h3>
+      <ul>
+        <li><a href="#trade">Trade account</a></li>
+        <li><a href="#quote">Request a quote</a></li>
+        <li><a href="#quote">Paste a parts list</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Shipping</a></li>
+        <li><a href="#contact">Returns</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="wrap foot-bottom-in">
+      <div>
+        <span>2026 Australia Crushing &amp; Belting Group. All rights reserved.</span>
+        <p class="foot-note">Prices shown are placeholders until the Odoo sync is live.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#contact">Privacy</a>
+        <a href="#contact">Terms</a>
+        <span class="pay" aria-label="Card payments by Stripe">
+          <svg viewBox="0 0 28 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="26" height="16" rx="2"/><path d="M1 6h26M5 12h6"/></svg>
+          <span>Card payments by Stripe</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Option switcher -->
+<nav class="opt" aria-label="Design options">
+  <a href="option-a.html">A</a>
+  <a href="option-b.html">B</a>
+  <a href="option-c.html" aria-current="page">C</a>
+  <a href="options.html">Compare</a>
+</nav>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ------------------------------------------------------------
+     DATA. Every count, ref and name below comes from the Odoo
+     export in design/assets. Prices are labelled samples.
+     ------------------------------------------------------------ */
+  var BRANDS = [['Kleemann',31],['Finlay',26],['Metso',25],['Extec',21],['McCloskey',19],['Symons',15],['Flexco',12],['Powerscreen',7],['Sandvik',4],['Terex',3]];
+
+  var MODELS = [['HP300',71],['C160',52],['C130',48],['C12',41],['J1175',32],['HP400',31],['GP200',28],['C120',24],['LT1213',23],['HP200',16],['LT106',8],['MR130',4],['I44',4],['QJ341',2],['J45',1]];
+  var MODEL_COUNT = {}; MODELS.forEach(function(m){ MODEL_COUNT[m[0]] = m[1]; });
+
+  /* OEM family grouping for the Machine dropdown. Taken from how the
+     export writes the names ("Finlay J1175", "C12 Extec", "I44 McCloskey").
+     Confirm with the client before this becomes structured fitment data. */
+  var BRAND_MODELS = {
+    'Metso':['HP300','C160','C130','HP400','GP200','C120','LT1213','HP200','LT106'],
+    'Extec':['C12'],
+    'Sandvik':['QJ341'],
+    'Finlay':['J1175'],
+    'Terex':['J1175'],
+    'McCloskey':['I44','J45'],
+    'Kleemann':['MR130'],
+    'Symons':[],'Flexco':[],'Powerscreen':[]
+  };
+  function brandFor(model){
+    var keys = Object.keys(BRAND_MODELS);
+    for (var i=0;i<keys.length;i++){ if (BRAND_MODELS[keys[i]].indexOf(model) > -1) return keys[i]; }
+    return '';
+  }
+
+  var DOCKET = [['HP300',71],['C160',52],['C130',48],['C12',41],['J1175',32],['HP400',31],['GP200',28],['C120',24],['LT1213',23],['HP200',16],['LT106',8]];
+
+  var CATS = [
+    {name:'Manganese',count:1055,images:340,img:'assets/img/949647154300.jpg',imgAlt:'C160 Cheek Plate Lower Mn',kids:[['Amsted',238],['Jaws',221],['Concave & Mantle',132]]},
+    {name:'Screen Media & Accessories',count:703,images:13,img:null,kids:[['Wire',534],['Accessories',53],['Piano Harp',50]]},
+    {name:'Rollers',count:684,images:251,img:'assets/img/19_30_1119.jpg',imgAlt:'Disc Return Roller (Finlay) 1119FL',kids:[['Troughing',110],['Return',105],['Centre',99]]},
+    {name:'Conveyors Rubber and Accessories',count:505,images:76,img:'assets/img/Imp_Bar1524_100_50.jpg',imgAlt:'Impact Bar 1524 x 100 x 50mm Single Chamfer',kids:[['Manufactured Drawings',125],['Belt Rubber',113],['Skirting & Sliders',65]]},
+    {name:'Fasteners',count:417,images:102,img:'assets/img/MM0264797.jpg',imgAlt:'C160 Hammer Screw',kids:[['Bolts',198],['Washers',73],['Nuts',56]]},
+    {name:'Wear Parts',count:416,images:121,img:'assets/img/7065558093.jpg',imgAlt:'HP300 Feed Cone (HP4) XT720 22%Mn',kids:[['Impactor',218],['Side Liners',36],['VSI',10]]},
+    {name:'Power Transmission Parts',count:285,images:42,img:'assets/img/1062440045.jpg',imgAlt:'HP300 Drive Ring Gear',kids:[['Bearings',61],['V Belts',58],['Bushes',38]]},
+    {name:'Hydraulics',count:169,images:27,img:'assets/img/501-011-070.jpg',imgAlt:'Accumulator 4L 8bar',kids:[['Seals',57],['Motors',30],['Valves',18]]},
+    {name:'Other',count:127,images:32,img:'assets/img/585042.jpg',imgAlt:'Metso Jaw 5000Kg Lifting Link',kids:[['Electricals',37],['Tools',21],['Dust Suppression',5]]},
+    {name:'Filters',count:87,images:4,img:null,kids:[['Hydraulic',28],['Air',16],['Fuel',13]]},
+    {name:'Belt Joiners & Clips',count:80,images:6,img:'assets/img/MSCG-0003.jpg',imgAlt:'MS25 Joiner Kit 1200mm Gal',kids:[]},
+    {name:'Gravel and Slurry Pumps',count:26,images:9,img:'assets/img/6_4D-AHR-R55-E4147R.jpg',imgAlt:'6/4D AHR Bare Shaft Pump R/Lin',kids:[['Pumps',18],['Parts All',7]]}
+  ];
+
+  /* Shelf. price = ex GST sample in AUD, null = Quote.
+     stock: ok | low | mto | quote. fits: machine token in the name, else null. */
+  var SHELF = [
+    {ref:'550-003-056',name:'I44 McCloskey Blow Bar 27%Cr',group:'Manganese',sub:'Blow Bars',img:'assets/img/550-003-056.jpg',fits:'I44',price:null,stock:'quote',qty:null},
+    {ref:'MM1023214/MOD',name:'C160 Jaw Fixed Quarry Tooth+40 1P',group:'Manganese',sub:'Jaws',img:'assets/img/MM1023214_MOD.jpg',fits:'C160',price:null,stock:'quote',qty:null},
+    {ref:'949647154300',name:'C160 Cheek Plate Lower Mn',group:'Manganese',sub:'Cheek Plates',img:'assets/img/949647154300.jpg',fits:'C160',price:null,stock:'quote',qty:null},
+    {ref:'7065558093',name:'HP300 Feed Cone (HP4) XT720 22%Mn',group:'Wear Parts',sub:'',img:'assets/img/7065558093.jpg',fits:'HP300',price:null,stock:'quote',qty:null},
+    {ref:'1022145975',name:'HP300 Lower Head Bush',group:'Power Transmission Parts',sub:'Bushes',img:'assets/img/1022145975.jpg',fits:'HP300',price:1240,stock:'low',qty:3},
+    {ref:'19.30.1119',name:'Disc Return Roller (Finlay) 1119FL',group:'Rollers',sub:'Disc Return',img:'assets/img/19_30_1119.jpg',fits:null,price:68.5,stock:'ok',qty:14},
+    {ref:'706204115000',name:'LT1213 Trough Roller Set 315/600FL',group:'Rollers',sub:'',img:'assets/img/706204115000.jpg',fits:'LT1213',price:312,stock:'mto',qty:null},
+    {ref:'937405',name:'GP200 Seal',group:'Hydraulics',sub:'Seals',img:'assets/img/937405.jpg',fits:'GP200',price:46,stock:'ok',qty:22},
+    {ref:'3SYM/STD/F',name:"3' Symons Concave Fine",group:'Manganese',sub:'Concave & Mantle',img:null,fits:null,price:null,stock:'quote',qty:null},
+    {ref:'3SYM/STD/M',name:"3' Symons Std Mantle",group:'Manganese',sub:'Concave & Mantle',img:null,fits:null,price:null,stock:'quote',qty:null},
+    {ref:'2564-9310',name:'2564-0040 Cylinder Seal Kit',group:'Hydraulics',sub:'Seals',img:null,fits:null,price:118,stock:'ok',qty:6},
+    {ref:'TB270H400',name:'270H400 Timing Belt',group:'Power Transmission Parts',sub:'V Belts',img:null,fits:null,price:74,stock:'ok',qty:9}
+  ];
+
+  /* Autocomplete corpus: the 48 sample products plus the shelf extras. */
+  var PARTS = [
+    ['0101-2012','Air Safety (6I2510)','Filters'],['3D115.011','Hyd Return','Filters'],['0116-0010','0116-0003 Pressure Filter','Filters'],
+    ['MM1122599','C130 Fastening Item','Fasteners'],['MM0243126','C130 Hammer Bolt Fasterner','Fasteners'],['940950','C130 Washer (C110/125)','Fasteners'],
+    ['MM0527972','C160 Fastening Item LWR','Fasteners'],['MM0264797','C160 Hammer Screw','Fasteners'],['112-0130','C160 Hammer Screw M48/1130mm','Fasteners'],
+    ['1062440045','HP300 Drive Ring Gear','Power Transmission Parts'],['1022145975','HP300 Lower Head Bush','Power Transmission Parts'],['7063002250','HP300 Pinion (HP4)','Power Transmission Parts'],
+    ['LWBCOS120CT','COS120-B-CT 120lb Crescent Top','Conveyors Rubber and Accessories'],['SC4000/HARDENER','Hardener For SC4000 Glue Kit','Conveyors Rubber and Accessories'],['Imp/Bar1524/100/50','Impact Bar 1524 x 100 x 50mm Single Chamfer','Conveyors Rubber and Accessories'],
+    ['937405','GP200 Seal','Hydraulics'],['3604-470',"3' Symons Seal Ring Spring & H",'Hydraulics'],['501-011-070','ACCUMULATOR 4L 8BAR','Hydraulics'],
+    ['7004205204','HP300 Damper (0091-3190)','Other'],['585042','Metso Jaw 5000Kg Lifting Link','Other'],['12530121','Apron Feeder Gearbox Mount Bkt','Other'],
+    ['704209465000','C130 Cup Spring (C80/C110/125)','Screen Media & Accessories'],['704209485000','C160 Cup Spring','Screen Media & Accessories'],['575484','C160 Spring Assy (C140/150)','Screen Media & Accessories'],
+    ['550-003-056','I44 McCloskey Blow Bar 27%Cr','Manganese'],['MM1155334','C130 Toggle Plate (MM1006270)','Manganese'],['949647154300','C160 Cheek Plate Lower Mn','Manganese'],
+    ['576974','C160 Cheek Plate Upper Mn','Manganese'],['MM1023214/MOD','C160 Jaw Fixed Quarry Tooth+40 1P','Manganese'],['MM0297742','C160 Lower Cheek Plt Fatboy','Manganese'],
+    ['940947','C130 Plate Rubber (C110/125)','Wear Parts'],['MM0541138','C130 Plate Rubber (C120)','Wear Parts'],['MM0541135','C130 Rubber Plate','Wear Parts'],
+    ['1038018155','HP300 Counterweight Liner','Wear Parts'],['N65558321','HP300 Feed Cone (HP4) XT710 18%Mn','Wear Parts'],['7065558093','HP300 Feed Cone (HP4) XT720 22%Mn','Wear Parts'],
+    ['19.30.1119','Disc Return Roller (Finlay) 1119FL','Rollers'],['19.25.4035','Finlay Feeder Roller 900FL/102','Rollers'],['CR1043','Impact Side Roller M/Conv C12','Rollers'],
+    ['706204115000','LT1213 Trough Roller Set 315/600FL','Rollers'],['H0141569','Ammann Rubber Ring','Rollers'],['19-06-1160','Beater Roller 1160FL x 102Diam','Rollers'],
+    ['E111Q05A','Gland Packing','Gravel and Slurry Pumps'],['C2132L','3 x 2 C-AH Discharge Joint','Gravel and Slurry Pumps'],['6/4D-AHR-R55-E4147R','6/4D AHR Bare Shaft Pump R/Lin','Gravel and Slurry Pumps'],
+    ['MSCG-0003','MS25 Joiner Kit 1200mm Gal','Belt Joiners & Clips'],['MSCG-0004','MS25 Joiner Kit 1500mm Gal','Belt Joiners & Clips'],['MSCG-0001','MS25 Joiner Kit 600mm Gal','Belt Joiners & Clips'],
+    ['3SYM/STD/F',"3' Symons Concave Fine",'Manganese'],['3SYM/STD/M',"3' Symons Std Mantle",'Manganese'],['2564-9310','2564-0040 Cylinder Seal Kit','Hydraulics'],['TB270H400','270H400 Timing Belt','Power Transmission Parts']
+  ];
+  /* Superseded numbers: old code in the name resolves to the current ref. */
+  var SUPERSEDED = {'MM1006270':'MM1155334','0116-0003':'0116-0010','2564-0040':'2564-9310'};
+
+  /* ------------------------------------------------------------
+     HELPERS
+     ------------------------------------------------------------ */
+  function $(sel, root){ return (root||document).querySelector(sel); }
+  function $$(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function fmtN(n){ return n.toLocaleString('en-AU'); }
+  function fmtP(n){ return '$' + n.toLocaleString('en-AU', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+  var CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+  var state = { gst: 'inc', machine: null, brand: null, filter: 'all', sort: 'shelf', cart: 0, cat: '' };
+  try { var savedGst = localStorage.getItem('phx-gst'); if (savedGst === 'inc' || savedGst === 'ex') state.gst = savedGst; } catch (e) {}
+
+  /* ------------------------------------------------------------
+     GST TOGGLE (persists)
+     ------------------------------------------------------------ */
+  function renderGst(){
+    $$('.gst button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-gst') === state.gst ? 'true' : 'false'); });
+    $$('.price[data-ex]').forEach(function(p){
+      var ex = parseFloat(p.getAttribute('data-ex'));
+      var inc = Math.round(ex * 110) / 100;
+      var main = state.gst === 'ex' ? ex : inc;
+      var alt = state.gst === 'ex' ? inc : ex;
+      $('.p-main', p).textContent = fmtP(main);
+      $('.p-lab', p).textContent = state.gst === 'ex' ? 'ex GST' : 'inc GST';
+      $('.p-alt', p).textContent = (state.gst === 'ex' ? 'inc GST ' : 'ex GST ') + fmtP(alt);
+    });
+  }
+  $$('.gst button').forEach(function(b){
+    b.addEventListener('click', function(){
+      state.gst = b.getAttribute('data-gst');
+      try { localStorage.setItem('phx-gst', state.gst); } catch (e) {}
+      renderGst();
+    });
+  });
+
+  /* ------------------------------------------------------------
+     DOCKET, MAKES, FOOTER LISTS
+     ------------------------------------------------------------ */
+  $('.js-docket').innerHTML = DOCKET.map(function(m){
+    return '<li><button type="button" class="docket-row" data-model="' + esc(m[0]) + '"><span>' + esc(m[0]) + '</span><span class="d-count">' + m[1] + '</span>' + ARROW + '</button></li>';
+  }).join('');
+  $$('.docket-row').forEach(function(b){
+    b.addEventListener('click', function(){
+      setMachine(b.getAttribute('data-model'));
+      var shelf = $('#shelf'); if (shelf) shelf.scrollIntoView({behavior:'auto', block:'start'});
+    });
+  });
+
+  $('.js-makes').innerHTML = BRANDS.map(function(b){
+    return '<li><a href="#docket" data-brand="' + esc(b[0]) + '">' + esc(b[0]) + ' <span class="mono">' + b[1] + '</span></a></li>';
+  }).join('');
+  $$('.js-makes a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      setBrand(a.getAttribute('data-brand'));
+      var bench = $('.js-bench'); if (bench) bench.scrollIntoView({behavior:'auto', block:'start'});
+    });
+  });
+
+  $('.js-foot-cats').innerHTML = CATS.map(function(c){
+    return '<li><a href="#browse"><span>' + esc(c.name) + '</span><span class="mono">' + fmtN(c.count) + '</span></a></li>';
+  }).join('');
+  $('.js-foot-brands').innerHTML = BRANDS.map(function(b){
+    return '<li><a href="#suit"><span>' + esc(b[0]) + '</span><span class="mono">' + b[1] + '</span></a></li>';
+  }).join('');
+
+  /* ------------------------------------------------------------
+     CATEGORY GRID
+     ------------------------------------------------------------ */
+  $('.js-cats').innerHTML = CATS.map(function(c){
+    var frame = c.img
+      ? '<div class="cat-frame"><img src="' + c.img + '" alt="' + esc(c.imgAlt) + '" loading="lazy"></div>'
+      : '<div class="cat-frame"><span class="big" aria-hidden="true">' + fmtN(c.count) + '</span></div>';
+    var kids = c.kids.length ? '<p class="cat-kids">' + c.kids.map(function(k){ return esc(k[0]) + ' ' + fmtN(k[1]); }).join(' · ') + '</p>' : '';
+    return '<a class="cell cat-cell" href="#browse" aria-label="' + esc(c.name) + ', ' + fmtN(c.count) + ' parts">' +
+      frame +
+      '<h3 class="cat-name">' + esc(c.name) + '</h3>' +
+      '<p class="cat-count">' + fmtN(c.count) + ' parts</p>' +
+      kids +
+    '</a>';
+  }).join('');
+
+  /* ------------------------------------------------------------
+     SHELF
+     ------------------------------------------------------------ */
+  function stockHtml(p){
+    if (p.stock === 'ok')  return '<p class="stock stock-ok"><i class="sq"></i>In stock · ' + p.qty + '</p>';
+    if (p.stock === 'low') return '<p class="stock stock-low"><i class="sq"></i>Low stock · ' + p.qty + '</p>';
+    if (p.stock === 'mto') return '<p class="stock stock-grey"><i class="sq"></i>Made to order</p>';
+    return '<p class="stock stock-grey"><i class="sq"></i>Quote only</p>';
+  }
+  function tileHtml(p, i){
+    var frame = p.img
+      ? '<a class="frame" href="#shelf" tabindex="-1" aria-hidden="true"><img src="' + p.img + '" alt="' + esc(p.name) + '" loading="lazy"></a>'
+      : '<div class="frame frame-spec" aria-hidden="true"><span class="spec-ref">' + esc(p.ref) + '</span><span class="spec-cat">' + esc(p.sub || p.group) + '</span><span class="spec-note">Photo to come</span></div>';
+    var fit = p.fits
+      ? '<p class="fit">Fits <span class="mono">' + esc(p.fits) + '</span></p>'
+      : '<p class="fit is-empty">Fitment not listed, ask us.</p>';
+    var price = p.price !== null
+      ? '<div class="price" data-ex="' + p.price + '"><span class="p-main"></span><span class="p-lab"></span><span class="p-alt"></span><span class="tag">Sample price</span></div>'
+      : '<div class="price"><span class="p-main">Quote</span><span class="p-lab">price on request</span></div>';
+    var action = p.price !== null
+      ? '<div class="action"><div class="stepper" role="group" aria-label="Quantity"><button type="button" class="js-dec" aria-label="Decrease quantity">&minus;</button><label class="sr-only" for="qty-' + i + '">Quantity</label><input id="qty-' + i + '" type="number" min="1" value="1" inputmode="numeric"><button type="button" class="js-inc" aria-label="Increase quantity">+</button></div><button type="button" class="btn btn-accent js-add" aria-label="Add ' + esc(p.ref) + ' to cart">Add</button></div>'
+      : '<div class="action"><a class="btn btn-ghost" href="#quote">Request quote</a></div>';
+    return '<article class="cell tile" data-i="' + i + '" data-ref="' + esc(p.ref) + '" data-fits="' + esc(p.fits || '') + '" data-stock="' + p.stock + '" data-group="' + esc(p.group) + '" data-photo="' + (p.img ? 1 : 0) + '" data-price="' + (p.price === null ? '' : p.price) + '">' +
+      frame +
+      '<p class="ref">' + esc(p.ref) + '</p>' +
+      '<h3 class="name"><a href="#shelf">' + esc(p.name) + '</a></h3>' +
+      fit + price + stockHtml(p) + action +
+    '</article>';
+  }
+  var shelfEl = $('.js-shelf');
+  shelfEl.innerHTML = SHELF.map(tileHtml).join('');
+
+  /* Stepper and Add: cart count ticks in mono */
+  shelfEl.addEventListener('click', function(e){
+    var t = e.target.closest('button'); if (!t) return;
+    var tile = t.closest('.tile');
+    var qty = tile ? $('input[type="number"]', tile) : null;
+    if (t.classList.contains('js-dec') && qty){ qty.value = Math.max(1, (parseInt(qty.value,10)||1) - 1); }
+    if (t.classList.contains('js-inc') && qty){ qty.value = (parseInt(qty.value,10)||1) + 1; }
+    if (t.classList.contains('js-add') && qty){
+      state.cart += Math.max(1, parseInt(qty.value,10)||1);
+      $$('.js-cart-count').forEach(function(c){ c.textContent = state.cart; });
+    }
+  });
+
+  function applyShelf(){
+    var tiles = $$('.tile', shelfEl);
+    var visible = 0;
+    tiles.forEach(function(t){
+      var show = true;
+      if (state.filter === 'fits')  show = !!state.machine && t.getAttribute('data-fits') === state.machine;
+      if (state.filter === 'stock') show = t.getAttribute('data-stock') === 'ok' || t.getAttribute('data-stock') === 'low';
+      if (state.filter === 'photo') show = t.getAttribute('data-photo') === '1';
+      if (state.cat && t.getAttribute('data-group') !== state.cat) show = false;
+      t.classList.toggle('is-hidden', !show);
+      if (show) visible++;
+    });
+    var sorted = tiles.slice().sort(function(a,b){
+      var ai = +a.getAttribute('data-i'), bi = +b.getAttribute('data-i');
+      if (state.machine){
+        var af = a.getAttribute('data-fits') === state.machine ? 0 : 1;
+        var bf = b.getAttribute('data-fits') === state.machine ? 0 : 1;
+        if (af !== bf) return af - bf;
+      }
+      if (state.sort === 'ref') return a.getAttribute('data-ref').localeCompare(b.getAttribute('data-ref'));
+      if (state.sort === 'price'){
+        var ap = a.getAttribute('data-price'), bp = b.getAttribute('data-price');
+        ap = ap === '' ? Infinity : +ap; bp = bp === '' ? Infinity : +bp;
+        if (ap !== bp) return ap - bp;
+      }
+      if (state.sort === 'stock'){
+        var rank = {ok:0, low:1, mto:2, quote:3};
+        var ar = rank[a.getAttribute('data-stock')], br = rank[b.getAttribute('data-stock')];
+        if (ar !== br) return ar - br;
+      }
+      return ai - bi;
+    });
+    sorted.forEach(function(t){ shelfEl.appendChild(t); });
+    $('.js-shelf-count').textContent = visible + (visible === 1 ? ' part' : ' parts');
+    var fitsTab = $('.tab[data-filter="fits"]');
+    var fitsCount = state.machine ? tiles.filter(function(t){ return t.getAttribute('data-fits') === state.machine; }).length : 0;
+    fitsTab.innerHTML = state.machine ? 'Fits <span class="mono">' + esc(state.machine) + ' · ' + fitsCount + '</span>' : 'Fits my machine';
+    renderGst();
+  }
+  $$('.tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      $$('.tab').forEach(function(t){ t.setAttribute('aria-selected','false'); });
+      tab.setAttribute('aria-selected','true');
+      state.filter = tab.getAttribute('data-filter');
+      applyShelf();
+    });
+  });
+  $('.js-sort').addEventListener('change', function(){ state.sort = this.value; applyShelf(); });
+
+  /* ------------------------------------------------------------
+     MACHINE CHIP (both search fields share state)
+     ------------------------------------------------------------ */
+  function renderChip(){
+    $$('.js-chip').forEach(function(chip){
+      if (state.machine){
+        $('.js-chip-label', chip).textContent = (state.brand ? state.brand + ' ' : '') + state.machine;
+        chip.hidden = false; chip.classList.add('is-set');
+      } else {
+        chip.hidden = true; chip.classList.remove('is-set');
+      }
+    });
+  }
+  $$('.js-chip-clear').forEach(function(b){ b.addEventListener('click', function(){ clearMachine(); }); });
+
+  function setMachine(model){
+    state.machine = model;
+    state.brand = brandFor(model) || state.brand;
+    benches.forEach(function(b){ b.sync(); });
+    renderChip();
+    applyShelf();
+  }
+  function setBrand(brand){
+    state.brand = brand;
+    if (state.machine && brandFor(state.machine) !== brand) state.machine = null;
+    benches.forEach(function(b){ b.sync(); });
+    renderChip();
+    applyShelf();
+  }
+  function clearMachine(){
+    state.machine = null; state.brand = null; state.cat = '';
+    benches.forEach(function(b){ b.sync(); b.resetCat(); });
+    renderChip();
+    if (state.filter === 'fits'){ state.filter = 'all'; $$('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-filter') === 'all' ? 'true' : 'false'); }); }
+    applyShelf();
+  }
+
+  /* ------------------------------------------------------------
+     BENCH (two instances, same component)
+     ------------------------------------------------------------ */
+  function Bench(root){
+    var brandSel = $('.js-brand', root);
+    var catSel = $('.js-cat', root);
+    var comboBtn = $('.js-combo-btn', root);
+    var comboVal = $('.js-combo-val', root);
+    var panel = $('.js-combo-panel', root);
+    var q = $('.js-combo-q', root);
+    var list = $('.js-combo-list', root);
+    var cap = $('.js-machine-cap', root);
+    var self = this;
+
+    brandSel.innerHTML = '<option value="">Brand</option>' + BRANDS.map(function(b){ return '<option value="' + esc(b[0]) + '">' + esc(b[0]) + ' · ' + b[1] + '</option>'; }).join('');
+    catSel.innerHTML = '<option value="">Category</option>' + CATS.map(function(c){ return '<option value="' + esc(c.name) + '">' + esc(c.name) + ' · ' + fmtN(c.count) + '</option>'; }).join('');
+
+    function rows(filter){
+      var f = (filter || '').trim().toUpperCase().replace(/\s+/g,'');
+      var own = state.brand ? BRAND_MODELS[state.brand] || [] : [];
+      var html = '';
+      var ownRows = own.filter(function(m){ return !f || m.replace(/\s+/g,'').indexOf(f) > -1; });
+      var restRows = MODELS.filter(function(m){ return own.indexOf(m[0]) === -1 && (!f || m[0].replace(/\s+/g,'').indexOf(f) > -1); });
+      if (state.brand){
+        html += '<div class="combo-group">' + esc(state.brand) + '</div>';
+        html += ownRows.length ? ownRows.map(function(m){ return row(m, MODEL_COUNT[m]); }).join('') : '<div class="combo-empty">No ' + esc(state.brand) + ' model tokens in the export yet.</div>';
+      }
+      if (restRows.length){
+        html += '<div class="combo-group">All machines</div>' + restRows.map(function(m){ return row(m[0], m[1]); }).join('');
+      }
+      if (!html) html = '<div class="combo-empty">No machine matches.</div>';
+      list.innerHTML = html;
+    }
+    function row(model, count){
+      var sel = state.machine === model ? 'true' : 'false';
+      return '<button type="button" class="combo-row" role="option" aria-selected="' + sel + '" data-model="' + esc(model) + '"><span>' + esc(model) + '</span><span class="c-count">' + count + '</span></button>';
+    }
+    function open(){
+      if (comboBtn.disabled) return;
+      rows(''); q.value = '';
+      panel.classList.add('is-open'); comboBtn.setAttribute('aria-expanded','true');
+      q.focus();
+    }
+    function close(){ panel.classList.remove('is-open'); comboBtn.setAttribute('aria-expanded','false'); }
+
+    comboBtn.addEventListener('click', function(){ panel.classList.contains('is-open') ? close() : open(); });
+    q.addEventListener('input', function(){ rows(q.value); });
+    q.addEventListener('keydown', function(e){
+      if (e.key === 'Escape'){ close(); comboBtn.focus(); }
+      if (e.key === 'Enter'){ e.preventDefault(); var first = $('.combo-row', list); if (first){ first.click(); } }
+      if (e.key === 'ArrowDown'){ e.preventDefault(); var f = $('.combo-row', list); if (f) f.focus(); }
+    });
+    list.addEventListener('keydown', function(e){
+      var items = $$('.combo-row', list); var idx = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown'){ e.preventDefault(); (items[idx+1] || items[0]).focus(); }
+      if (e.key === 'ArrowUp'){ e.preventDefault(); (items[idx-1] || q).focus(); }
+      if (e.key === 'Escape'){ close(); comboBtn.focus(); }
+    });
+    list.addEventListener('click', function(e){
+      var r = e.target.closest('.combo-row'); if (!r) return;
+      close();
+      setMachine(r.getAttribute('data-model'));
+      comboBtn.focus();
+    });
+    document.addEventListener('click', function(e){ if (!root.contains(e.target)) close(); });
+
+    brandSel.addEventListener('change', function(){
+      var v = brandSel.value;
+      if (v) setBrand(v); else clearMachine();
+    });
+    catSel.addEventListener('change', function(){
+      state.cat = catSel.value;
+      benches.forEach(function(b){ if (b !== self) b.syncCat(); });
+      applyShelf();
+    });
+
+    $('.js-show', root).addEventListener('click', function(){
+      var shelf = $('#shelf'); if (shelf) shelf.scrollIntoView({behavior:'auto', block:'start'});
+      if (state.machine){
+        state.filter = 'fits';
+        $$('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-filter') === 'fits' ? 'true' : 'false'); });
+        applyShelf();
+      }
+    });
+    $('.js-reset', root).addEventListener('click', function(){ clearMachine(); });
+
+    this.syncCat = function(){ catSel.value = state.cat || ''; };
+    this.sync = function(){
+      brandSel.value = state.brand || '';
+      var unlocked = !!state.brand;
+      comboBtn.disabled = !unlocked;
+      cap.textContent = unlocked ? (state.machine ? MODEL_COUNT[state.machine] + ' parts carry this token' : 'Type to find a model') : 'Pick a brand first';
+      if (state.machine){
+        comboVal.textContent = state.machine; comboVal.classList.remove('placeholder');
+      } else {
+        comboVal.textContent = 'Machine model'; comboVal.classList.add('placeholder');
+      }
+    };
+    this.resetCat = function(){ state.cat = ''; catSel.value = ''; };
+    this.sync();
+  }
+  var benches = $$('.js-bench').map(function(r){ return new Bench(r); });
+
+  /* Search placeholder: the full line does not fit a 375px input, so phones get the short form */
+  var narrowQ = window.matchMedia('(max-width:640px)');
+  function syncPlaceholder(){
+    $$('.js-q').forEach(function(i){ i.placeholder = narrowQ.matches ? 'Part number or machine' : 'Part number, machine or keyword'; });
+  }
+  if (narrowQ.addEventListener) narrowQ.addEventListener('change', syncPlaceholder); else if (narrowQ.addListener) narrowQ.addListener(syncPlaceholder);
+  syncPlaceholder();
+
+  /* ------------------------------------------------------------
+     SEARCH AUTOCOMPLETE (two instances)
+     ------------------------------------------------------------ */
+  function Search(form){
+    var input = $('.js-q', form);
+    var ac = $('.js-ac', form);
+    var timer = null;
+
+    function close(){ ac.classList.remove('is-open'); input.setAttribute('aria-expanded','false'); }
+    function open(){ ac.classList.add('is-open'); input.setAttribute('aria-expanded','true'); }
+
+    function build(term){
+      var t = term.trim().toUpperCase();
+      if (t.length < 2){ close(); return; }
+      var tt = t.replace(/\s+/g,'');
+      var html = '';
+
+      var superRows = Object.keys(SUPERSEDED).filter(function(k){ return k.indexOf(t) > -1; }).slice(0,2).map(function(k){
+        return '<button type="button" class="ac-row is-super" role="option" data-fill="' + esc(SUPERSEDED[k]) + '"><span class="ac-ref">' + esc(k) + '</span><span class="ac-name">is now ' + esc(SUPERSEDED[k]) + '</span></button>';
+      });
+      var partRows = PARTS.filter(function(p){ return p[0].toUpperCase().indexOf(t) > -1 || p[1].toUpperCase().indexOf(t) > -1; }).slice(0,5).map(function(p){
+        return '<button type="button" class="ac-row" role="option" data-fill="' + esc(p[0]) + '"><span class="ac-ref">' + esc(p[0]) + '</span><span class="ac-name">' + esc(p[1]) + '</span><span class="ac-count">' + esc(p[2]) + '</span></button>';
+      });
+      if (superRows.length || partRows.length) html += '<div class="ac-group"><div class="ac-title">Part numbers</div>' + superRows.join('') + partRows.join('') + '</div>';
+
+      var machineRows = MODELS.filter(function(m){ return m[0].replace(/\s+/g,'').indexOf(tt) > -1; }).slice(0,4).map(function(m){
+        return '<button type="button" class="ac-row" role="option" data-machine="' + esc(m[0]) + '"><span class="ac-ref">' + esc(m[0]) + '</span><span class="ac-name">' + esc(brandFor(m[0]) || 'Machine') + '</span><span class="ac-count">' + m[1] + ' parts</span></button>';
+      });
+      if (machineRows.length) html += '<div class="ac-group"><div class="ac-title">Machines</div>' + machineRows.join('') + '</div>';
+
+      var catRows = [];
+      CATS.forEach(function(c){
+        if (c.name.toUpperCase().indexOf(t) > -1) catRows.push([c.name, c.count]);
+        c.kids.forEach(function(k){ if (k[0].toUpperCase().indexOf(t) > -1) catRows.push([c.name + ' / ' + k[0], k[1]]); });
+      });
+      catRows = catRows.slice(0,4).map(function(c){
+        return '<button type="button" class="ac-row" role="option" data-fill="' + esc(c[0]) + '"><span class="ac-name" style="color:var(--ink)">' + esc(c[0]) + '</span><span class="ac-count">' + fmtN(c[1]) + '</span></button>';
+      });
+      if (catRows.length) html += '<div class="ac-group"><div class="ac-title">Categories</div>' + catRows.join('') + '</div>';
+
+      if (!html) html = '<div class="ac-empty">No match for ' + esc(term.trim()) + '. Try the part number as printed (MM1023214), a machine (HP300), or paste a list for a quote.</div>';
+      ac.innerHTML = html;
+      open();
+    }
+
+    input.addEventListener('input', function(){
+      clearTimeout(timer);
+      timer = setTimeout(function(){ build(input.value); }, 100);
+    });
+    input.addEventListener('focus', function(){ if (input.value.trim().length >= 2) build(input.value); });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowDown'){ var f = $('.ac-row', ac); if (f){ e.preventDefault(); f.focus(); } }
+    });
+    ac.addEventListener('keydown', function(e){
+      var items = $$('.ac-row', ac); var idx = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown'){ e.preventDefault(); (items[idx+1] || items[0]).focus(); }
+      if (e.key === 'ArrowUp'){ e.preventDefault(); (items[idx-1] || input).focus(); }
+      if (e.key === 'Escape'){ close(); input.focus(); }
+    });
+    ac.addEventListener('click', function(e){
+      var r = e.target.closest('.ac-row'); if (!r) return;
+      if (r.hasAttribute('data-machine')){ input.value = ''; setMachine(r.getAttribute('data-machine')); close(); var shelf = $('#shelf'); if (shelf) shelf.scrollIntoView({behavior:'auto', block:'start'}); return; }
+      input.value = r.getAttribute('data-fill'); close(); input.focus();
+    });
+    form.addEventListener('submit', function(e){ e.preventDefault(); close(); });
+    document.addEventListener('click', function(e){ if (!form.contains(e.target)) close(); });
+  }
+  $$('.js-search').forEach(function(f){ new Search(f); });
+
+  /* Hero: Search parts focuses the header search */
+  $$('.js-focus-search').forEach(function(b){
+    b.addEventListener('click', function(){
+      var q = $('#q-top'); if (q){ q.scrollIntoView({behavior:'auto', block:'center'}); q.focus(); }
+    });
+  });
+
+  /* Quote form: count the lines, no network in the mockup */
+  var qf = $('.js-quote-form');
+  qf.addEventListener('submit', function(e){
+    e.preventDefault();
+    var lines = $('#parts-list').value.split(/\n/).map(function(l){ return l.trim(); }).filter(Boolean);
+    $('.js-quote-cap').textContent = lines.length ? lines.length + (lines.length === 1 ? ' part number added to your quote list.' : ' part numbers added to your quote list.') : 'Paste at least one part number.';
+    if (lines.length){ $$('.js-quote-count').forEach(function(c){ c.textContent = lines.length; }); }
+  });
+
+  renderGst();
+  applyShelf();
+})();
+</script>
+</body>
+</html>

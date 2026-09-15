@@ -1,0 +1,201 @@
+{
+  "brands": [
+    [
+      "Kleemann",
+      31
+    ],
+    [
+      "Finlay",
+      26
+    ],
+    [
+      "Metso",
+      25
+    ],
+    [
+      "Extec",
+      21
+    ],
+    [
+      "McCloskey",
+      19
+    ],
+    [
+      "Symons",
+      15
+    ],
+    [
+      "Flexco",
+      12
+    ],
+    [
+      "Powerscreen",
+      7
+    ],
+    [
+      "Sandvik",
+      4
+    ],
+    [
+      "Terex",
+      3
+    ],
+    [
+      "Nordberg",
+      1
+    ]
+  ],
+  "models": [
+    [
+      "ST 45",
+      74
+    ],
+    [
+      "HP300",
+      71
+    ],
+    [
+      "C160",
+      52
+    ],
+    [
+      "C130",
+      48
+    ],
+    [
+      "C12",
+      41
+    ],
+    [
+      "J1175",
+      32
+    ],
+    [
+      "HP400",
+      31
+    ],
+    [
+      "GP200",
+      28
+    ],
+    [
+      "C120",
+      24
+    ],
+    [
+      "LT1213",
+      23
+    ],
+    [
+      "HP200",
+      16
+    ],
+    [
+      "LT106",
+      8
+    ],
+    [
+      "I44",
+      4
+    ],
+    [
+      "MR130",
+      4
+    ],
+    [
+      "QJ341",
+      2
+    ],
+    [
+      "J45",
+      1
+    ]
+  ],
+  "model_brand": {
+    "ST 45": {
+      "brand": null,
+      "status": "to_confirm",
+      "source": "No make assigned. The code appears in product names with no brand token, so the tile shows 'To confirm'."
+    },
+    "HP300": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. HP is the Nordberg/Metso HP cone series."
+    },
+    "C160": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. C is the Nordberg/Metso C jaw series."
+    },
+    "C130": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. C is the Nordberg/Metso C jaw series."
+    },
+    "C12": {
+      "brand": "Extec",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. Extec C12 tracked jaw. Corroborated by the client Shopify title 'C12 Extec Fixed Jaw18%Mn'."
+    },
+    "J1175": {
+      "brand": "Finlay",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. Terex Finlay J-1175 tracked jaw. Corroborated by the Wikimedia Commons file used on the tile."
+    },
+    "HP400": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. Nordberg HP400 cone, Nordberg is a Metso brand. Corroborated by the Wikimedia Commons file used on the tile."
+    },
+    "GP200": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. GP is the Nordberg/Metso GP cone series."
+    },
+    "C120": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. C is the Nordberg/Metso C jaw series."
+    },
+    "LT1213": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. LT is the Metso Lokotrack series."
+    },
+    "HP200": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. HP is the Nordberg/Metso HP cone series."
+    },
+    "LT106": {
+      "brand": "Metso",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. LT is the Metso Lokotrack series."
+    },
+    "I44": {
+      "brand": "McCloskey",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. McCloskey I44 tracked impactor."
+    },
+    "MR130": {
+      "brand": "Kleemann",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. Kleemann Mobirex MR 130 Z EVO. Corroborated by the Wikimedia Commons file used on the tile."
+    },
+    "QJ341": {
+      "brand": "Sandvik",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. Sandvik QJ341 tracked jaw."
+    },
+    "J45": {
+      "brand": "McCloskey",
+      "status": "unconfirmed",
+      "source": "Claude, read from the manufacturer's published model range. Not confirmed by ACBG. McCloskey J45 tracked jaw."
+    }
+  },
+  "model_brand_notes": [
+    "Added 2026-09-14 after a review found that every make shown on a homepage machine tile was an inference with nothing behind it. brands and models are two independent flat lists with no mapping, so this object is the mapping.",
+    "The project constitution says machine model tokens become fitment tags only after ACBG confirms the parsing rule. status is 'unconfirmed' for every entry until ACBG signs the mapping off, at which point status becomes 'confirmed' and source records who confirmed it.",
+    "Render rule: show a make chip only for a model present here. A model with brand null renders 'To confirm'. While any entry is unconfirmed the machine section carries the line 'Makes are our reading of the model code and are being confirmed with each manufacturer's published range.'"
+  ]
+}

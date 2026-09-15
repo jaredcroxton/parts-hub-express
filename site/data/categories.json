@@ -1,0 +1,1546 @@
+[
+ {
+  "name": "Manganese",
+  "slug": "manganese",
+  "path": [
+   "Manganese"
+  ],
+  "product_count": 1055,
+  "image_count": 343,
+  "children": [
+   {
+    "name": "Amsted",
+    "slug": "manganese/amsted",
+    "path": [
+     "Manganese",
+     "Amsted"
+    ],
+    "product_count": 238,
+    "image_count": 16,
+    "children": [
+     {
+      "name": "Wear Plates",
+      "slug": "manganese/amsted/wear-plates",
+      "path": [
+       "Manganese",
+       "Amsted",
+       "Wear Plates"
+      ],
+      "product_count": 102,
+      "image_count": 2,
+      "children": [],
+      "hero_sku": "AC561-801"
+     },
+     {
+      "name": "Cone Manganese 18%",
+      "slug": "manganese/amsted/cone-manganese-18",
+      "path": [
+       "Manganese",
+       "Amsted",
+       "Cone Manganese 18%"
+      ],
+      "product_count": 80,
+      "image_count": 10,
+      "children": [],
+      "hero_sku": "AC10118-843"
+     },
+     {
+      "name": "Jaw Manganese 18%",
+      "slug": "manganese/amsted/jaw-manganese-18",
+      "path": [
+       "Manganese",
+       "Amsted",
+       "Jaw Manganese 18%"
+      ],
+      "product_count": 34,
+      "image_count": 1,
+      "children": [],
+      "hero_sku": "AC10460-846"
+     },
+     {
+      "name": "Cone Manganese 21%",
+      "slug": "manganese/amsted/cone-manganese-21",
+      "path": [
+       "Manganese",
+       "Amsted",
+       "Cone Manganese 21%"
+      ],
+      "product_count": 14,
+      "image_count": 3,
+      "children": [],
+      "hero_sku": "AC10352-977"
+     },
+     {
+      "name": "Impactor",
+      "slug": "manganese/amsted/impactor",
+      "path": [
+       "Manganese",
+       "Amsted",
+       "Impactor"
+      ],
+      "product_count": 4,
+      "image_count": 0,
+      "children": [],
+      "hero_sku": null
+     },
+     {
+      "name": "Jaw Manganese 21%",
+      "slug": "manganese/amsted/jaw-manganese-21",
+      "path": [
+       "Manganese",
+       "Amsted",
+       "Jaw Manganese 21%"
+      ],
+      "product_count": 4,
+      "image_count": 0,
+      "children": [],
+      "hero_sku": null
+     }
+    ],
+    "hero_sku": "AC10352-977"
+   },
+   {
+    "name": "Jaws",
+    "slug": "manganese/jaws",
+    "path": [
+     "Manganese",
+     "Jaws"
+    ],
+    "product_count": 221,
+    "image_count": 64,
+    "children": [
+     {
+      "name": "Toggles & Seats",
+      "slug": "manganese/jaws/toggles-seats",
+      "path": [
+       "Manganese",
+       "Jaws",
+       "Toggles & Seats"
+      ],
+      "product_count": 61,
+      "image_count": 17,
+      "children": [],
+      "hero_sku": "82-01-0018"
+     }
+    ],
+    "hero_sku": "501-023-088-22"
+   },
+   {
+    "name": "Concave & Mantle",
+    "slug": "manganese/concave-mantle",
+    "path": [
+     "Manganese",
+     "Concave & Mantle"
+    ],
+    "product_count": 132,
+    "image_count": 59,
+    "children": [],
+    "hero_sku": "CW023-008-MN220"
+   },
+   {
+    "name": "Cheek Plates",
+    "slug": "manganese/cheek-plates",
+    "path": [
+     "Manganese",
+     "Cheek Plates"
+    ],
+    "product_count": 107,
+    "image_count": 38,
+    "children": [],
+    "hero_sku": "CR024-003-008"
+   },
+   {
+    "name": "Blow Bars",
+    "slug": "manganese/blow-bars",
+    "path": [
+     "Manganese",
+     "Blow Bars"
+    ],
+    "product_count": 105,
+    "image_count": 74,
+    "children": [],
+    "hero_sku": "GX260CrMO271-S"
+   },
+   {
+    "name": "Wedges",
+    "slug": "manganese/wedges",
+    "path": [
+     "Manganese",
+     "Wedges"
+    ],
+    "product_count": 69,
+    "image_count": 20,
+    "children": [],
+    "hero_sku": "603/9090S"
+   },
+   {
+    "name": "Impact Plates",
+    "slug": "manganese/impact-plates",
+    "path": [
+     "Manganese",
+     "Impact Plates"
+    ],
+    "product_count": 39,
+    "image_count": 10,
+    "children": [],
+    "hero_sku": "CR004-120-001/80-Mod"
+   },
+   {
+    "name": "Impactor",
+    "slug": "manganese/impactor",
+    "path": [
+     "Manganese",
+     "Impactor"
+    ],
+    "product_count": 35,
+    "image_count": 15,
+    "children": [
+     {
+      "name": "Apron",
+      "slug": "manganese/impactor/apron",
+      "path": [
+       "Manganese",
+       "Impactor",
+       "Apron"
+      ],
+      "product_count": 30,
+      "image_count": 12,
+      "children": [],
+      "hero_sku": "4-485"
+     },
+     {
+      "name": "Grinding Path",
+      "slug": "manganese/impactor/grinding-path",
+      "path": [
+       "Manganese",
+       "Impactor",
+       "Grinding Path"
+      ],
+      "product_count": 5,
+      "image_count": 3,
+      "children": [],
+      "hero_sku": "GT66TC"
+     }
+    ],
+    "hero_sku": "4-485"
+   },
+   {
+    "name": "Other",
+    "slug": "manganese/other",
+    "path": [
+     "Manganese",
+     "Other"
+    ],
+    "product_count": 33,
+    "image_count": 19,
+    "children": [],
+    "hero_sku": "2564-7104"
+   },
+   {
+    "name": "VSI Rotor",
+    "slug": "manganese/vsi-rotor",
+    "path": [
+     "Manganese",
+     "VSI Rotor"
+    ],
+    "product_count": 13,
+    "image_count": 5,
+    "children": [],
+    "hero_sku": "MM0401063"
+   },
+   {
+    "name": "VSI Rotor Parts",
+    "slug": "manganese/vsi-rotor-parts",
+    "path": [
+     "Manganese",
+     "VSI Rotor Parts"
+    ],
+    "product_count": 1,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   }
+  ],
+  "hero_sku": "B96394049M"
+ },
+ {
+  "name": "Screen Media & Accessories",
+  "slug": "screen-media-accessories",
+  "path": [
+   "Screen Media & Accessories"
+  ],
+  "product_count": 703,
+  "image_count": 13,
+  "children": [
+   {
+    "name": "Wire",
+    "slug": "screen-media-accessories/wire",
+    "path": [
+     "Screen Media & Accessories",
+     "Wire"
+    ],
+    "product_count": 534,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "MA306014504/2ET"
+   },
+   {
+    "name": "Accessories",
+    "slug": "screen-media-accessories/accessories",
+    "path": [
+     "Screen Media & Accessories",
+     "Accessories"
+    ],
+    "product_count": 53,
+    "image_count": 8,
+    "children": [
+     {
+      "name": "Springs",
+      "slug": "screen-media-accessories/accessories/springs",
+      "path": [
+       "Screen Media & Accessories",
+       "Accessories",
+       "Springs"
+      ],
+      "product_count": 40,
+      "image_count": 7,
+      "children": [],
+      "hero_sku": "940954"
+     }
+    ],
+    "hero_sku": "940954"
+   },
+   {
+    "name": "Piano Harp",
+    "slug": "screen-media-accessories/piano-harp",
+    "path": [
+     "Screen Media & Accessories",
+     "Piano Harp"
+    ],
+    "product_count": 50,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Punch Plate",
+    "slug": "screen-media-accessories/punch-plate",
+    "path": [
+     "Screen Media & Accessories",
+     "Punch Plate"
+    ],
+    "product_count": 37,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Poly",
+    "slug": "screen-media-accessories/poly",
+    "path": [
+     "Screen Media & Accessories",
+     "Poly"
+    ],
+    "product_count": 21,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "FF200030014/4POLY"
+   },
+   {
+    "name": "Grizzly Bar",
+    "slug": "screen-media-accessories/grizzly-bar",
+    "path": [
+     "Screen Media & Accessories",
+     "Grizzly Bar"
+    ],
+    "product_count": 1,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "01307-004-11"
+   }
+  ],
+  "hero_sku": "575484"
+ },
+ {
+  "name": "Rollers",
+  "slug": "rollers",
+  "path": [
+   "Rollers"
+  ],
+  "product_count": 684,
+  "image_count": 252,
+  "children": [
+   {
+    "name": "Troughing",
+    "slug": "rollers/troughing",
+    "path": [
+     "Rollers",
+     "Troughing"
+    ],
+    "product_count": 110,
+    "image_count": 34,
+    "children": [],
+    "hero_sku": "TR383FL/127/25"
+   },
+   {
+    "name": "Return",
+    "slug": "rollers/return",
+    "path": [
+     "Rollers",
+     "Return"
+    ],
+    "product_count": 105,
+    "image_count": 35,
+    "children": [],
+    "hero_sku": "RT1094FL/114-TX"
+   },
+   {
+    "name": "Centre",
+    "slug": "rollers/centre",
+    "path": [
+     "Rollers",
+     "Centre"
+    ],
+    "product_count": 99,
+    "image_count": 46,
+    "children": [],
+    "hero_sku": "15-10-0112"
+   },
+   {
+    "name": "Wing",
+    "slug": "rollers/wing",
+    "path": [
+     "Rollers",
+     "Wing"
+    ],
+    "product_count": 80,
+    "image_count": 66,
+    "children": [],
+    "hero_sku": "CR1012"
+   },
+   {
+    "name": "Disc Return",
+    "slug": "rollers/disc-return",
+    "path": [
+     "Rollers",
+     "Disc Return"
+    ],
+    "product_count": 72,
+    "image_count": 31,
+    "children": [],
+    "hero_sku": "DR1294FL/152/40"
+   },
+   {
+    "name": "Impact",
+    "slug": "rollers/impact",
+    "path": [
+     "Rollers",
+     "Impact"
+    ],
+    "product_count": 60,
+    "image_count": 13,
+    "children": [],
+    "hero_sku": "2489-1077"
+   },
+   {
+    "name": "Head & Tail Drum",
+    "slug": "rollers/head-tail-drum",
+    "path": [
+     "Rollers",
+     "Head & Tail Drum"
+    ],
+    "product_count": 48,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "520-003-004"
+   },
+   {
+    "name": "Frames",
+    "slug": "rollers/frames",
+    "path": [
+     "Rollers",
+     "Frames"
+    ],
+    "product_count": 22,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "FRM600-O/S 35° Gal-TX"
+   },
+   {
+    "name": "Guide",
+    "slug": "rollers/guide",
+    "path": [
+     "Rollers",
+     "Guide"
+    ],
+    "product_count": 20,
+    "image_count": 4,
+    "children": [],
+    "hero_sku": "102201"
+   },
+   {
+    "name": "Spiral",
+    "slug": "rollers/spiral",
+    "path": [
+     "Rollers",
+     "Spiral"
+    ],
+    "product_count": 16,
+    "image_count": 6,
+    "children": [],
+    "hero_sku": "2495-3003"
+   },
+   {
+    "name": "Beater",
+    "slug": "rollers/beater",
+    "path": [
+     "Rollers",
+     "Beater"
+    ],
+    "product_count": 14,
+    "image_count": 6,
+    "children": [],
+    "hero_sku": "19-06-1160"
+   },
+   {
+    "name": "Tracking",
+    "slug": "rollers/tracking",
+    "path": [
+     "Rollers",
+     "Tracking"
+    ],
+    "product_count": 9,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "12230135"
+   },
+   {
+    "name": "Brackets",
+    "slug": "rollers/brackets",
+    "path": [
+     "Rollers",
+     "Brackets"
+    ],
+    "product_count": 6,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "BKT-R/R-TX"
+   },
+   {
+    "name": "Other",
+    "slug": "rollers/other",
+    "path": [
+     "Rollers",
+     "Other"
+    ],
+    "product_count": 3,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": "2564-7104"
+   }
+  ],
+  "hero_sku": "102201"
+ },
+ {
+  "name": "Conveyors Rubber and Accessories",
+  "slug": "conveyors-rubber-and-accessories",
+  "path": [
+   "Conveyors Rubber and Accessories"
+  ],
+  "product_count": 505,
+  "image_count": 77,
+  "children": [
+   {
+    "name": "Manufactured Drawings",
+    "slug": "conveyors-rubber-and-accessories/manufactured-drawings",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Manufactured Drawings"
+    ],
+    "product_count": 125,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Belt Rubber",
+    "slug": "conveyors-rubber-and-accessories/belt-rubber",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Belt Rubber"
+    ],
+    "product_count": 113,
+    "image_count": 15,
+    "children": [],
+    "hero_sku": "HWR0231000"
+   },
+   {
+    "name": "Skirting & Sliders",
+    "slug": "conveyors-rubber-and-accessories/skirting-sliders",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Skirting & Sliders"
+    ],
+    "product_count": 65,
+    "image_count": 28,
+    "children": [
+     {
+      "name": "Skirting Rubber",
+      "slug": "conveyors-rubber-and-accessories/skirting-sliders/skirting-rubber",
+      "path": [
+       "Conveyors Rubber and Accessories",
+       "Skirting & Sliders",
+       "Skirting Rubber"
+      ],
+      "product_count": 38,
+      "image_count": 24,
+      "children": [],
+      "hero_sku": "SR10/100-BB 10m"
+     },
+     {
+      "name": "Skirting Poly",
+      "slug": "conveyors-rubber-and-accessories/skirting-sliders/skirting-poly",
+      "path": [
+       "Conveyors Rubber and Accessories",
+       "Skirting & Sliders",
+       "Skirting Poly"
+      ],
+      "product_count": 13,
+      "image_count": 1,
+      "children": [],
+      "hero_sku": "Poly50/120/1.5m"
+     },
+     {
+      "name": "Sliders Poly",
+      "slug": "conveyors-rubber-and-accessories/skirting-sliders/sliders-poly",
+      "path": [
+       "Conveyors Rubber and Accessories",
+       "Skirting & Sliders",
+       "Sliders Poly"
+      ],
+      "product_count": 11,
+      "image_count": 2,
+      "children": [],
+      "hero_sku": "Slider-SR-150/30/2m"
+     }
+    ],
+    "hero_sku": "SR10/100-BB 10m"
+   },
+   {
+    "name": "Scrapers and Cleaners",
+    "slug": "conveyors-rubber-and-accessories/scrapers-and-cleaners",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Scrapers and Cleaners"
+    ],
+    "product_count": 59,
+    "image_count": 19,
+    "children": [
+     {
+      "name": "Blades",
+      "slug": "conveyors-rubber-and-accessories/scrapers-and-cleaners/blades",
+      "path": [
+       "Conveyors Rubber and Accessories",
+       "Scrapers and Cleaners",
+       "Blades"
+      ],
+      "product_count": 24,
+      "image_count": 14,
+      "children": [
+       {
+        "name": "Poly",
+        "slug": "conveyors-rubber-and-accessories/scrapers-and-cleaners/blades/poly",
+        "path": [
+         "Conveyors Rubber and Accessories",
+         "Scrapers and Cleaners",
+         "Blades",
+         "Poly"
+        ],
+        "product_count": 21,
+        "image_count": 13,
+        "children": [],
+        "hero_sku": "12.62.0010"
+       },
+       {
+        "name": "Metal",
+        "slug": "conveyors-rubber-and-accessories/scrapers-and-cleaners/blades/metal",
+        "path": [
+         "Conveyors Rubber and Accessories",
+         "Scrapers and Cleaners",
+         "Blades",
+         "Metal"
+        ],
+        "product_count": 2,
+        "image_count": 0,
+        "children": [],
+        "hero_sku": null
+       },
+       {
+        "name": "Rubber",
+        "slug": "conveyors-rubber-and-accessories/scrapers-and-cleaners/blades/rubber",
+        "path": [
+         "Conveyors Rubber and Accessories",
+         "Scrapers and Cleaners",
+         "Blades",
+         "Rubber"
+        ],
+        "product_count": 1,
+        "image_count": 1,
+        "children": [],
+        "hero_sku": "0169-0210"
+       }
+      ],
+      "hero_sku": "12.62.0010"
+     },
+     {
+      "name": "Other Components",
+      "slug": "conveyors-rubber-and-accessories/scrapers-and-cleaners/other-components",
+      "path": [
+       "Conveyors Rubber and Accessories",
+       "Scrapers and Cleaners",
+       "Other Components"
+      ],
+      "product_count": 20,
+      "image_count": 5,
+      "children": [],
+      "hero_sku": "120025"
+     },
+     {
+      "name": "Assembles",
+      "slug": "conveyors-rubber-and-accessories/scrapers-and-cleaners/assembles",
+      "path": [
+       "Conveyors Rubber and Accessories",
+       "Scrapers and Cleaners",
+       "Assembles"
+      ],
+      "product_count": 15,
+      "image_count": 0,
+      "children": [],
+      "hero_sku": null
+     }
+    ],
+    "hero_sku": "12.62.0010"
+   },
+   {
+    "name": "Rubber Sheet or Roll",
+    "slug": "conveyors-rubber-and-accessories/rubber-sheet-or-roll",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Rubber Sheet or Roll"
+    ],
+    "product_count": 51,
+    "image_count": 7,
+    "children": [],
+    "hero_sku": "CSP-0017"
+   },
+   {
+    "name": "Socks",
+    "slug": "conveyors-rubber-and-accessories/socks",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Socks"
+    ],
+    "product_count": 26,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Repair",
+    "slug": "conveyors-rubber-and-accessories/repair",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Repair"
+    ],
+    "product_count": 17,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Capping",
+    "slug": "conveyors-rubber-and-accessories/capping",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Capping"
+    ],
+    "product_count": 9,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "U02/PU"
+   },
+   {
+    "name": "Splice Kits",
+    "slug": "conveyors-rubber-and-accessories/splice-kits",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Splice Kits"
+    ],
+    "product_count": 6,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Belt PVC",
+    "slug": "conveyors-rubber-and-accessories/belt-pvc",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Belt PVC"
+    ],
+    "product_count": 5,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "LWBCOS120CT"
+   },
+   {
+    "name": "Impact Beds",
+    "slug": "conveyors-rubber-and-accessories/impact-beds",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Impact Beds"
+    ],
+    "product_count": 4,
+    "image_count": 2,
+    "children": [
+     {
+      "name": "Impact Bars",
+      "slug": "conveyors-rubber-and-accessories/impact-beds/impact-bars",
+      "path": [
+       "Conveyors Rubber and Accessories",
+       "Impact Beds",
+       "Impact Bars"
+      ],
+      "product_count": 4,
+      "image_count": 2,
+      "children": [],
+      "hero_sku": "Imp/Bar1524/100/50"
+     }
+    ],
+    "hero_sku": "Imp/Bar1524/100/50"
+   },
+   {
+    "name": "Lagging Rubber Sheet",
+    "slug": "conveyors-rubber-and-accessories/lagging-rubber-sheet",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Lagging Rubber Sheet"
+    ],
+    "product_count": 2,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Glues",
+    "slug": "conveyors-rubber-and-accessories/glues",
+    "path": [
+     "Conveyors Rubber and Accessories",
+     "Glues"
+    ],
+    "product_count": 2,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "SC4000/HARDENER"
+   }
+  ],
+  "hero_sku": "06-65-80028"
+ },
+ {
+  "name": "Fasteners",
+  "slug": "fasteners",
+  "path": [
+   "Fasteners"
+  ],
+  "product_count": 417,
+  "image_count": 103,
+  "children": [
+   {
+    "name": "Bolts",
+    "slug": "fasteners/bolts",
+    "path": [
+     "Fasteners",
+     "Bolts"
+    ],
+    "product_count": 198,
+    "image_count": 45,
+    "children": [],
+    "hero_sku": "B96394009B"
+   },
+   {
+    "name": "Washers",
+    "slug": "fasteners/washers",
+    "path": [
+     "Fasteners",
+     "Washers"
+    ],
+    "product_count": 73,
+    "image_count": 24,
+    "children": [],
+    "hero_sku": "2210-0019"
+   },
+   {
+    "name": "Nuts",
+    "slug": "fasteners/nuts",
+    "path": [
+     "Fasteners",
+     "Nuts"
+    ],
+    "product_count": 56,
+    "image_count": 15,
+    "children": [],
+    "hero_sku": "0312-0002"
+   },
+   {
+    "name": "Amsted Fasteners",
+    "slug": "fasteners/amsted-fasteners",
+    "path": [
+     "Fasteners",
+     "Amsted Fasteners"
+    ],
+    "product_count": 33,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Pins",
+    "slug": "fasteners/pins",
+    "path": [
+     "Fasteners",
+     "Pins"
+    ],
+    "product_count": 28,
+    "image_count": 10,
+    "children": [],
+    "hero_sku": "CR004-088-001"
+   },
+   {
+    "name": "Other",
+    "slug": "fasteners/other",
+    "path": [
+     "Fasteners",
+     "Other"
+    ],
+    "product_count": 7,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "2564-7104"
+   },
+   {
+    "name": "Clips",
+    "slug": "fasteners/clips",
+    "path": [
+     "Fasteners",
+     "Clips"
+    ],
+    "product_count": 4,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   }
+  ],
+  "hero_sku": "0312-0002"
+ },
+ {
+  "name": "Wear Parts",
+  "slug": "wear-parts",
+  "path": [
+   "Wear Parts"
+  ],
+  "product_count": 416,
+  "image_count": 122,
+  "children": [
+   {
+    "name": "Impactor",
+    "slug": "wear-parts/impactor",
+    "path": [
+     "Wear Parts",
+     "Impactor"
+    ],
+    "product_count": 218,
+    "image_count": 53,
+    "children": [],
+    "hero_sku": "603/936"
+   },
+   {
+    "name": "Side Liners",
+    "slug": "wear-parts/side-liners",
+    "path": [
+     "Wear Parts",
+     "Side Liners"
+    ],
+    "product_count": 36,
+    "image_count": 12,
+    "children": [
+     {
+      "name": "Jaw Liners",
+      "slug": "wear-parts/side-liners/jaw-liners",
+      "path": [
+       "Wear Parts",
+       "Side Liners",
+       "Jaw Liners"
+      ],
+      "product_count": 9,
+      "image_count": 1,
+      "children": [],
+      "hero_sku": "600/2274"
+     }
+    ],
+    "hero_sku": "WPB-0002"
+   },
+   {
+    "name": "VSI",
+    "slug": "wear-parts/vsi",
+    "path": [
+     "Wear Parts",
+     "VSI"
+    ],
+    "product_count": 10,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "B96334170C"
+   },
+   {
+    "name": "Other",
+    "slug": "wear-parts/other",
+    "path": [
+     "Wear Parts",
+     "Other"
+    ],
+    "product_count": 2,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": "2564-7104"
+   }
+  ],
+  "hero_sku": "B96394008A"
+ },
+ {
+  "name": "Power Transmission Parts",
+  "slug": "power-transmission-parts",
+  "path": [
+   "Power Transmission Parts"
+  ],
+  "product_count": 285,
+  "image_count": 42,
+  "children": [
+   {
+    "name": "Bearings",
+    "slug": "power-transmission-parts/bearings",
+    "path": [
+     "Power Transmission Parts",
+     "Bearings"
+    ],
+    "product_count": 61,
+    "image_count": 6,
+    "children": [],
+    "hero_sku": "2402-2040"
+   },
+   {
+    "name": "V Belts",
+    "slug": "power-transmission-parts/v-belts",
+    "path": [
+     "Power Transmission Parts",
+     "V Belts"
+    ],
+    "product_count": 58,
+    "image_count": 3,
+    "children": [],
+    "hero_sku": "4/SPC9500"
+   },
+   {
+    "name": "Bushes",
+    "slug": "power-transmission-parts/bushes",
+    "path": [
+     "Power Transmission Parts",
+     "Bushes"
+    ],
+    "product_count": 38,
+    "image_count": 9,
+    "children": [],
+    "hero_sku": "442.9406-01"
+   },
+   {
+    "name": "Housings",
+    "slug": "power-transmission-parts/housings",
+    "path": [
+     "Power Transmission Parts",
+     "Housings"
+    ],
+    "product_count": 29,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "1025871"
+   },
+   {
+    "name": "Seals",
+    "slug": "power-transmission-parts/seals",
+    "path": [
+     "Power Transmission Parts",
+     "Seals"
+    ],
+    "product_count": 28,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Coupling",
+    "slug": "power-transmission-parts/coupling",
+    "path": [
+     "Power Transmission Parts",
+     "Coupling"
+    ],
+    "product_count": 20,
+    "image_count": 4,
+    "children": [],
+    "hero_sku": "0102-9138"
+   },
+   {
+    "name": "Sleeves",
+    "slug": "power-transmission-parts/sleeves",
+    "path": [
+     "Power Transmission Parts",
+     "Sleeves"
+    ],
+    "product_count": 13,
+    "image_count": 3,
+    "children": [],
+    "hero_sku": "724.0801-001"
+   },
+   {
+    "name": "Accessories",
+    "slug": "power-transmission-parts/accessories",
+    "path": [
+     "Power Transmission Parts",
+     "Accessories"
+    ],
+    "product_count": 12,
+    "image_count": 4,
+    "children": [],
+    "hero_sku": "PSN-69827"
+   },
+   {
+    "name": "Pulley",
+    "slug": "power-transmission-parts/pulley",
+    "path": [
+     "Power Transmission Parts",
+     "Pulley"
+    ],
+    "product_count": 9,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "706303267970"
+   },
+   {
+    "name": "Shafts",
+    "slug": "power-transmission-parts/shafts",
+    "path": [
+     "Power Transmission Parts",
+     "Shafts"
+    ],
+    "product_count": 7,
+    "image_count": 3,
+    "children": [],
+    "hero_sku": "1075162"
+   },
+   {
+    "name": "Gearbox",
+    "slug": "power-transmission-parts/gearbox",
+    "path": [
+     "Power Transmission Parts",
+     "Gearbox"
+    ],
+    "product_count": 3,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "08-60-2332B"
+   },
+   {
+    "name": "Chain",
+    "slug": "power-transmission-parts/chain",
+    "path": [
+     "Power Transmission Parts",
+     "Chain"
+    ],
+    "product_count": 2,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "16B1-10FT"
+   },
+   {
+    "name": "Sprockets",
+    "slug": "power-transmission-parts/sprockets",
+    "path": [
+     "Power Transmission Parts",
+     "Sprockets"
+    ],
+    "product_count": 2,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "2601-0054"
+   }
+  ],
+  "hero_sku": "442.9406-01"
+ },
+ {
+  "name": "Hydraulics",
+  "slug": "hydraulics",
+  "path": [
+   "Hydraulics"
+  ],
+  "product_count": 169,
+  "image_count": 27,
+  "children": [
+   {
+    "name": "Seals",
+    "slug": "hydraulics/seals",
+    "path": [
+     "Hydraulics",
+     "Seals"
+    ],
+    "product_count": 57,
+    "image_count": 11,
+    "children": [],
+    "hero_sku": "PSN-2259"
+   },
+   {
+    "name": "Motors",
+    "slug": "hydraulics/motors",
+    "path": [
+     "Hydraulics",
+     "Motors"
+    ],
+    "product_count": 30,
+    "image_count": 7,
+    "children": [],
+    "hero_sku": "01-05-0001"
+   },
+   {
+    "name": "Valves",
+    "slug": "hydraulics/valves",
+    "path": [
+     "Hydraulics",
+     "Valves"
+    ],
+    "product_count": 18,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Pumps",
+    "slug": "hydraulics/pumps",
+    "path": [
+     "Hydraulics",
+     "Pumps"
+    ],
+    "product_count": 14,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Accumulator",
+    "slug": "hydraulics/accumulator",
+    "path": [
+     "Hydraulics",
+     "Accumulator"
+    ],
+    "product_count": 12,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "501-011-070"
+   },
+   {
+    "name": "Rams",
+    "slug": "hydraulics/rams",
+    "path": [
+     "Hydraulics",
+     "Rams"
+    ],
+    "product_count": 9,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "0110-0041"
+   },
+   {
+    "name": "Hoses",
+    "slug": "hydraulics/hoses",
+    "path": [
+     "Hydraulics",
+     "Hoses"
+    ],
+    "product_count": 6,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "01-30-8042TRPRK"
+   },
+   {
+    "name": "Gauges",
+    "slug": "hydraulics/gauges",
+    "path": [
+     "Hydraulics",
+     "Gauges"
+    ],
+    "product_count": 4,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Sensors",
+    "slug": "hydraulics/sensors",
+    "path": [
+     "Hydraulics",
+     "Sensors"
+    ],
+    "product_count": 4,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Solenoid",
+    "slug": "hydraulics/solenoid",
+    "path": [
+     "Hydraulics",
+     "Solenoid"
+    ],
+    "product_count": 2,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Other",
+    "slug": "hydraulics/other",
+    "path": [
+     "Hydraulics",
+     "Other"
+    ],
+    "product_count": 1,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": "2564-7104"
+   },
+   {
+    "name": "Switches",
+    "slug": "hydraulics/switches",
+    "path": [
+     "Hydraulics",
+     "Switches"
+    ],
+    "product_count": 1,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   }
+  ],
+  "hero_sku": "01-05-0001"
+ },
+ {
+  "name": "Other",
+  "slug": "other",
+  "path": [
+   "Other"
+  ],
+  "product_count": 128,
+  "image_count": 33,
+  "children": [
+   {
+    "name": "Electricals",
+    "slug": "other/electricals",
+    "path": [
+     "Other",
+     "Electricals"
+    ],
+    "product_count": 37,
+    "image_count": 3,
+    "children": [],
+    "hero_sku": "2683-2155"
+   },
+   {
+    "name": "Tools",
+    "slug": "other/tools",
+    "path": [
+     "Other",
+     "Tools"
+    ],
+    "product_count": 21,
+    "image_count": 5,
+    "children": [],
+    "hero_sku": "HW1-Wrench"
+   },
+   {
+    "name": "Dust Suppresion",
+    "slug": "other/dust-suppresion",
+    "path": [
+     "Other",
+     "Dust Suppresion"
+    ],
+    "product_count": 5,
+    "image_count": 5,
+    "children": [],
+    "hero_sku": "NOZ03"
+   },
+   {
+    "name": "Dampners",
+    "slug": "other/dampners",
+    "path": [
+     "Other",
+     "Dampners"
+    ],
+    "product_count": 5,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "7004205204"
+   },
+   {
+    "name": "Backing Products",
+    "slug": "other/backing-products",
+    "path": [
+     "Other",
+     "Backing Products"
+    ],
+    "product_count": 5,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Track Parts",
+    "slug": "other/track-parts",
+    "path": [
+     "Other",
+     "Track Parts"
+    ],
+    "product_count": 4,
+    "image_count": 2,
+    "children": [],
+    "hero_sku": "65500493"
+   },
+   {
+    "name": "Lifters",
+    "slug": "other/lifters",
+    "path": [
+     "Other",
+     "Lifters"
+    ],
+    "product_count": 3,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "585042"
+   }
+  ],
+  "hero_sku": "2564-7104"
+ },
+ {
+  "name": "Filters",
+  "slug": "filters",
+  "path": [
+   "Filters"
+  ],
+  "product_count": 87,
+  "image_count": 4,
+  "children": [
+   {
+    "name": "Hydraulic",
+    "slug": "filters/hydraulic",
+    "path": [
+     "Filters",
+     "Hydraulic"
+    ],
+    "product_count": 28,
+    "image_count": 3,
+    "children": [],
+    "hero_sku": "0116-0004"
+   },
+   {
+    "name": "Air",
+    "slug": "filters/air",
+    "path": [
+     "Filters",
+     "Air"
+    ],
+    "product_count": 16,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "0101-2012"
+   },
+   {
+    "name": "Fuel",
+    "slug": "filters/fuel",
+    "path": [
+     "Filters",
+     "Fuel"
+    ],
+    "product_count": 13,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   },
+   {
+    "name": "Oil",
+    "slug": "filters/oil",
+    "path": [
+     "Filters",
+     "Oil"
+    ],
+    "product_count": 12,
+    "image_count": 0,
+    "children": [],
+    "hero_sku": null
+   }
+  ],
+  "hero_sku": "0116-0010"
+ },
+ {
+  "name": "Belt Joiners & Clips",
+  "slug": "belt-joiners-clips",
+  "path": [
+   "Belt Joiners & Clips"
+  ],
+  "product_count": 80,
+  "image_count": 6,
+  "children": [],
+  "hero_sku": "MSCG-0003"
+ },
+ {
+  "name": "Gravel and Slurry Pumps",
+  "slug": "gravel-and-slurry-pumps",
+  "path": [
+   "Gravel and Slurry Pumps"
+  ],
+  "product_count": 26,
+  "image_count": 9,
+  "children": [
+   {
+    "name": "Pumps",
+    "slug": "gravel-and-slurry-pumps/pumps",
+    "path": [
+     "Gravel and Slurry Pumps",
+     "Pumps"
+    ],
+    "product_count": 18,
+    "image_count": 7,
+    "children": [],
+    "hero_sku": "F6018TL1"
+   },
+   {
+    "name": "Parts All",
+    "slug": "gravel-and-slurry-pumps/parts-all",
+    "path": [
+     "Gravel and Slurry Pumps",
+     "Parts All"
+    ],
+    "product_count": 7,
+    "image_count": 1,
+    "children": [],
+    "hero_sku": "C2132L"
+   }
+  ],
+  "hero_sku": "C2132L"
+ }
+]

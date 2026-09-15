@@ -1,0 +1,76 @@
+# Nightly Odoo catalogue sync (architecture/odoo_api_sync.md).
+# Pulls products from the Odoo API, rebuilds site/data, commits any change. The push makes Vercel redeploy.
+# Does nothing until the Odoo secrets are set in Settings, Secrets and variables, Actions.
+name: Odoo catalogue sync
+
+on:
+  schedule:
+    - cron: "0 20 * * *" # 20:00 UTC = 6am AEST (7am during daylight saving)
+  workflow_dispatch:
+    inputs:
+      allow_drop:
+        description: "Allow active products to drop by more than 20 percent (only after checking Odoo)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: odoo-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ODOO_URL: ${{ secrets.ODOO_URL }}
+      ODOO_DB: ${{ secrets.ODOO_DB }}
+      ODOO_LOGIN: ${{ secrets.ODOO_LOGIN }}
+      ODOO_API_KEY: ${{ secrets.ODOO_API_KEY }}
+      ODOO_TRANSPORT: ${{ secrets.ODOO_TRANSPORT }}
+      ODOO_PRICES_INCLUDE_GST: ${{ vars.ODOO_PRICES_INCLUDE_GST }}
+    steps:
+      - name: Check Odoo is connected
+        id: gate
+        run: |
+          if [ -z "$ODOO_URL" ] || [ -z "$ODOO_API_KEY" ]; then
+            echo "connected=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Odoo secrets are not set yet. Nothing to sync."
+          else
+            echo "connected=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.connected == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.connected == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Install tool dependencies
+        if: steps.gate.outputs.connected == 'true'
+        run: pip install -r tools/requirements.txt
+
+      - name: Pull from Odoo
+        if: steps.gate.outputs.connected == 'true'
+        run: python tools/odoo_pull.py
+
+      - name: Build the catalogue
+        if: steps.gate.outputs.connected == 'true'
+        run: python tools/build_catalogue.py --source odoo ${{ inputs.allow_drop && '--allow-drop' || '' }}
+
+      - name: Commit catalogue changes
+        if: steps.gate.outputs.connected == 'true'
+        run: |
+          git config user.name "odoo-sync"
+          git config user.email "odoo-sync@users.noreply.github.com"
+          git add site/data site/public/img/products
+          if git diff --cached --quiet; then
+            echo "No catalogue changes."
+            exit 0
+          fi
+          git commit -m "Odoo catalogue sync $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push

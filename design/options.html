@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parts Hub Express, three directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #ffffff;
+    --ink: #111214;
+    --muted: #5f6368;
+    --rule: #cfd3d6;
+    --rule-soft: #e6e8ea;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-inline: clamp(16px, 4vw, 48px);
+    padding-block: 40px 96px;
+  }
+  h1, h2, h3 {
+    font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+    text-wrap: balance;
+    margin: 0;
+  }
+  h1 { font-size: clamp(30px, 4.5vw, 44px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+  h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  h3 { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  p { margin: 0; max-width: 65ch; }
+  a { color: var(--ink); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  .intro { padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+  .intro p { margin-top: 16px; color: var(--muted); font-size: 16px; }
+  .intro .how { margin-top: 12px; color: var(--ink); }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 20px; font-size: 14px; }
+  .jump a { text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+  .jump a:hover { border-color: var(--ink); }
+
+  .option { padding-block: 48px; border-bottom: 1px solid var(--rule); }
+  .option-head { display: grid; grid-template-columns: 56px 1fr auto; gap: 16px; align-items: start; }
+  .letter {
+    font-family: "Inter Tight", sans-serif; font-weight: 700; font-size: 40px; line-height: 1;
+    letter-spacing: -0.03em; border: 1px solid var(--ink); width: 56px; height: 56px;
+    display: grid; place-items: center;
+  }
+  .score { text-align: right; font-variant-numeric: tabular-nums; }
+  .score .n { font-family: "Inter Tight", sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+  .score .l { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+  .thesis { margin-top: 20px; font-size: 16px; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; margin-top: 32px; }
+  .block h3 { margin-bottom: 10px; }
+  .block p, .block li { color: var(--ink); }
+  .block ul { margin: 0; padding-left: 18px; }
+  .block li { margin-bottom: 8px; max-width: 65ch; }
+  .ref a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .ref a:hover { border-color: var(--ink); }
+  .ref .url { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; word-break: break-all; }
+
+  .swatches { display: flex; flex-wrap: wrap; gap: 12px 16px; }
+  .sw { display: flex; align-items: center; gap: 8px; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .sw i { display: block; width: 28px; height: 28px; border: 1px solid var(--rule); flex: none; }
+  .sw span { color: var(--muted); }
+  .sw b { font-weight: 500; color: var(--ink); display: block; font-size: 12px; }
+
+  .type-row { display: grid; grid-template-columns: 90px 1fr; gap: 6px 12px; font-size: 14px; }
+  .type-row dt { color: var(--muted); margin: 0; }
+  .type-row dd { margin: 0; }
+
+  .verdict { grid-column: 1 / -1; }
+  .verdict p { max-width: 90ch; color: var(--ink); font-size: 14px; }
+
+  .open {
+    grid-column: 1 / -1; margin-top: 8px;
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 24px;
+    background: var(--ink); color: #ffffff; text-decoration: none;
+    font-family: "Inter Tight", sans-serif; font-weight: 700; font-size: clamp(20px, 2.6vw, 28px);
+    letter-spacing: -0.02em; padding: 22px 28px; width: 100%; max-width: 560px;
+  }
+  .open svg { width: 28px; height: 28px; flex: none; }
+  .open:hover { background: #000000; }
+
+  .shared { padding-block: 48px 0; }
+  .shared ol { margin: 20px 0 0; padding-left: 20px; columns: 2; column-gap: 40px; }
+  .shared li { break-inside: avoid; margin-bottom: 10px; max-width: 60ch; font-size: 14px; }
+  .note { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--rule-soft); color: var(--muted); font-size: 13px; }
+
+  .switch {
+    position: fixed; right: 16px; bottom: 16px; display: flex; gap: 0;
+    border: 1px solid var(--ink); background: var(--ground); font-size: 12px; z-index: 10;
+  }
+  .switch a { padding: 8px 12px; text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); letter-spacing: 0.04em; }
+  .switch a:last-child { border-right: 0; }
+  .switch a[aria-current="page"] { background: var(--ink); color: #ffffff; }
+
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; gap: 28px; }
+    .shared ol { columns: 1; }
+    .option-head { grid-template-columns: 48px 1fr; }
+    .letter { width: 48px; height: 48px; font-size: 32px; }
+    .score { grid-column: 2; text-align: left; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .open, .jump a, .ref a { transition: background-color 0.2s ease, border-color 0.2s ease; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="intro">
+    <h1>Parts Hub Express, three directions</h1>
+    <p>Homepage mockups for Australia Crushing &amp; Belting Group, built on real Odoo data: 5,702 parts, 214 categories, 1,156 thumbnails.</p>
+    <p class="how">How to review: open each option, judge the first viewport, the search row, the product grid and the difference section, then pick one or say what to combine.</p>
+    <nav class="jump" aria-label="Jump to option">
+      <a href="#option-a">A, Specimen Drawer</a>
+      <a href="#option-b">B, Title Block</a>
+      <a href="#option-c">C, Counter Sheet</a>
+      <a href="#shared">What is shared</a>
+    </nav>
+  </header>
+
+  <!-- Option A -->
+  <section class="option" id="option-a" aria-labelledby="h-a">
+    <div class="option-head">
+      <div class="letter" aria-hidden="true">A</div>
+      <div>
+        <h2 id="h-a">Specimen Drawer</h2>
+        <p class="thesis">The first viewport says ACBG counts, measures and stocks what it sells. A heavy black wordmark, one long search field that locks into its ink button, and a three-step machine selector drawn as a hairline table tell a fitter that the part number is the primary key here. To the right, a drawer of eight real parts at native size on identical plates, each with its reference in mono, proves this is a live stock system, not a brochure.</p>
+      </div>
+      <div class="score"><div class="n">76</div><div class="l">Reviewer score</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="block ref">
+        <h3>Primary reference</h3>
+        <p><a href="https://teenage.engineering" target="_blank" rel="noopener">teenage engineering (Refero style: engineered precision against industrial gray)</a><span class="url">https://teenage.engineering</span></p>
+      </div>
+      <div class="block">
+        <h3>The memorable move</h3>
+        <p>Every part on the site, from the hero grid to the smallest tile, sits at native size on an identical #ebedec plate inside a shared-hairline cell with its reference set in mono beneath, like a labelled specimen in a calibrated drawer. The first viewport shows eight real ACBG parts this way instead of a hero photograph. A visitor remembers that the shop looked like an instrument case, not a brochure.</p>
+      </div>
+      <div class="block">
+        <h3>Palette</h3>
+        <div class="swatches">
+          <div class="sw"><i style="background:#f6f8f7"></i><div><b>#f6f8f7</b><span>Canvas</span></div></div>
+          <div class="sw"><i style="background:#ffffff"></i><div><b>#ffffff</b><span>Surface</span></div></div>
+          <div class="sw"><i style="background:#ebedec"></i><div><b>#ebedec</b><span>Specimen plate</span></div></div>
+          <div class="sw"><i style="background:#0f0e12"></i><div><b>#0f0e12</b><span>Ink</span></div></div>
+          <div class="sw"><i style="background:#6b6f6d"></i><div><b>#6b6f6d</b><span>Ink muted</span></div></div>
+          <div class="sw"><i style="background:#dcdfde"></i><div><b>#dcdfde</b><span>Hairline rule</span></div></div>
+          <div class="sw"><i style="background:#d6301c"></i><div><b>#d6301c</b><span>Index Red, 2px state line only</span></div></div>
+          <div class="sw"><i style="background:#1f7a4d"></i><div><b>#1f7a4d</b><span>In stock</span></div></div>
+          <div class="sw"><i style="background:#b8730f"></i><div><b>#b8730f</b><span>Low stock</span></div></div>
+        </div>
+      </div>
+      <div class="block">
+        <h3>Type pairing</h3>
+        <dl class="type-row">
+          <dt>Display</dt><dd>Instrument Sans 700, -0.03em at 56px, sentence case</dd>
+          <dt>Body</dt><dd>Instrument Sans 400 and 500</dd>
+          <dt>Data</dt><dd>Geist Mono for every measured value: refs, machine codes, counts, prices, stock</dd>
+          <dt>Radius</dt><dd>0px everywhere. No shadows.</dd>
+        </dl>
+      </div>
+      <div class="block">
+        <h3>What it does that the others do not</h3>
+        <ul>
+          <li>Replaces the hero image with a drawer of eight real parts at native size on identical plates, so the first viewport is stock, not marketing.</li>
+          <li>Holds the accent to a 2px Index Red state line (active step, focus edge, hovered cell). Every primary action is an ink fill, never a coloured button.</li>
+          <li>Runs a strict 0 radius, no shadow, hairline lattice from the utility bar to the footer, with a graphite band for trade and footer and the selector repeated in dark.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h3>Watch for</h3>
+        <ul>
+          <li>The hero drawer shrinks thumbnails to roughly 84px at 1280 and 56px at 1024, which strains the native-size thesis in the first viewport.</li>
+          <li>The 32px utility bar collapses at phone width (labels wrap, GST toggle clips).</li>
+          <li>Ex GST default versus the constitution's GST-inclusive rule, and brand and model not yet coupled in the chip.</li>
+        </ul>
+      </div>
+      <div class="block verdict">
+        <h3>Reviewer verdict</h3>
+        <p>A faithful, dense and disciplined build of the Specimen Drawer spec. Tokens, hairline lattices, 0 radius, no shadows, Index Red held to 2px state lines, Instrument Sans plus Geist Mono split, real counts in every cell, eight curated refs in the hero, the difference table, the graphite trade band and the repeated dark selector are all present and correct. Two things stop it being world-class right now: the hero drawer (the memorable move) shrinks the 128px thumbnails because the 5/12 column cannot hold four 128px plates plus padding, and the utility bar collapses at phone width. A cluster of P2s and polish items follow. Image sizing was verified from code and file dimensions rather than screenshots.</p>
+      </div>
+      <a class="open" href="option-a.html">Open option A
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Option B -->
+  <section class="option" id="option-b" aria-labelledby="h-b">
+    <div class="option-head">
+      <div class="letter" aria-hidden="true">B</div>
+      <div>
+        <h2 id="h-b">Title Block</h2>
+        <p class="thesis">The first viewport reads like the top sheet of a drawing set, not a shop: a heavy black wordmark, one wide search field sketched in a single ink line, a Brand / Model / Category row beneath it, and to the right a schematic jaw crusher with numbered orange callouts that resolve to real categories and counts (01 Jaws · 221, 02 Cheek Plates · 107, 04 Wedges · 69). It says ACBG knows the machine at the level of the drawing, holds 5,702 parts against it, and will give you a price and a stock count without a phone call. Nothing is decorated; everything is dimensioned.</p>
+      </div>
+      <div class="score"><div class="n">82</div><div class="l">Reviewer score</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="block ref">
+        <h3>Primary reference</h3>
+        <p><a href="https://www.timescale.com" target="_blank" rel="noopener">Timescale (Industrial Blueprint on stark white)</a><span class="url">https://www.timescale.com</span></p>
+      </div>
+      <div class="block">
+        <h3>The memorable move</h3>
+        <p>The annotated crusher. The hero is a 1px schematic of a jaw crusher with six orange numbered callouts, and each callout is a real category with a real count. It tells a fitter in one glance that the site is organised the way a parts drawing is organised, and it hands the same title-block grammar down to every product tile, where the part number lives in its own mono cell under the print.</p>
+      </div>
+      <div class="block">
+        <h3>Palette</h3>
+        <div class="swatches">
+          <div class="sw"><i style="background:#fafafa"></i><div><b>#fafafa</b><span>Canvas White</span></div></div>
+          <div class="sw"><i style="background:#ffffff"></i><div><b>#ffffff</b><span>Control fills, header</span></div></div>
+          <div class="sw"><i style="background:#f1f3f2"></i><div><b>#f1f3f2</b><span>Tile ground, schematic panel</span></div></div>
+          <div class="sw"><i style="background:#000000"></i><div><b>#000000</b><span>Midnight Ink</span></div></div>
+          <div class="sw"><i style="background:#6c6c6c"></i><div><b>#6c6c6c</b><span>Shadow Gray</span></div></div>
+          <div class="sw"><i style="background:#d9dcdb"></i><div><b>#d9dcdb</b><span>Hairline rule</span></div></div>
+          <div class="sw"><i style="background:#ff5b29"></i><div><b>#ff5b29</b><span>Markout Orange, marks on the drawing only</span></div></div>
+          <div class="sw"><i style="background:#1f7a3f"></i><div><b>#1f7a3f</b><span>In stock</span></div></div>
+          <div class="sw"><i style="background:#b45309"></i><div><b>#b45309</b><span>Low stock</span></div></div>
+        </div>
+      </div>
+      <div class="block">
+        <h3>Type pairing</h3>
+        <dl class="type-row">
+          <dt>Display</dt><dd>Geist 800 wordmark at 26px, -0.04em; hero 56px 700 with one phrase in orange</dd>
+          <dt>Body</dt><dd>Geist 400, 500, 600</dd>
+          <dt>Data</dt><dd>Geist Mono for identifiers and numbers, never a sentence</dd>
+          <dt>Radius</dt><dd>4px on controls, 0 on cells. One hard offset shadow on search focus.</dd>
+        </dl>
+      </div>
+      <div class="block">
+        <h3>What it does that the others do not</h3>
+        <ul>
+          <li>Puts a 1px jaw crusher schematic in the hero with six numbered orange callouts, each resolving to a real category and count.</li>
+          <li>Frames the whole content column as a drawing sheet with two full-height hairline rules, and gives every tile a title block with the part number in its own mono cell.</li>
+          <li>Allows exactly one shadow in the system: the hard 4px offset stamped on the search field on focus, with no transition.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h3>Watch for</h3>
+        <ul>
+          <li>The mobile header breaks the 16px gutter (Find button and cart pinned to the viewport edge).</li>
+          <li>The mobile machine sheet paints the duplicate footer band over the real one, and the callouts shrink to 8px squares on phones.</li>
+          <li>Product prints float in more air than the spec's 200px block, so the 96px thumbnails read lost.</li>
+        </ul>
+      </div>
+      <div class="block verdict">
+        <h3>Reviewer verdict</h3>
+        <p>A faithful, disciplined build of the Title Block spec. The drawing-sheet grammar holds from header to footer: Ink does the structural work, hairline lattices replace cards, Geist Mono is confined to identifiers and counts, and orange appears in exactly the four sanctioned places. All required sections are present in the specified order with real Odoo data (12 groups with correct counts, 8 spec'd SKUs, ten makes, eleven model chips, non-affiliation line, placeholder-price footnote). The annotated jaw crusher reads as a machine section and its six callouts land on the right regions. Every thumbnail renders at native pixels, none upscaled. Copy is specific and claim-safe, though "Priced online on every part" sits directly above four tiles that say Quote. Fix the three P1s and the P2s and this is a 90+ direction.</p>
+      </div>
+      <a class="open" href="option-b.html">Open option B
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Option C -->
+  <section class="option" id="option-c" aria-labelledby="h-c">
+    <div class="option-head">
+      <div class="letter" aria-hidden="true">C</div>
+      <div>
+        <h2 id="h-c">Counter Sheet</h2>
+        <p class="thesis">The first viewport says ACBG has the part, knows the machine and will tell you the price and stock now. A full-width part-number search sits under a heavy black wordmark, a Brand / Machine / Category selector bench locks in directly beneath it, and the hero is a black docket listing the eleven machines a fitter is most likely to be standing next to, each one a tap target with its part count. Nothing in the viewport is decoration; everything is a thing a fitter on a phone at a quarry can act on with one thumb.</p>
+      </div>
+      <div class="score"><div class="n">84</div><div class="l">Reviewer score</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="block ref">
+        <h3>Primary reference</h3>
+        <p><a href="https://www.timescale.com" target="_blank" rel="noopener">Timescale (Industrial Blueprint on stark white)</a><span class="url">https://www.timescale.com</span></p>
+      </div>
+      <div class="block">
+        <h3>The memorable move</h3>
+        <p>The yellow-buttoned bench under a black docket of machines you can tap. The site opens with the size of the stock inline in the headline and the eleven machines a fitter is most likely to be standing next to, each a 48px row with its part count and an arrow, not a picture of a quarry and not a wall of giant numerals.</p>
+      </div>
+      <div class="block">
+        <h3>Palette</h3>
+        <div class="swatches">
+          <div class="sw"><i style="background:#fafafa"></i><div><b>#fafafa</b><span>Canvas White</span></div></div>
+          <div class="sw"><i style="background:#ededed"></i><div><b>#ededed</b><span>Bench and image frames</span></div></div>
+          <div class="sw"><i style="background:#0f0e12"></i><div><b>#0f0e12</b><span>Ink bands: header, docket, footer</span></div></div>
+          <div class="sw"><i style="background:#0a0a0a"></i><div><b>#0a0a0a</b><span>Ink</span></div></div>
+          <div class="sw"><i style="background:#6c6c6c"></i><div><b>#6c6c6c</b><span>Ink muted</span></div></div>
+          <div class="sw"><i style="background:#d9d9d9"></i><div><b>#d9d9d9</b><span>Hairline rule, keyline</span></div></div>
+          <div class="sw"><i style="background:#e8c000"></i><div><b>#e8c000</b><span>Chromate Yellow, four fills only</span></div></div>
+          <div class="sw"><i style="background:#1f7a3a"></i><div><b>#1f7a3a</b><span>In stock</span></div></div>
+        </div>
+      </div>
+      <div class="block">
+        <h3>Type pairing</h3>
+        <dl class="type-row">
+          <dt>Display</dt><dd>Barlow Condensed 700 and 800; hero 56px sentence case, wordmark uppercase white on ink</dd>
+          <dt>Body</dt><dd>Barlow 400, 500, 600, one superfamily at two widths</dd>
+          <dt>Data</dt><dd>Geist Mono for refs, machine codes, docket rows, counts, prices</dd>
+          <dt>Radius</dt><dd>4px on controls, 0 on tiles and bands. No shadows. 48px controls everywhere.</dd>
+        </dl>
+      </div>
+      <div class="block">
+        <h3>What it does that the others do not</h3>
+        <ul>
+          <li>Opens with a black docket of eleven machines as 48px tap rows with mono part counts, built for a fitter holding a phone in a yard.</li>
+          <li>Uses a single chromate yellow that fills exactly four things: Search, Show parts, Add, and the active machine chip. No amber, no orange, no second saturated colour.</li>
+          <li>Sets the whole page in one type superfamily (Barlow Condensed for display, Barlow for body) with a 48px control height everywhere and section heads on a 2px ink rule.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h3>Watch for</h3>
+        <ul>
+          <li>The utility row collapses at phone width (GST toggle labels spill, "Quote list · 0" wraps) and the footer stays two-column at 375px.</li>
+          <li>Ex GST default contradicts the constitution's GST-inclusive rule.</li>
+          <li>The hero docket silently drops the ST 45 row; the reason is defensible but not yet documented to the client.</li>
+        </ul>
+      </div>
+      <div class="block verdict">
+        <h3>Reviewer verdict</h3>
+        <p>A faithful, disciplined build of the Counter Sheet spec. The first viewport does what the thesis promises: ink header with the wordmark and a full-width search locked into a chromate-yellow button, the #ededed bench with 1px ink rules and locked-state selects, then the black docket of machines with mono counts and 48px tap rows. No shadows, no cards, no second saturated colour, real Odoo refs, counts and thumbnails throughout. Typography follows the scale, section heads sit on a 2px ink rule, hairline grids share borders with 0 gap, the no-photo state is a designed spec tile, and the ledger, trade band, repeated finder and footer are all present. What holds it back are phone-width craft items and the ex GST default. None of these are structural; a half-day of fixes takes it to 90+.</p>
+      </div>
+      <a class="open" href="option-c.html">Open option C
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Shared -->
+  <section class="shared" id="shared" aria-labelledby="h-shared">
+    <h2 id="h-shared">What is shared by all three</h2>
+    <p class="thesis">The flow is locked. The three directions are skins on one page skeleton. You are choosing how the site looks and feels, not how it works.</p>
+    <ol>
+      <li>Same page skeleton: utility bar, header with search as the dominant control, Brand / Machine model / Part category selector, hero, parts to suit, browse by category, featured shelf of eight real SKUs, the difference, trade account and quote, the finder repeated, operational footer.</li>
+      <li>Search-first entry. The search field is the largest control in the header, 44 to 48px tall, locked into its button with no gap.</li>
+      <li>Three dependent selects with counts on every row. Locked selects say why. No Year step, because the export has no year data.</li>
+      <li>Part number is the first line of every tile, set in mono exactly as Odoo holds it, with OEM cross-references in brackets where the name carries one.</li>
+      <li>Monochrome base with one saturated accent that has a written job. Structure drawn with 1px rules, not tinted boxes. Tiles are cells in a grid, not cards.</li>
+      <li>Radius 0 to 4px. No blur shadows. Depth by surface inversion only. Dark is a band, never the page theme.</li>
+      <li>Thumbnails never scale up. Every photo sits at native pixels on a uniform plate with a 1px keyline. No blend modes.</li>
+      <li>The no-photo state is the same plate with the part number in mono, the sub-category beneath and "Photo to come" at the bottom edge. No camera icon, no grey box.</li>
+      <li>Prices in AUD, GST named on every price, inc GST by default with the toggle for trade. Quote-only parts show "Quote" and one "Request quote" action.</li>
+      <li>Stock as a small square swatch plus a mono label with a real quantity. Stock never borrows the accent colour. No invented warehouse location.</li>
+      <li>Copy voice: numbers first, nouns second, no adjectives, sentence case. Fitment uses "suit" and "fits", never "genuine" or "authorised". Ten OEM makes as text wordmarks with counts and a non-affiliation line, never a logo wall.</li>
+      <li>Anti-slop rules: no indigo or violet, no emoji icons, no accent stripes, no cards by default, no serif or italic swaps, no cream and terracotta, no navy plus safety orange, no quarry hero, no big-stat hero, no gradients, no glass, no pill filter rows, no lorem.</li>
+    </ol>
+    <p class="note">Prices shown in all three options are placeholders until the Odoo sync is live. Photos are the current 128px Odoo thumbnails; larger client photography drops into the same plates later.</p>
+  </section>
+
+</div>
+
+<nav class="switch" aria-label="Switch option">
+  <a href="option-a.html">A</a>
+  <a href="option-b.html">B</a>
+  <a href="option-c.html">C</a>
+  <a href="options.html" aria-current="page">Compare</a>
+</nav>
+</body>
+</html>

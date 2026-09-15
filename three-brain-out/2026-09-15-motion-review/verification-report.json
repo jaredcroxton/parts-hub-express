@@ -1,0 +1,175 @@
+{
+  "desktop": {
+    "heldAtLoad": 158,
+    "drawScrollY": 1879,
+    "drawAnimsAfter": 0,
+    "drawPanelsStillHeld": 0,
+    "reviewsScrollY": 2340,
+    "reviewsSettled": [
+      {
+        "tag": "SPAN",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "BLOCKQUOTE",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "SPAN",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "BLOCKQUOTE",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "SPAN",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      }
+    ],
+    "afterWalk": {
+      "liveAnimations": 0,
+      "liveDetail": [],
+      "hiddenCount": 0,
+      "hidden": [],
+      "cls": 0
+    },
+    "highlightTiming": {
+      "keyRow": "background | 0.16s | cubic-bezier(0.215, 0.61, 0.355, 1)",
+      "keySq": "background, color | 0.16s, 0.16s | cubic-bezier(0.215, 0.61, 0.355, 1), cubic-bezier(0.215, 0.61, 0.355, 1)",
+      "part": "stroke, stroke-width, opacity | 0.16s, 0.16s, 0.16s | cubic-bezier(0.215, 0.61, 0.355, 1), cubic-bezier(0.215, 0.61, 0.355, 1), cubic-bezier(0.215, 0.61, 0.355, 1)",
+      "callout": "opacity | 0.16s | cubic-bezier(0.215, 0.61, 0.355, 1)",
+      "calloutSq": "fill | 0.16s | cubic-bezier(0.215, 0.61, 0.355, 1)",
+      "calloutN": "fill | 0.16s | cubic-bezier(0.215, 0.61, 0.355, 1)"
+    },
+    "highlightMid": {
+      "dimOpacity": "0.367289",
+      "partStrokeWidth": "2.0867px"
+    },
+    "highlightEnd": {
+      "dimOpacity": "0.22",
+      "partStrokeWidth": "2.2px",
+      "partStroke": "rgb(244, 81, 32)"
+    },
+    "pressViewParts": "matrix(0.97, 0, 0, 0.97, 0, 0)",
+    "releaseViewParts": "none",
+    "urlAfterPress": "/",
+    "pressDisabledShowParts": "none",
+    "suggestFirstSeen": "0|matrix(1, 0, 0, 1, 0, -4)",
+    "suggestSettled": {
+      "opacity": "1",
+      "transform": "none",
+      "panelTop": 64,
+      "searchBottom": 58,
+      "panelBottom": 334,
+      "vh": 900
+    },
+    "reducedHeldAtLoad": 0,
+    "reducedSuggestAnim": "none"
+  },
+  "phone": {
+    "heldAtLoad": 166,
+    "headerTop": {
+      "hdrTop": 0,
+      "hdrBottom": 105,
+      "wordmarkTop": 0,
+      "searchTop": 52,
+      "searchBottom": 96
+    },
+    "drawScrollY": 3704,
+    "drawAnimsAfter": 46,
+    "drawPanelsStillHeld": 0,
+    "headerScrolled": {
+      "hdrTop": -44,
+      "hdrBottom": 61,
+      "searchTop": 8,
+      "searchBottom": 52
+    },
+    "reviewsScrollY": 5130,
+    "reviewsSettled": [
+      {
+        "tag": "SPAN",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "BLOCKQUOTE",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "SPAN",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "BLOCKQUOTE",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      },
+      {
+        "tag": "SPAN",
+        "op": "1",
+        "tf": "none",
+        "clip": "none",
+        "anims": 0
+      }
+    ],
+    "afterWalk": {
+      "liveAnimations": 0,
+      "liveDetail": [],
+      "hiddenCount": 0,
+      "hidden": [],
+      "cls": 0
+    },
+    "suggestFirstSeen": "0.222985|matrix(1, 0, 0, 1, 0, -3.10806)",
+    "suggestSettled": {
+      "opacity": "1",
+      "transform": "none",
+      "panelTop": 102,
+      "searchBottom": 96,
+      "panelBottom": 440,
+      "vh": 812
+    },
+    "reducedHeldAtLoad": 0,
+    "reducedSuggestAnim": "none",
+    "moreRule": {
+      "eyebrow": [
+        16,
+        204,
+        407,
+        421
+      ],
+      "right": [
+        194,
+        359,
+        421,
+        465
+      ],
+      "overlap": false
+    }
+  }
+}

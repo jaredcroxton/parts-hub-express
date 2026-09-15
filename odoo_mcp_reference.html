@@ -1,0 +1,320 @@
+<title>Odoo MCP Connector Reference</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #EEF0F1; --paper: #FFFFFF; --field: #F6F7F8;
+    --ink: #171E26; --ink-2: #4B5560; --ink-3: #7B8590; --rule: #D3D8DC;
+    --steel: #2F4A63; --steel-ink: #FFFFFF; --steel-soft: #E3EAF0;
+    --amber: #C77D00; --amber-soft: #FBEFD6;
+    --ok: #2E7D4F; --ok-soft: #E2F1E8; --no: #A83A2E; --no-soft: #F7E3E0;
+    --focus: #2F4A63;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #14191F; --paper: #1C232B; --field: #232C36;
+      --ink: #EDF0F2; --ink-2: #B4BCC4; --ink-3: #7F8994; --rule: #313B46;
+      --steel: #8FB3D1; --steel-ink: #14191F; --steel-soft: #253442;
+      --amber: #E8A331; --amber-soft: #3A2C12;
+      --ok: #6CC391; --ok-soft: #1F3428; --no: #E3806F; --no-soft: #3B221E;
+      --focus: #8FB3D1;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #14191F; --paper: #1C232B; --field: #232C36;
+    --ink: #EDF0F2; --ink-2: #B4BCC4; --ink-3: #7F8994; --rule: #313B46;
+    --steel: #8FB3D1; --steel-ink: #14191F; --steel-soft: #253442;
+    --amber: #E8A331; --amber-soft: #3A2C12;
+    --ok: #6CC391; --ok-soft: #1F3428; --no: #E3806F; --no-soft: #3B221E;
+    --focus: #8FB3D1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px; line-height: 1.5;
+    padding-block: 40px 80px; padding-inline: 20px; -webkit-font-smoothing: antialiased;
+  }
+  .sheet { max-width: 820px; margin: 0 auto; background: var(--paper); border-top: 6px solid var(--steel); padding: 40px 48px 56px; }
+  @media (max-width: 560px) { body { padding-block: 16px 48px; padding-inline: 16px; } .sheet { padding: 28px 22px 40px; } }
+
+  h1, h2, h3, .meta, .tag, .box b, .toc a, .verdict b { font-family: "Barlow Condensed", "Arial Narrow", Impact, sans-serif; }
+  code, pre, .mono { font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; font-size: .88em; }
+  code { background: var(--field); padding: 1px 5px; border: 1px solid var(--rule); }
+  pre { background: var(--field); border: 1px solid var(--rule); padding: 12px 14px; overflow-x: auto; margin: 10px 0 0; line-height: 1.45; }
+  pre code { background: none; border: 0; padding: 0; }
+
+  header { display: grid; gap: 14px; margin-bottom: 28px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .meta b { color: var(--steel); font-weight: 600; }
+  h1 { font-size: clamp(36px, 6.5vw, 52px); font-weight: 700; line-height: .95; margin: 0; text-transform: uppercase; text-wrap: balance; }
+  h1 small { display: block; font-size: .42em; font-weight: 500; letter-spacing: .06em; color: var(--steel); margin-top: 8px; }
+  .lede { margin: 0; max-width: 64ch; color: var(--ink-2); font-size: 18px; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 14px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 36px; }
+  .toc a { font-size: 15px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--steel); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 44px; scroll-margin-top: 20px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-bottom: 8px; border-bottom: 2px solid var(--ink); margin-bottom: 14px; }
+  h2 { margin: 0; font-size: 26px; font-weight: 700; text-transform: uppercase; }
+  h3 { margin: 22px 0 8px; font-size: 19px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; color: var(--steel); }
+  .tag { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px 2px; color: var(--ink-2); background: var(--steel-soft); }
+  .tag.warn { color: var(--amber); background: var(--amber-soft); }
+  p { margin: 0 0 12px; max-width: 68ch; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; max-width: 68ch; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 600; }
+
+  .verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 6px 0 18px; }
+  @media (max-width: 600px) { .verdict { grid-template-columns: 1fr; } }
+  .verdict > div { padding: 16px 18px; border-left: 4px solid; }
+  .verdict .yes { border-color: var(--ok); background: var(--ok-soft); }
+  .verdict .no { border-color: var(--no); background: var(--no-soft); }
+  .verdict b { display: block; font-size: 20px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+  .verdict .yes b { color: var(--ok); } .verdict .no b { color: var(--no); }
+  .verdict p { margin: 0; font-size: 16px; }
+
+  .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 10px; margin: 8px 0 14px; }
+  .box { border: 1px solid var(--rule); background: var(--field); padding: 12px 14px; text-align: center; }
+  .box b { display: block; font-size: 18px; text-transform: uppercase; letter-spacing: .03em; color: var(--ink); }
+  .box span { font-size: 13px; color: var(--ink-3); display: block; line-height: 1.3; }
+  .box.odoo { border-color: var(--steel); background: var(--steel-soft); }
+  .arrow { text-align: center; color: var(--ink-3); font-size: 13px; line-height: 1.2; min-width: 70px; }
+  .arrow i { display: block; font-style: normal; font-size: 22px; color: var(--steel); }
+  .flow-label { font-size: 14px; color: var(--ink-3); margin: 0 0 6px; text-transform: uppercase; letter-spacing: .08em; font-family: "Barlow Condensed", sans-serif; font-weight: 600; }
+  @media (max-width: 600px) { .flow { grid-template-columns: 1fr; } .arrow i { transform: rotate(90deg); } }
+
+  .tbl { overflow-x: auto; margin: 8px 0 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-family: "Barlow Condensed", sans-serif; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; border-bottom: 2px solid var(--ink); }
+  td.use-yes { color: var(--ok); font-weight: 600; }
+  td.use-no { color: var(--ink-3); }
+  td code { white-space: nowrap; }
+
+  ol.steps { list-style: none; padding: 0; counter-reset: s; max-width: none; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 0 14px; padding: 12px 0; border-bottom: 1px solid var(--rule); margin: 0; }
+  ol.steps li::before { content: counter(s); font-family: "Barlow Condensed", sans-serif; font-size: 24px; font-weight: 600; color: var(--steel); line-height: 1.1; }
+  ol.steps li:last-child { border-bottom: 0; }
+  ol.steps p { margin: 0 0 4px; }
+  ol.steps .why { font-size: 15px; color: var(--ink-2); margin: 0; }
+
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--ink-3); }
+  footer ul { padding-left: 18px; }
+  a { color: var(--steel); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  @media print { body { background: #fff; padding: 0; font-size: 11.5pt; } .sheet { max-width: none; padding: 0; } section { break-inside: avoid-page; } .toc { display: none; } }
+</style>
+
+<div class="sheet">
+  <header>
+    <div class="meta">
+      <span>Project <b>Parts Hub Express</b></span>
+      <span>Layer 2 resource</span>
+      <span>14 Sep 2026</span>
+      <span>Source <b>Vendor listing v1.260809001</b></span>
+    </div>
+    <h1>Odoo MCP Connector<small>Sadeem MCP for Odoo 19. What it is, what it does, what it does not do.</small></h1>
+    <p class="lede">A paid Odoo module that lets Claude sign into ACBG's Odoo and ask it questions. Useful for us while building and maintaining the site. It is not the pipe that feeds stock to the website. That job belongs to Odoo's normal API.</p>
+  </header>
+
+  <nav class="toc" aria-label="Sections">
+    <a href="#verdict">Straight answer</a>
+    <a href="#flow">How data moves</a>
+    <a href="#what">What it is</a>
+    <a href="#hosting">Hosting gate</a>
+    <a href="#install">Install</a>
+    <a href="#connect">Connect</a>
+    <a href="#tools">Tools</a>
+    <a href="#queries">Our queries</a>
+    <a href="#security">Security</a>
+    <a href="#limits">Limits</a>
+    <a href="#alt">Alternatives</a>
+  </nav>
+
+  <section id="verdict">
+    <div class="sec-head"><h2>Straight answer</h2><span class="tag warn">Read this first</span></div>
+    <p>You asked whether the MCP server can keep the website's stock list matching Odoo. Here is the split.</p>
+    <div class="verdict">
+      <div class="yes">
+        <b>What MCP does</b>
+        <p>Lets <strong>Claude</strong> read Odoo when a person is in a chat. "What is on hand for HP300 parts?" "Show me products under Manganese with no image." "Did last night's order land?" Claude calls Odoo, answers, done.</p>
+      </div>
+      <div class="no">
+        <b>What MCP cannot do</b>
+        <p>Feed the <strong>website</strong>. At 2am with nobody in a chat, there is no Claude session, so there is no MCP call. The site is a program on a server. It has to talk to Odoo itself, through Odoo's built-in API, on a schedule.</p>
+      </div>
+    </div>
+    <p>MCP is a protocol for AI assistants to use tools. It is a phone line between Claude and Odoo. The website is not Claude, so it does not get to use that line. Same building, different door.</p>
+    <p>So the stock list on the site comes from a <strong>nightly sync job</strong> that calls Odoo's API directly, plus a live stock check at checkout. The MCP connector is how <strong>we</strong> look inside Odoo while building that job and after, without asking the client for spreadsheets.</p>
+  </section>
+
+  <section id="flow">
+    <div class="sec-head"><h2>How data moves</h2></div>
+    <p class="flow-label">Build and maintenance. Person asks, Claude answers.</p>
+    <div class="flow">
+      <div class="box"><b>You or Claude</b><span>claude.ai or Claude Code</span></div>
+      <div class="arrow"><i>&#8596;</i>MCP over OAuth</div>
+      <div class="box"><b>Sadeem MCP</b><span>module inside Odoo</span></div>
+      <div class="arrow"><i>&#8596;</i>internal</div>
+      <div class="box odoo"><b>Odoo</b><span>source of truth</span></div>
+    </div>
+    <p class="flow-label">Runtime. No human, no Claude. Runs on its own.</p>
+    <div class="flow">
+      <div class="box"><b>Website</b><span>catalogue, cart, Stripe</span></div>
+      <div class="arrow"><i>&#8594;</i>nightly pull<br>6am</div>
+      <div class="box"><b>Odoo API</b><span>JSON-RPC or JSON-2<br>read-only API key</span></div>
+      <div class="arrow"><i>&#8596;</i>built in</div>
+      <div class="box odoo"><b>Odoo</b><span>source of truth</span></div>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Path</th><th>Who calls Odoo</th><th>How</th><th>When</th></tr>
+      <tr><td>Build and maintenance</td><td>Claude</td><td>Sadeem MCP, OAuth</td><td>When a person asks</td></tr>
+      <tr><td>Catalogue sync</td><td>Site backend</td><td>Odoo API, read-only key</td><td>Nightly 6am, plus "sync now"</td></tr>
+      <tr><td>Order push</td><td>Site backend</td><td>Odoo API, write to sale.order</td><td>Instantly on Stripe webhook</td></tr>
+      <tr><td>Stock check</td><td>Site backend</td><td>Odoo API, one read</td><td>At checkout, before payment</td></tr>
+    </table></div>
+    <p>Both paths use the same Odoo user and the same permissions. One credential to manage. Public web traffic never reaches Odoo.</p>
+  </section>
+
+  <section id="what">
+    <div class="sec-head"><h2>What it is</h2></div>
+    <ul>
+      <li><strong>Module:</strong> <code>sadeem_mcp</code> by Sadeem Cloud (Egypt, trading since 2020). Support at support@sadeem.cloud.</li>
+      <li><strong>Price:</strong> USD 23.24 one-time. OPL-1 proprietary licence. Builds for Odoo 17, 18, 19. About 3,500 lines of code. Depends on the Discuss module.</li>
+      <li><strong>What it adds:</strong> an MCP endpoint on the Odoo instance at a URL with a random segment unique to the database. Scanners cannot guess it.</li>
+      <li><strong>Sign-in:</strong> OAuth 2.1 with PKCE. Each person logs in with their own Odoo account. No API keys, no secrets pasted into URLs. The August 2026 release removed the old API-key method, so older guides online are wrong.</li>
+      <li><strong>Permission tiers:</strong> chosen at sign-in. Read only, or Read and Write. Delete is never offered.</li>
+      <li><strong>Draft first:</strong> anything Claude creates lands as a draft. A person confirms it in Odoo.</li>
+    </ul>
+  </section>
+
+  <section id="hosting">
+    <div class="sec-head"><h2>Hosting gate</h2><span class="tag warn">Blocks everything</span></div>
+    <div class="tbl"><table>
+      <tr><th>Client's Odoo</th><th>Sadeem MCP</th><th>Odoo API for the site</th></tr>
+      <tr><td>Self-hosted</td><td class="use-yes">Install the zip. Works.</td><td class="use-yes">Works.</td></tr>
+      <tr><td>Odoo.sh</td><td class="use-yes">Install from app store. Works.</td><td class="use-yes">Works.</td></tr>
+      <tr><td>Odoo Online, Custom plan</td><td class="use-no">Odoo blocks third-party modules. Listing says Online is supported, but that flag is vendor-set. Treat as no until Sadeem confirms in writing.</td><td class="use-yes">Works.</td></tr>
+      <tr><td>Odoo Online, Standard or One App Free</td><td class="use-no">No.</td><td class="use-no">No. API access is Custom plan only.</td></tr>
+    </table></div>
+    <p>Discovery Q17 (edition and plan) and Q17b (read-only user) decide which row we are in. Nothing gets bought or built until that answer is in.</p>
+  </section>
+
+  <section id="install">
+    <div class="sec-head"><h2>Install and configure</h2><span class="tag">Client side</span></div>
+    <p>All of this happens inside ACBG's Odoo. We do not own it. Their admin does these, or gives us an admin login for an hour.</p>
+    <ol class="steps">
+      <li><div><p>Buy and install <code>sadeem_mcp</code> from the Odoo Apps store.</p><p class="why">Get client IT sign-off first. It is code running inside their ERP.</p></div></li>
+      <li><div><p>Settings, Claude AI Connector, toggle <strong>Enable MCP Endpoint</strong> on. Copy the connector URL it generates.</p><p class="why">Regenerating this URL later kills every connected session. That is the emergency off switch.</p></div></li>
+      <li><div><p>Settings, Users and Companies, Users. Create a user for Managed Digital with read access to Inventory and Sales. Tick <strong>MCP: Can Connect</strong> on it.</p><p class="why">Claude sees exactly what this user sees. Keep it narrow.</p></div></li>
+      <li><div><p>Confirm Odoo is served over HTTPS. If it sits behind a reverse proxy, Odoo must run with <code>--proxy-mode</code>.</p><p class="why">Claude refuses to sign in over plain HTTP.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="connect">
+    <div class="sec-head"><h2>Connect</h2><span class="tag">Our side</span></div>
+    <h3>From claude.ai</h3>
+    <ol>
+      <li>Settings, Connectors, <strong>Add custom connector</strong>.</li>
+      <li>Paste the connector URL. Leave OAuth Client ID and Secret blank. The module registers itself.</li>
+      <li>Connect. Sign in with the Odoo user. Pick <strong>Read only</strong>.</li>
+      <li>In a chat, press the plus button and switch the connector on.</li>
+    </ol>
+    <p>Needs Claude Pro, Team, or Enterprise. Free plan cannot add custom connectors.</p>
+    <h3>From Claude Code</h3>
+    <p>Same URL, added as a remote HTTP MCP server. OAuth sign-in completes in the terminal.</p>
+    <pre><code>claude mcp add --transport http odoo-acbg "https://&lt;odoo-host&gt;/&lt;random-segment&gt;/mcp"</code></pre>
+    <p>Then run <code>/mcp</code> in an interactive session to authenticate. The exact path suffix is whatever the Odoo settings screen shows. Vendor docs only describe claude.ai, so expect to confirm the path on first connect.</p>
+  </section>
+
+  <section id="tools">
+    <div class="sec-head"><h2>Tools it exposes</h2></div>
+    <p>A tool is one thing Claude can ask Odoo to do. Universal tools are always there. Module tools appear only when that Odoo app is installed.</p>
+    <h3>Universal</h3>
+    <div class="tbl"><table>
+      <tr><th>Tool</th><th>Does</th><th>On this project</th></tr>
+      <tr><td><code>search_records</code></td><td>Query any model with a filter. Products, stock, categories, orders, anything.</td><td class="use-yes">The main one</td></tr>
+      <tr><td><code>get_model_fields</code></td><td>List the fields on a model.</td><td class="use-yes">Confirm field names before locking schema</td></tr>
+      <tr><td><code>get_record_url</code></td><td>Direct Odoo link to a record.</td><td class="use-yes">Hand the client a link</td></tr>
+      <tr><td><code>list_attachments</code></td><td>List image attachments.</td><td class="use-yes">Find which products hold bigger images</td></tr>
+      <tr><td><code>upload_image</code></td><td>Upload an image via Odoo's pipeline.</td><td class="use-yes">Later, when the client sends better photos</td></tr>
+      <tr><td><code>create_record</code></td><td>Create one record, as draft.</td><td class="use-no">Not needed, read-only project</td></tr>
+      <tr><td><code>create_records_bulk</code></td><td>Up to 200 records in one call.</td><td class="use-no">Not needed</td></tr>
+      <tr><td><code>copy_record</code></td><td>Duplicate a record as draft.</td><td class="use-no">Not needed</td></tr>
+      <tr><td><code>execute_action</code></td><td>Confirm, cancel, validate records in bulk.</td><td class="use-no">Not needed</td></tr>
+      <tr><td><code>replace_image_in_field</code></td><td>Swap an image inside an HTML field.</td><td class="use-no">Not needed</td></tr>
+      <tr><td><code>get_translatable_terms</code>, <code>set_translations</code>, <code>get_translation_status</code></td><td>Translation workflow.</td><td class="use-no">Not needed</td></tr>
+    </table></div>
+    <h3>Module-specific</h3>
+    <div class="tbl"><table>
+      <tr><th>Tool</th><th>Needs</th><th>Does</th><th>On this project</th></tr>
+      <tr><td><code>get_low_stock</code></td><td>Inventory</td><td>Products below reorder point.</td><td class="use-yes">Decide which parts show "call to confirm"</td></tr>
+      <tr><td><code>get_stock_value</code></td><td>Inventory</td><td>Valuation by category.</td><td class="use-no">Reporting only</td></tr>
+      <tr><td><code>get_open_orders</code></td><td>Sales</td><td>Confirmed orders not yet invoiced.</td><td class="use-yes">Check the website's order push landed</td></tr>
+      <tr><td><code>get_top_customers</code></td><td>Sales</td><td>Customers ranked by sales.</td><td class="use-no">Reporting only</td></tr>
+      <tr><td><code>get_open_leads</code>, <code>get_hot_opportunities</code></td><td>CRM</td><td>Open leads and likely wins.</td><td class="use-no">Only if trade enquiries land in Odoo CRM</td></tr>
+      <tr><td><code>get_overdue_invoices</code>, <code>get_upcoming_due</code>, <code>get_unpaid_bills</code></td><td>Accounting</td><td>Money in and out.</td><td class="use-no">Not this project</td></tr>
+      <tr><td><code>get_pending_purchases</code>, <code>get_upcoming_vendor_bills</code></td><td>Purchase</td><td>Supplier side.</td><td class="use-no">Not this project</td></tr>
+    </table></div>
+  </section>
+
+  <section id="queries">
+    <div class="sec-head"><h2>Queries we will actually run</h2></div>
+    <p>All through <code>search_records</code> unless noted. These are the same fields the nightly sync job will pull, so the MCP work doubles as schema discovery.</p>
+    <div class="tbl"><table>
+      <tr><th>Question</th><th>Model</th><th>Fields</th></tr>
+      <tr><td>Full catalogue with price, stock, weight, image flag</td><td><code>product.product</code></td><td><code>default_code</code>, <code>name</code>, <code>categ_id</code>, <code>list_price</code>, <code>qty_available</code>, <code>weight</code>, <code>image_1920</code></td></tr>
+      <tr><td>Stock per warehouse location</td><td><code>stock.quant</code></td><td><code>product_id</code>, <code>location_id</code>, <code>quantity</code></td></tr>
+      <tr><td>Category tree</td><td><code>product.category</code></td><td><code>complete_name</code>, <code>parent_id</code></td></tr>
+      <tr><td>Everything under Domestic and MMA branches, to confirm exclusions</td><td><code>product.product</code></td><td>filter on <code>categ_id.complete_name</code></td></tr>
+      <tr><td>Parts under reorder point</td><td><code>get_low_stock</code></td><td>built in</td></tr>
+      <tr><td>Did last night's web orders land</td><td><code>get_open_orders</code></td><td>built in</td></tr>
+    </table></div>
+  </section>
+
+  <section id="security">
+    <div class="sec-head"><h2>Security</h2></div>
+    <ul>
+      <li>Tokens stored as SHA-256 digests only. Refresh tokens rotate on every use. A replayed token revokes the whole session.</li>
+      <li>Every call runs under the signed-in user's Odoo access rights and record rules. Nothing escalates.</li>
+      <li>Odoo's audit trail shows the real user's name. Chatter entries are internal notes, not customer-visible messages.</li>
+      <li>Untick "MCP: Can Connect" on a user and their tokens die on the next request.</li>
+      <li>Regenerate the connector URL and every session disconnects at once.</li>
+      <li><strong>Our rule:</strong> connect Read only. Decline Write at sign-in. The website writes orders through the API, not through Claude.</li>
+    </ul>
+  </section>
+
+  <section id="limits">
+    <div class="sec-head"><h2>Limits and gotchas</h2></div>
+    <ul>
+      <li><strong>It cannot feed the website.</strong> Said three times now because it is the one that costs money if misunderstood.</li>
+      <li><strong>Odoo Online almost certainly cannot install it.</strong> See the hosting gate.</li>
+      <li><strong>Rate limits still apply.</strong> Odoo Online fair use is about one request per second. Keep Claude's queries small and paged.</li>
+      <li><strong>Tools key off standard module names</strong> (<code>sale</code>, <code>stock</code>, <code>account</code>). Renamed or custom modules do not surface tools.</li>
+      <li><strong>Stale guides online</strong> describe pasting an API key into the URL. That method was removed in August 2026.</li>
+      <li><strong>Claude Pro or above</strong> on claude.ai. Free plan cannot add custom connectors.</li>
+      <li><strong>Code on the client's ERP.</strong> Their IT signs off, not us.</li>
+    </ul>
+  </section>
+
+  <section id="alt">
+    <div class="sec-head"><h2>Free alternatives</h2></div>
+    <ul>
+      <li><strong>Odoo's own API, no module.</strong> A read-only user with an API key. A small Python tool in <code>tools/</code> pulls the same data. Works on self-hosted, Odoo.sh, and Odoo Online Custom plan. This is the runtime path anyway, so it exists regardless.</li>
+      <li><strong>Open source MCP servers on our side</strong>, pointed at that API. Nothing installs on the client's Odoo. Examples: <a href="https://github.com/rosenvladimirov/odoo-claude-mcp">rosenvladimirov/odoo-claude-mcp</a>, industream/mcp-odoo.</li>
+    </ul>
+    <p>Sadeem wins on convenience and per-user OAuth. The alternatives win when the client will not install third-party code or is on Odoo Online.</p>
+  </section>
+
+  <footer>
+    <strong>Sources</strong>
+    <ul>
+      <li><a href="https://apps.odoo.com/apps/modules/19.0/sadeem_mcp">Sadeem MCP listing, Odoo Apps store</a></li>
+      <li><a href="https://www.odoo.com/documentation/19.0/developer/reference/external_rpc_api.html">Odoo 19 external RPC API documentation</a></li>
+      <li><a href="https://www.odoo.com/forum/help-1/does-the-external-api-really-require-the-custom-plan-on-odoo-online-or-is-there-a-trial-window-306032">Odoo forum: API access and the Custom plan</a></li>
+      <li><a href="https://wavect.io/blog/odoo-erp-api-integration-limits-2026/">Wavect: Odoo API integration limits</a></li>
+    </ul>
+    Same content lives in the project as architecture/odoo_mcp_connector.md.
+  </footer>
+</div>

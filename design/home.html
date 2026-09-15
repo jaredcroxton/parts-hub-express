@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parts Hub Express</title>
+<meta name="description" content="Crusher, screen and conveyor wear parts. Search 5,702 parts by part number or machine. Prices include GST.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Parts Hub Express, locked direction: B Title Block with Stripe typography and ink. See DESIGN_CHARACTERISTICS.md section 10. */
+:root{
+  --ink:#061b31;
+  --ink-hover:#0a2540;
+  --line:rgba(6,27,49,.12);
+  --line-strong:rgba(6,27,49,.28);
+  --plate:#f6f8fa;
+  --canvas:#ffffff;
+  --accent:#ff5b29;
+  --ok:#1a7f4b;
+  --font:"Inter Tight",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --max:1200px;
+  --gutter:24px;
+  --t:150ms ease;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Buttons and fields */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border:1px solid var(--ink);border-radius:4px;background:var(--ink);color:#fff;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background var(--t),border-color var(--t),color var(--t)}
+.btn:hover{background:var(--ink-hover);border-color:var(--ink-hover);text-decoration:none}
+.btn.line{background:#fff;color:var(--ink);border-color:var(--line-strong)}
+.btn.line:hover{border-color:var(--ink);background:#fff}
+.btn.sm{height:36px;padding:0 14px;font-size:14px}
+.label{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
+.field{width:100%;height:44px;border:1px solid var(--line-strong);border-radius:4px;background:#fff;padding:0 12px;font-size:15px;transition:border-color var(--t)}
+.field:hover{border-color:var(--ink)}
+.field:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+select.field{appearance:none;-webkit-appearance:none;padding-right:36px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23061b31' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
+select.field:disabled{cursor:not-allowed;opacity:.55}
+.icon{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+@supports (backdrop-filter:blur(8px)){.hdr{background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(8px)}}
+.hdr .wrap{display:flex;align-items:center;gap:40px;height:68px}
+.logo{font-size:20px;font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+.logo:hover{text-decoration:none}
+.nav{display:flex;gap:28px;font-size:15px;font-weight:500}
+.hdr .right{margin-left:auto;display:flex;align-items:center;gap:24px;font-size:15px;font-weight:500;white-space:nowrap}
+.hdr .right a,.hdr .right button{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer}
+.hdr .right button:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* Hero */
+.hero{padding-block:72px 88px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:64px;align-items:center}
+.kicker{font-size:16px;font-weight:500;margin-bottom:20px}
+.hero h1{font-size:56px;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px;max-width:15ch}
+.lede{font-size:19px;line-height:1.5;max-width:44ch;margin-bottom:36px}
+.search{position:relative}
+.sbox{display:flex;gap:8px}
+.sbox input{flex:1;min-width:0;height:56px;border:1px solid var(--ink);border-radius:4px;padding:0 18px;font-size:17px;background:#fff}
+.sbox input::placeholder{color:var(--ink);opacity:.5}
+.sbox input:focus{outline:none;box-shadow:0 0 0 1px var(--ink)}
+.sbox .btn{height:56px;padding:0 28px;font-size:16px}
+.ac{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 32px rgba(6,27,49,.12);z-index:30;display:none;padding:8px 0;max-height:420px;overflow:auto}
+.ac.open{display:block}
+.ac h4{margin:0;padding:10px 16px 4px;font-size:13px;font-weight:600}
+.ac a{display:flex;justify-content:space-between;gap:16px;padding:8px 16px;font-size:15px}
+.ac a:hover,.ac a:focus{background:var(--plate);text-decoration:none;outline:none}
+.ac a b{font-weight:500}
+.ac .empty{padding:12px 16px;font-size:15px}
+.popular{margin-top:14px;font-size:15px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.popular button{background:none;border:0;padding:0;cursor:pointer;font-weight:500;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-strong)}
+.popular button:hover{text-decoration-color:var(--ink)}
+.finder{margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.finder h2{font-size:18px;font-weight:500;margin-bottom:16px}
+.finder .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end}
+.finder .go{margin-top:16px}
+
+/* Crusher drawing */
+.drawing{display:block;width:100%;height:auto}
+.drawing line,.drawing polyline,.drawing polygon,.drawing path,.drawing circle,.drawing rect{fill:none;stroke:var(--ink);stroke-width:1.25;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.drawing .soft{stroke:var(--line-strong)}
+.drawing .dash{stroke-dasharray:4 4;stroke:var(--line-strong)}
+.drawing .hatch{stroke:var(--line-strong);stroke-width:1}
+.drawing .lead{stroke:var(--ink)}
+.drawing .dot{fill:var(--accent);stroke:none}
+.drawing .badge{fill:var(--ink);stroke:none;transition:fill var(--t)}
+.drawing .n{font-family:var(--font);font-size:13px;font-weight:600;fill:#fff;text-anchor:middle;dominant-baseline:central}
+.drawing .cap{font-family:var(--font);font-size:12px;fill:var(--ink)}
+.drawing a:hover .badge{fill:var(--ink-hover)}
+.drawing a:focus{outline:none}
+.drawing a:focus-visible .badge{stroke:var(--accent);stroke-width:3}
+.key{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,auto);grid-auto-flow:column;column-gap:32px}
+.key a{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.key a:hover{text-decoration:none}
+.key a:hover .nm{text-decoration:underline;text-underline-offset:3px}
+.key .b{width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.key .ct{margin-left:auto}
+
+/* Sections */
+.sec{padding-block:88px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.sec-head h2{font-size:36px;line-height:1.15;letter-spacing:-.02em}
+.sec-head p{font-size:17px;max-width:52ch;margin-top:10px}
+.more{font-size:16px;font-weight:500;white-space:nowrap}
+.more::after{content:" \2192"}
+
+/* Parts to suit */
+.makes{display:flex;flex-wrap:wrap;gap:14px 40px;padding-block:28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.makes button{background:none;border:0;padding:0;cursor:pointer;font-size:22px;font-weight:500;letter-spacing:-.01em;display:inline-flex;align-items:baseline;gap:8px}
+.makes button span{font-size:14px;font-weight:400}
+.makes button:hover{text-decoration:underline;text-underline-offset:4px}
+.models{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.models button{height:36px;padding:0 14px;border:1px solid var(--line-strong);border-radius:4px;background:#fff;cursor:pointer;font-size:15px;font-weight:500;transition:border-color var(--t)}
+.models button span{font-weight:400;margin-left:8px}
+.models button:hover,.models button[aria-pressed="true"]{border-color:var(--ink)}
+.models button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.fine{font-size:14px;margin-top:20px;max-width:70ch}
+
+/* Tiles */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px}
+.tile{display:flex;flex-direction:column;gap:6px;color:var(--ink)}
+a.tile:hover{text-decoration:none}
+a.tile:hover h3{text-decoration:underline;text-underline-offset:3px}
+.plate{background:var(--plate);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;overflow:hidden}
+.plate img{width:auto;height:auto;border-radius:2px}
+.cat .plate{height:168px}
+.cat h3{font-size:18px;font-weight:500;line-height:1.3}
+.cat .count{font-size:15px}
+.cat .subs{font-size:14px;margin-top:4px;line-height:1.6}
+.plate.none{flex-direction:column;gap:4px;text-align:center;padding:16px}
+.plate.none strong{font-size:28px;font-weight:400;letter-spacing:-.02em}
+.plate.none small{font-size:13px}
+
+.prod .plate{height:188px}
+.pn{font-size:14px;font-weight:500;display:flex;gap:10px;flex-wrap:wrap}
+.pn .m::before{content:"";display:inline-block;width:1px;height:12px;background:var(--line-strong);margin-right:10px;vertical-align:-1px}
+.prod h3{font-size:17px;font-weight:400;line-height:1.35;min-height:2.7em}
+.price{margin-top:10px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price strong{font-size:20px;font-weight:500;letter-spacing:-.01em}
+.price span{font-size:14px}
+.stock{display:flex;align-items:center;gap:8px;font-size:14px;margin-top:2px}
+.stock i{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none}
+.stock.low i{background:transparent;border:1.5px solid var(--ok)}
+.stock.q i{background:transparent;border:1.5px solid var(--line-strong)}
+.prod .actions{margin-top:14px}
+.prod .actions .btn{width:100%}
+.prod[hidden]{display:none}
+.filterline{display:none;align-items:center;gap:16px;margin:-12px 0 32px;font-size:16px;flex-wrap:wrap}
+.filterline.on{display:flex}
+.filterline button{background:none;border:0;padding:0;cursor:pointer;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.nomatch{display:none;font-size:17px;padding:32px 0;max-width:60ch}
+.nomatch.on{display:block}
+
+/* Difference */
+.diff .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:64px}
+.diff h2{font-size:36px;line-height:1.15;letter-spacing:-.02em}
+.diff .intro p{font-size:17px;margin-top:16px;max-width:36ch}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:40px 48px}
+.facts h3{font-size:18px;font-weight:500;margin-bottom:8px;line-height:1.35}
+.facts p{font-size:16px;max-width:42ch}
+
+/* Trade and quote */
+.trade{margin-top:112px;background:var(--plate);padding-block:88px}
+.trade .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:80px}
+.trade h2{font-size:36px;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.trade p{font-size:17px;max-width:44ch;margin-bottom:28px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:#fff;border-radius:6px;padding:32px}
+.form .full{grid-column:1/-1}
+.form textarea{width:100%;min-height:132px;border:1px solid var(--line-strong);border-radius:4px;padding:12px;font-size:15px;resize:vertical;background:#fff}
+.form textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.form .note{font-size:14px}
+
+/* Footer */
+.foot{padding-block:72px 40px}
+.foot .top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
+.foot .logo{display:inline-block;margin-bottom:12px}
+.foot p{font-size:15px;max-width:34ch}
+.foot h3{font-size:15px;font-weight:600;margin-bottom:12px}
+.foot ul{list-style:none;margin:0;padding:0;font-size:15px}
+.foot li{padding:4px 0}
+.foot .base{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 32px;font-size:14px}
+.foot .base .r{margin-left:auto}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);background:var(--ink);color:#fff;font-size:15px;padding:12px 18px;border-radius:4px;opacity:0;pointer-events:none;transition:opacity 180ms ease,transform 180ms ease;z-index:60;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* Responsive */
+@media (max-width:1100px){
+  .nav{display:none}
+  .hero h1{font-size:48px}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .hero{padding-block:48px 64px}
+  .hero .wrap{grid-template-columns:1fr;gap:48px}
+  .diff .wrap,.trade .wrap{grid-template-columns:1fr;gap:40px}
+  .foot .top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  :root{--gutter:16px}
+  .hdr .wrap{height:60px;gap:16px}
+  .logo{font-size:18px}
+  .hdr .right{gap:16px;font-size:14px}
+  .hdr .right .phone-text{display:none}
+  .hero h1{font-size:40px}
+  .lede{font-size:17px}
+  .sbox{flex-direction:column}
+  .sbox input{flex:none;width:100%}
+  .sbox .btn{width:100%}
+  .finder .row{grid-template-columns:1fr}
+  .finder .go .btn{width:100%}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}
+  .sec{padding-top:64px}
+  .sec-head h2,.diff h2,.trade h2{font-size:30px}
+  .facts{grid-template-columns:1fr;gap:28px}
+  .makes{gap:12px 28px}
+  .makes button{font-size:19px}
+  .trade{margin-top:80px;padding-block:64px}
+  .form{grid-template-columns:1fr;padding:20px}
+  .key{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}
+  .cat .plate{height:140px}
+  .prod .plate{height:150px}
+  .plate img{max-width:calc(100% - 24px)}
+}
+@media (max-width:440px){
+  .grid{grid-template-columns:1fr}
+  .foot .top{grid-template-columns:1fr}
+  .foot .base .r{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top">Parts Hub Express</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#categories">Parts</a>
+      <a href="#machines">Machines</a>
+      <a href="#trade">Trade accounts</a>
+      <a href="#quote">Request a quote</a>
+    </nav>
+    <div class="right">
+      <a href="tel:0754953322" aria-label="Call 07 5495 3322"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span class="phone-text">07 5495 3322</span></a>
+      <button type="button" id="quoteLink">Quote <span id="quoteCount">0</span></button>
+      <a href="#cart" aria-live="polite"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.5"/><circle cx="9.5" cy="20" r="1"/><circle cx="17.5" cy="20" r="1"/></svg>Cart <span id="cartCount">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- Hero: search first, machine finder beneath, crusher drawing right -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Crusher, screen and conveyor parts</p>
+      <h1>Find the right part for your machine.</h1>
+      <p class="lede">Search 5,702 wear parts by part number or machine model. Prices include GST. Stock counts update every morning.</p>
+
+      <form class="search" id="searchForm" role="search" autocomplete="off">
+        <div class="sbox">
+          <label class="sr" for="q">Search by part number, machine model or keyword</label>
+          <input id="q" type="search" placeholder="Part number, machine or keyword" aria-autocomplete="list" aria-controls="ac" aria-expanded="false">
+          <button class="btn" type="submit">Search</button>
+        </div>
+        <div class="ac" id="ac" role="listbox" aria-label="Search suggestions"></div>
+      </form>
+      <div class="popular" aria-label="Popular searches">
+        <span>Popular:</span>
+        <button type="button" data-model="HP300">HP300</button>
+        <button type="button" data-model="C160">C160</button>
+        <button type="button" data-model="C130">C130</button>
+        <button type="button" data-model="J1175">J1175</button>
+        <button type="button" data-model="LT1213">LT1213</button>
+      </div>
+
+      <div class="finder">
+        <h2>Or find parts by machine</h2>
+        <div class="row">
+          <div>
+            <label class="label" for="brand">Brand</label>
+            <select class="field" id="brand">
+              <option value="">Any brand</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="model">Machine model</label>
+            <select class="field" id="model" disabled>
+              <option value="">Choose a brand first</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="pcat">Part category</label>
+            <select class="field" id="pcat">
+              <option value="">All categories</option>
+            </select>
+          </div>
+        </div>
+        <div class="go"><button class="btn" type="button" id="showParts">Show parts</button></div>
+      </div>
+    </div>
+
+    <div>
+      <svg class="drawing" viewBox="0 0 600 440" role="img" aria-labelledby="dTitle dDesc">
+        <title id="dTitle">Jaw crusher diagram with numbered part categories</title>
+        <desc id="dDesc">Side section of a jaw crusher with two detail views, a cone crusher and an impact crusher. Six numbered markers point to Jaws, Cheek Plates, Concave and Mantle, Wedges, Blow Bars and Impact Plates.</desc>
+        <defs>
+          <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line class="hatch" x1="0" y1="0" x2="0" y2="8"/>
+          </pattern>
+        </defs>
+        <g>
+          <line class="soft" x1="30" y1="392" x2="392" y2="392"/>
+          <polyline points="48,392 48,64 76,56"/>
+          <polyline points="392,392 392,300 380,300 380,220 392,220 392,120 372,120 372,64"/>
+          <line x1="48" y1="64" x2="60" y2="64"/>
+          <polygon points="112,72 268,84 226,344 166,344" fill="url(#hatch)" style="fill:url(#hatch)"/>
+          <polygon points="94,72 112,72 166,344 150,344"/>
+          <polyline points="76,56 94,72 150,344 134,352 76,352"/>
+          <polygon points="84,52 116,52 108,72 90,72"/>
+          <polygon points="150,344 168,344 176,360 146,360"/>
+          <polygon points="270,84 286,84 230,344 216,344"/>
+          <polygon points="286,84 334,86 334,146 262,362 232,362 230,344"/>
+          <polygon points="264,68 292,68 286,84 270,84"/>
+          <circle cx="310" cy="66" r="12"/>
+          <circle cx="310" cy="66" r="4"/>
+          <circle class="dash" cx="310" cy="66" r="54"/>
+          <polygon points="262,352 352,360 352,368 262,360"/>
+          <rect x="352" y="350" width="22" height="26"/>
+          <line class="soft" x1="248" y1="366" x2="322" y2="334"/>
+          <polyline class="soft" points="322,334 328,326 334,340 340,324 346,338 352,322 358,336 364,320 372,318"/>
+          <line class="dash" x1="112" y1="40" x2="264" y2="40"/>
+          <text class="cap" x="132" y="34" text-anchor="middle">Feed</text>
+        </g>
+        <g>
+          <rect class="dash" x="410" y="24" width="180" height="176" rx="6"/>
+          <text class="cap" x="420" y="190">Detail A, cone crusher</text>
+          <line x1="500" y1="44" x2="500" y2="170"/>
+          <polygon points="500,54 452,160 548,160"/>
+          <polyline points="466,40 434,160"/><polyline points="456,38 424,160"/>
+          <line x1="456" y1="38" x2="466" y2="40"/><line x1="424" y1="160" x2="434" y2="160"/>
+          <polyline points="534,40 566,160"/><polyline points="544,38 576,160"/>
+          <line x1="534" y1="40" x2="544" y2="38"/><line x1="566" y1="160" x2="576" y2="160"/>
+        </g>
+        <g>
+          <rect class="dash" x="410" y="232" width="180" height="176" rx="6"/>
+          <text class="cap" x="420" y="398">Detail B, impact crusher</text>
+          <polyline points="420,372 420,262 500,246 578,262 578,372"/>
+          <circle cx="474" cy="320" r="36"/>
+          <circle cx="474" cy="320" r="6"/>
+          <rect x="470" y="278" width="8" height="18"/>
+          <rect x="470" y="344" width="8" height="18"/>
+          <rect x="432" y="316" width="18" height="8"/>
+          <rect x="498" y="316" width="18" height="8"/>
+          <polygon points="522,266 556,278 552,286 518,274"/>
+          <polygon points="556,278 574,304 566,308 548,282"/>
+          <polygon points="548,326 574,344 568,350 542,332"/>
+        </g>
+        <g>
+          <a href="#categories" aria-label="1, Jaws, 221 parts"><line class="lead" x1="38" y1="206" x2="124" y2="206"/><circle class="dot" cx="128" cy="206" r="4.5"/><circle class="badge" cx="24" cy="206" r="12"/><text class="n" x="24" y="206">1</text></a>
+          <a href="#categories" aria-label="2, Cheek Plates, 107 parts"><line class="lead" x1="196" y1="26" x2="196" y2="160"/><circle class="dot" cx="196" cy="164" r="4.5"/><circle class="badge" cx="196" cy="14" r="12"/><text class="n" x="196" y="14">2</text></a>
+          <a href="#categories" aria-label="3, Concave and Mantle, 132 parts"><line class="lead" x1="574" y1="104" x2="550" y2="118"/><circle class="dot" cx="546" cy="120" r="4.5"/><circle class="badge" cx="584" cy="96" r="12"/><text class="n" x="584" y="96">3</text></a>
+          <a href="#categories" aria-label="4, Wedges, 69 parts"><line class="lead" x1="38" y1="56" x2="92" y2="60"/><circle class="dot" cx="96" cy="60" r="4.5"/><circle class="badge" cx="24" cy="54" r="12"/><text class="n" x="24" y="54">4</text></a>
+          <a href="#categories" aria-label="5, Blow Bars, 105 parts"><line class="lead" x1="416" y1="320" x2="432" y2="320"/><circle class="dot" cx="436" cy="320" r="4.5"/><circle class="badge" cx="402" cy="320" r="12"/><text class="n" x="402" y="320">5</text></a>
+          <a href="#categories" aria-label="6, Impact Plates, 39 parts"><line class="lead" x1="578" y1="252" x2="562" y2="284"/><circle class="dot" cx="560" cy="288" r="4.5"/><circle class="badge" cx="584" cy="240" r="12"/><text class="n" x="584" y="240">6</text></a>
+        </g>
+        <text class="cap" x="30" y="428">Diagram, not to scale</text>
+      </svg>
+      <ul class="key" aria-label="Diagram key">
+        <li><a href="#categories"><span class="b">1</span><span class="nm">Jaws</span><span class="ct">221</span></a></li>
+        <li><a href="#categories"><span class="b">2</span><span class="nm">Cheek plates</span><span class="ct">107</span></a></li>
+        <li><a href="#categories"><span class="b">3</span><span class="nm">Concave and mantle</span><span class="ct">132</span></a></li>
+        <li><a href="#categories"><span class="b">4</span><span class="nm">Wedges</span><span class="ct">69</span></a></li>
+        <li><a href="#categories"><span class="b">5</span><span class="nm">Blow bars</span><span class="ct">105</span></a></li>
+        <li><a href="#categories"><span class="b">6</span><span class="nm">Impact plates</span><span class="ct">39</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Parts to suit -->
+<section class="sec" id="machines" aria-labelledby="machinesTitle" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 id="machinesTitle">Parts to suit your machines</h2>
+        <p>Wear parts for the crushers, screens and conveyors running on Australian sites.</p>
+      </div>
+    </div>
+    <div class="makes" id="makes"></div>
+    <div class="models" id="models" aria-label="Popular machine models"></div>
+    <p class="fine">Independent supplier. Machine brand names are used to show fitment only. Australia Crushing &amp; Belting Group is not an authorised dealer for these brands.</p>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="sec" id="categories" aria-labelledby="catTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="catTitle">Shop by category</h2>
+      <a class="more" href="#categories">All 214 categories</a>
+    </div>
+    <div class="grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- Popular parts -->
+<section class="sec" id="parts" aria-labelledby="partsTitle">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="partsTitle">Popular parts</h2>
+      <a class="more" href="#categories">Browse all 5,702 parts</a>
+    </div>
+    <div class="filterline" id="filterline" aria-live="polite"><span id="filterText"></span><button type="button" id="clearFilter">Clear</button></div>
+    <p class="nomatch" id="nomatch">None of the eight preview parts match. The live site searches all 5,702 parts, or send us the part number and we will find it.</p>
+    <div class="grid" id="prodGrid">
+
+      <article class="tile prod" data-model="C160" data-cat="Manganese">
+        <div class="plate"><img src="assets/img/949647154300.jpg" width="96" height="128" alt="C160 Cheek Plate Lower Mn"></div>
+        <div class="pn"><span>949647154300</span><span class="m">C160</span></div>
+        <h3>C160 Cheek Plate Lower Mn</h3>
+        <div class="price"><strong>Price on request</strong></div>
+        <div class="stock q"><i></i>4 in stock, quoted by grade</div>
+        <div class="actions"><button type="button" class="btn line sm" data-quote="949647154300">Request quote</button></div>
+      </article>
+
+      <article class="tile prod" data-model="HP300" data-cat="Wear Parts">
+        <div class="plate"><img src="assets/img/N65558321.jpg" width="96" height="128" alt="HP300 Feed Cone (HP4) XT710 18%Mn"></div>
+        <div class="pn"><span>N65558321</span><span class="m">HP300</span></div>
+        <h3>HP300 Feed Cone (HP4) XT710 18%Mn</h3>
+        <div class="price"><strong>Price on request</strong></div>
+        <div class="stock q"><i></i>1 in stock, quoted by grade</div>
+        <div class="actions"><button type="button" class="btn line sm" data-quote="N65558321">Request quote</button></div>
+      </article>
+
+      <article class="tile prod" data-model="I44" data-cat="Manganese">
+        <div class="plate"><img src="assets/img/550-003-056.jpg" width="96" height="128" alt="I44 McCloskey Blow Bar 27%Cr"></div>
+        <div class="pn"><span>550-003-056</span><span class="m">I44</span></div>
+        <h3>I44 McCloskey Blow Bar 27%Cr</h3>
+        <div class="price"><strong>Price on request</strong></div>
+        <div class="stock q"><i></i>Back in 2 to 3 weeks</div>
+        <div class="actions"><button type="button" class="btn line sm" data-quote="550-003-056">Request quote</button></div>
+      </article>
+
+      <article class="tile prod" data-model="C130" data-cat="Manganese">
+        <div class="plate"><img src="assets/img/MM1155334.jpg" width="128" height="74" alt="C130 Toggle Plate"></div>
+        <div class="pn"><span>MM1155334</span><span class="m">C130</span></div>
+        <h3>C130 Toggle Plate, replaces MM1006270</h3>
+        <div class="price"><strong>$979.00</strong><span>inc GST</span></div>
+        <div class="stock"><i></i>9 in stock</div>
+        <div class="actions"><button type="button" class="btn sm" data-cart="C130 Toggle Plate">Add to cart</button></div>
+      </article>
+
+      <article class="tile prod" data-model="J1175" data-cat="Rollers">
+        <div class="plate"><img src="assets/img/19_30_1119.jpg" width="128" height="96" alt="Disc Return Roller (Finlay) 1119FL"></div>
+        <div class="pn"><span>19.30.1119</span><span class="m">Finlay</span></div>
+        <h3>Disc Return Roller 1119FL</h3>
+        <div class="price"><strong>$204.60</strong><span>inc GST</span></div>
+        <div class="stock"><i></i>14 in stock</div>
+        <div class="actions"><button type="button" class="btn sm" data-cart="Disc Return Roller 1119FL">Add to cart</button></div>
+      </article>
+
+      <article class="tile prod" data-model="LT1213" data-cat="Rollers">
+        <div class="plate"><img src="assets/img/706204115000.jpg" width="96" height="128" alt="LT1213 Trough Roller Set 315/600FL"></div>
+        <div class="pn"><span>706204115000</span><span class="m">LT1213</span></div>
+        <h3>LT1213 Trough Roller Set 315/600FL</h3>
+        <div class="price"><strong>$453.20</strong><span>inc GST</span></div>
+        <div class="stock low"><i></i>3 left</div>
+        <div class="actions"><button type="button" class="btn sm" data-cart="LT1213 Trough Roller Set">Add to cart</button></div>
+      </article>
+
+      <article class="tile prod" data-model="HP300" data-cat="Power Transmission Parts">
+        <div class="plate"><img src="assets/img/1022145975.jpg" width="128" height="109" alt="HP300 Lower Head Bush"></div>
+        <div class="pn"><span>1022145975</span><span class="m">HP300</span></div>
+        <h3>HP300 Lower Head Bush</h3>
+        <div class="price"><strong>$1,364.00</strong><span>inc GST</span></div>
+        <div class="stock"><i></i>6 in stock</div>
+        <div class="actions"><button type="button" class="btn sm" data-cart="HP300 Lower Head Bush">Add to cart</button></div>
+      </article>
+
+      <article class="tile prod" data-model="" data-cat="Belt Joiners &amp; Clips">
+        <div class="plate"><img src="assets/img/MSCG-0003.jpg" width="128" height="107" alt="MS25 Joiner Kit 1200mm Gal"></div>
+        <div class="pn"><span>MSCG-0003</span></div>
+        <h3>MS25 Joiner Kit 1200mm Gal</h3>
+        <div class="price"><strong>$163.35</strong><span>inc GST</span></div>
+        <div class="stock"><i></i>22 in stock</div>
+        <div class="actions"><button type="button" class="btn sm" data-cart="MS25 Joiner Kit 1200mm">Add to cart</button></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- The difference -->
+<section class="sec diff" aria-labelledby="diffTitle" style="padding-top:112px">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="diffTitle">Why quarries and contractors buy here</h2>
+      <p>Straight answers on price, stock and fit, without waiting on a call back.</p>
+    </div>
+    <div class="facts">
+      <div><h3>Prices online, GST included</h3><p>Stocked parts show the price you pay. Manganese castings are quoted by grade.</p></div>
+      <div><h3>Real stock counts</h3><p>The number on the part is the number on the shelf, updated every morning.</p></div>
+      <div><h3>Search the number you already have</h3><p>Old and superseded part numbers lead to the current part. MM1006270 finds MM1155334.</p></div>
+      <div><h3>Manganese grade on the part</h3><p>18%, 22% manganese or 27% chrome shown where we hold it. Other grades on request.</p></div>
+      <div><h3>Fitment you can trust</h3><p>We only list a machine when the fit is confirmed. If it is not listed, we check it for you.</p></div>
+      <div><h3>Paste a parts list, get a quote</h3><p>One part number per line. We price every line, including parts not listed online.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Trade and quote -->
+<section class="trade" id="trade" aria-labelledby="tradeTitle">
+  <div class="wrap">
+    <div>
+      <h2 id="tradeTitle">Open a trade account</h2>
+      <p>Order on account with your purchase order number and get one statement at the end of the month.</p>
+      <a class="btn" href="#trade">Apply for a trade account</a>
+    </div>
+    <form class="form" id="quote" aria-labelledby="quoteTitle">
+      <div class="full"><h2 id="quoteTitle" style="font-size:24px;margin-bottom:4px">Request a quote</h2><p class="note" style="margin:0;max-width:none">Paste your part numbers. We reply with a price on every line.</p></div>
+      <div><label class="label" for="qCompany">Company</label><input class="field" id="qCompany" type="text" autocomplete="organization"></div>
+      <div><label class="label" for="qEmail">Email</label><input class="field" id="qEmail" type="email" autocomplete="email"></div>
+      <div class="full"><label class="label" for="qMachine">Machine (optional)</label><input class="field" id="qMachine" type="text" placeholder="For example Metso C160"></div>
+      <div class="full"><label class="label" for="qParts">Part numbers</label><textarea id="qParts" placeholder="One part number per line"></textarea></div>
+      <div class="full"><button class="btn" type="submit">Send quote request</button></div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="logo" href="#top">Parts Hub Express</a>
+        <p>Crusher, screen and conveyor wear parts from Australia Crushing &amp; Belting Group.</p>
+      </div>
+      <div>
+        <h3>Parts</h3>
+        <ul>
+          <li><a href="#categories">Manganese</a></li>
+          <li><a href="#categories">Screen media</a></li>
+          <li><a href="#categories">Rollers</a></li>
+          <li><a href="#categories">Conveyor rubber</a></li>
+          <li><a href="#categories">All categories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Buying</h3>
+        <ul>
+          <li><a href="#trade">Trade accounts</a></li>
+          <li><a href="#quote">Request a quote</a></li>
+          <li><a href="#top">Shipping</a></li>
+          <li><a href="#top">Returns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:0754953322">07 5495 3322</a></li>
+          <li>Caboolture, Queensland</li>
+        </ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>&copy; 2026 Australia Crushing &amp; Belting Group</span>
+      <a href="#top">Terms</a>
+      <a href="#top">Privacy</a>
+      <span class="r">Design preview. Prices and stock shown are samples until the Odoo sync is live.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s,c){ return (c||document).querySelector(s); };
+  var $$ = function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
+  var fmt = function(n){ return n.toLocaleString('en-AU'); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  /* Real data from the Odoo export (design/assets) */
+  var CATS = [
+    {name:'Manganese',count:1055,img:['550-003-056.jpg',96,128],subs:['Jaws','Concave and mantle','Cheek plates']},
+    {name:'Screen Media & Accessories',count:703,img:null,subs:['Wire','Accessories','Piano harp']},
+    {name:'Rollers',count:684,img:['19_25_4035.jpg',96,128],subs:['Troughing','Return','Centre']},
+    {name:'Conveyors Rubber and Accessories',count:505,img:['Imp_Bar1524_100_50.jpg',128,96],subs:['Belt rubber','Skirting and sliders','Scrapers and cleaners']},
+    {name:'Fasteners',count:417,img:['MM0264797.jpg',96,128],subs:['Bolts','Washers','Nuts']},
+    {name:'Wear Parts',count:416,img:['N65558321.jpg',96,128],subs:['Impactor','Side liners','VSI']},
+    {name:'Power Transmission Parts',count:285,img:['1062440045.jpg',128,88],subs:['Bearings','V belts','Bushes']},
+    {name:'Hydraulics',count:169,img:['501-011-070.jpg',96,128],subs:['Seals','Motors','Valves']},
+    {name:'Other',count:127,img:['585042.jpg',96,128],subs:['Electricals','Tools','Dust suppression']},
+    {name:'Filters',count:87,img:null,subs:['Hydraulic','Air','Fuel']},
+    {name:'Belt Joiners & Clips',count:80,img:['MSCG-0003.jpg',128,107],subs:['Joiner kits','Clips']},
+    {name:'Gravel and Slurry Pumps',count:26,img:['6_4D-AHR-R55-E4147R.jpg',87,128],subs:['Pumps','Pump parts']}
+  ];
+  var BRANDS = [['Kleemann',31],['Finlay',26],['Metso',25],['Extec',21],['McCloskey',19],['Symons',15],['Flexco',12],['Powerscreen',7],['Sandvik',4],['Terex',3]];
+  var MODELS = {
+    'Metso':[['HP300',71],['C160',52],['C130',48],['HP400',31],['GP200',28],['C120',24],['LT1213',23],['HP200',16],['LT106',8]],
+    'Extec':[['C12',41]],
+    'Finlay':[['J1175',32]],
+    'McCloskey':[['I44',4],['J45',1]],
+    'Kleemann':[['MR130',4]],
+    'Sandvik':[['QJ341',2]]
+  };
+  var POPULAR = [['ST 45',74],['HP300',71],['C160',52],['C130',48],['C12',41],['J1175',32],['HP400',31],['GP200',28],['C120',24],['LT1213',23],['HP200',16]];
+  var PARTS = [
+    ['949647154300','C160 Cheek Plate Lower Mn'],['576974','C160 Cheek Plate Upper Mn'],['MM1023214/MOD','C160 Jaw Fixed Quarry Tooth+40 1P'],['MM0297742','C160 Lower Cheek Plt Fatboy'],['MM1155334','C130 Toggle Plate'],['550-003-056','I44 McCloskey Blow Bar 27%Cr'],['N65558321','HP300 Feed Cone (HP4) XT710 18%Mn'],['7065558093','HP300 Feed Cone (HP4) XT720 22%Mn'],['1038018155','HP300 Counterweight Liner'],['1022145975','HP300 Lower Head Bush'],['1062440045','HP300 Drive Ring Gear'],['7063002250','HP300 Pinion (HP4)'],['937405','GP200 Seal'],['19.30.1119','Disc Return Roller (Finlay) 1119FL'],['19.25.4035','Finlay Feeder Roller 900FL/102'],['706204115000','LT1213 Trough Roller Set 315/600FL'],['CR1043','Impact Side Roller M/Conv C12'],['MSCG-0001','MS25 Joiner Kit 600mm Gal'],['MSCG-0003','MS25 Joiner Kit 1200mm Gal'],['MSCG-0004','MS25 Joiner Kit 1500mm Gal'],['MM0264797','C160 Hammer Screw'],['MM0243126','C130 Hammer Bolt'],['501-011-070','Accumulator 4L 8 bar'],['0116-0010','Pressure Filter'],['585042','Metso Jaw 5000kg Lifting Link'],['Imp/Bar1524/100/50','Impact Bar 1524 x 100 x 50mm'],['6/4D-AHR-R55-E4147R','6/4D AHR Bare Shaft Pump']
+  ];
+  var SUPERSEDED = {'MM1006270':'MM1155334'};
+  var brandOf = function(model){ for(var b in MODELS){ for(var i=0;i<MODELS[b].length;i++){ if(MODELS[b][i][0]===model) return b; } } return ''; };
+
+  /* Toast */
+  var toast = $('#toast'), toastTimer;
+  function say(msg){ toast.textContent = msg; toast.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(function(){ toast.classList.remove('on'); }, 2400); }
+
+  /* Build selects, makes, models, categories */
+  var brandSel = $('#brand'), modelSel = $('#model'), catSel = $('#pcat');
+  BRANDS.forEach(function(b){ brandSel.insertAdjacentHTML('beforeend','<option value="'+esc(b[0])+'">'+esc(b[0])+'</option>'); });
+  CATS.forEach(function(c){ catSel.insertAdjacentHTML('beforeend','<option value="'+esc(c.name)+'">'+esc(c.name)+' ('+fmt(c.count)+')</option>'); });
+
+  function fillModels(brand){
+    var list = MODELS[brand] || [];
+    if(!brand){ modelSel.innerHTML = '<option value="">Choose a brand first</option>'; modelSel.disabled = true; return; }
+    if(!list.length){ modelSel.innerHTML = '<option value="">No model codes listed yet</option>'; modelSel.disabled = true; return; }
+    modelSel.innerHTML = '<option value="">Any '+esc(brand)+' model</option>' + list.map(function(m){ return '<option value="'+esc(m[0])+'">'+esc(m[0])+' ('+fmt(m[1])+' parts)</option>'; }).join('');
+    modelSel.disabled = false;
+  }
+  brandSel.addEventListener('change',function(){ fillModels(brandSel.value); });
+
+  $('#makes').innerHTML = BRANDS.map(function(b){ return '<button type="button" data-brand="'+esc(b[0])+'">'+esc(b[0])+'<span>'+fmt(b[1])+'</span></button>'; }).join('');
+  $('#models').innerHTML = POPULAR.map(function(m){ return '<button type="button" aria-pressed="false" data-model="'+esc(m[0])+'">'+esc(m[0])+'<span>'+fmt(m[1])+'</span></button>'; }).join('');
+
+  $('#catGrid').innerHTML = CATS.map(function(c){
+    var plate = c.img
+      ? '<div class="plate"><img src="assets/img/'+c.img[0]+'" width="'+c.img[1]+'" height="'+c.img[2]+'" alt=""></div>'
+      : '<div class="plate none" aria-hidden="true"><strong>'+fmt(c.count)+'</strong><small>parts, photos to come</small></div>';
+    return '<a class="tile cat" href="#categories">'+plate+'<h3>'+esc(c.name)+'</h3><span class="count">'+fmt(c.count)+' parts</span><span class="subs">'+c.subs.map(esc).join(', ')+'</span></a>';
+  }).join('');
+
+  /* Filtering the preview parts */
+  var prods = $$('.prod'), filterline = $('#filterline'), filterText = $('#filterText'), nomatch = $('#nomatch');
+  function applyFilter(model, cat, label){
+    var shown = 0;
+    prods.forEach(function(p){
+      var ok = (!model || p.getAttribute('data-model')===model) && (!cat || p.getAttribute('data-cat')===cat);
+      p.hidden = !ok; if(ok) shown++;
+    });
+    var active = !!(model || cat);
+    filterline.classList.toggle('on', active);
+    filterText.textContent = active ? 'Showing parts for '+label : '';
+    nomatch.classList.toggle('on', active && shown===0);
+    $$('#models button').forEach(function(b){ b.setAttribute('aria-pressed', String(!!model && b.getAttribute('data-model')===model)); });
+    if(active) document.getElementById('parts').scrollIntoView({block:'start'});
+  }
+  function pickModel(model){
+    var brand = brandOf(model);
+    brandSel.value = brand; fillModels(brand);
+    if(brand) modelSel.value = model;
+    applyFilter(model, '', (brand ? brand+' ' : '')+model);
+  }
+  $('#showParts').addEventListener('click',function(){
+    var b = brandSel.value, m = modelSel.value, c = catSel.value;
+    var label = [b, m].filter(Boolean).join(' ');
+    if(c) label = (label ? label+', ' : '') + c;
+    if(!b && !m && !c){ say('Choose a brand, model or category first'); return; }
+    if(b && !m && !MODELS[b]){ applyFilter('__none__', c, label); return; }
+    if(b && !m){ var models = MODELS[b].map(function(x){ return x[0]; }); var shown=0;
+      prods.forEach(function(p){ var ok = models.indexOf(p.getAttribute('data-model'))>-1 && (!c || p.getAttribute('data-cat')===c); p.hidden=!ok; if(ok) shown++; });
+      filterline.classList.add('on'); filterText.textContent = 'Showing parts for '+label; nomatch.classList.toggle('on', shown===0); document.getElementById('parts').scrollIntoView({block:'start'}); return; }
+    applyFilter(m, c, label);
+  });
+  $('#clearFilter').addEventListener('click',function(){ applyFilter('', '', ''); brandSel.value=''; fillModels(''); catSel.value=''; });
+  $('#makes').addEventListener('click',function(e){ var b = e.target.closest('button[data-brand]'); if(!b) return; brandSel.value = b.getAttribute('data-brand'); fillModels(brandSel.value); $('#brand').focus(); window.scrollTo({top:0}); say('Now choose a '+b.getAttribute('data-brand')+' model'); });
+  $('#models').addEventListener('click',function(e){ var b = e.target.closest('button[data-model]'); if(b) pickModel(b.getAttribute('data-model')); });
+  $$('.popular button').forEach(function(b){ b.addEventListener('click',function(){ pickModel(b.getAttribute('data-model')); }); });
+
+  /* Search suggestions */
+  var q = $('#q'), ac = $('#ac'), acTimer;
+  function closeAc(){ ac.classList.remove('open'); q.setAttribute('aria-expanded','false'); }
+  function suggest(){
+    var v = q.value.trim(); if(v.length < 2){ closeAc(); return; }
+    var lv = v.toLowerCase(), nv = lv.replace(/[\s\-\.\/]/g,''), html = '';
+    var sup = Object.keys(SUPERSEDED).filter(function(k){ return k.toLowerCase().indexOf(lv)>-1; });
+    var parts = PARTS.filter(function(p){ return p[0].toLowerCase().replace(/[\s\-\.\/]/g,'').indexOf(nv)>-1 || p[1].toLowerCase().indexOf(lv)>-1; }).slice(0,6);
+    var machines = POPULAR.concat(MODELS['McCloskey'],MODELS['Kleemann'],MODELS['Sandvik'],[['LT106',8]]).filter(function(m,i,a){ return a.findIndex(function(x){ return x[0]===m[0]; })===i && m[0].toLowerCase().replace(/\s/g,'').indexOf(nv)>-1; }).slice(0,5);
+    var cats = CATS.filter(function(c){ return c.name.toLowerCase().indexOf(lv)>-1; }).slice(0,4);
+    if(sup.length || parts.length){
+      html += '<h4>Part numbers</h4>';
+      sup.forEach(function(k){ html += '<a href="#parts" role="option"><span><b>'+esc(k)+'</b> is now '+esc(SUPERSEDED[k])+'</span><span>Replaced</span></a>'; });
+      parts.forEach(function(p){ html += '<a href="#parts" role="option"><span><b>'+esc(p[0])+'</b>&nbsp; '+esc(p[1])+'</span></a>'; });
+    }
+    if(machines.length){ html += '<h4>Machines</h4>'; machines.forEach(function(m){ html += '<a href="#parts" role="option" data-model="'+esc(m[0])+'"><span><b>'+esc(m[0])+'</b></span><span>'+fmt(m[1])+' parts</span></a>'; }); }
+    if(cats.length){ html += '<h4>Categories</h4>'; cats.forEach(function(c){ html += '<a href="#categories" role="option"><span>'+esc(c.name)+'</span><span>'+fmt(c.count)+' parts</span></a>'; }); }
+    if(!html){ html = '<p class="empty">No match for "'+esc(v)+'". Send it to us in a quote request and we will find it.</p>'; }
+    ac.innerHTML = html; ac.classList.add('open'); q.setAttribute('aria-expanded','true');
+  }
+  q.addEventListener('input',function(){ clearTimeout(acTimer); acTimer = setTimeout(suggest,110); });
+  q.addEventListener('focus',function(){ if(q.value.trim().length >= 2) suggest(); });
+  ac.addEventListener('click',function(e){ var a = e.target.closest('a'); if(!a) return; if(a.getAttribute('data-model')){ e.preventDefault(); pickModel(a.getAttribute('data-model')); } closeAc(); });
+  $('#searchForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v = q.value.trim().toUpperCase().replace(/\s+/g,' ');
+    var hit = POPULAR.concat([['I44',4],['J45',1],['MR130',4],['QJ341',2],['LT106',8]]).filter(function(m){ return m[0].replace(/\s/g,'')===v.replace(/\s/g,''); })[0];
+    if(hit){ closeAc(); pickModel(hit[0]); return; }
+    suggest(); q.focus();
+  });
+  document.addEventListener('click',function(e){ if(!$('#searchForm').contains(e.target)) closeAc(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeAc(); });
+
+  /* Cart and quote list (preview only) */
+  var cart = 0, quoteRefs = [];
+  $$('[data-cart]').forEach(function(b){ b.addEventListener('click',function(){ cart++; $('#cartCount').textContent = cart; say('Added '+b.getAttribute('data-cart')+' to cart'); }); });
+  $$('[data-quote]').forEach(function(b){ b.addEventListener('click',function(){
+    var ref = b.getAttribute('data-quote');
+    if(quoteRefs.indexOf(ref) === -1){ quoteRefs.push(ref); $('#qParts').value = quoteRefs.join('\n'); $('#quoteCount').textContent = quoteRefs.length; }
+    say(ref+' added to your quote request');
+  }); });
+  $('#quoteLink').addEventListener('click',function(){ document.getElementById('quote').scrollIntoView({block:'start'}); $('#qParts').focus({preventScroll:true}); });
+  $('#quote').addEventListener('submit',function(e){ e.preventDefault(); say('Design preview only. Nothing was sent.'); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "name": "John Smith",
+    "company": "Screens Online",
+    "quote": "Amazing fast service. To be able to plug in my part number and find it was amazing. Will be using this as my go to site for parts. Great work.",
+    "source": "old Parts Hub Express Shopify store, Our Clients Say",
+    "verified_by_client": false,
+    "rating": 5
+  },
+  {
+    "name": "Alice Jones",
+    "company": "SJ Crushing",
+    "quote": "Ringing 3 different people to find the part is now a thing of yesteryear. To be able to find so many brands in one place is awesome.",
+    "source": "old Parts Hub Express Shopify store, Our Clients Say",
+    "verified_by_client": false,
+    "rating": 5
+  }
+]

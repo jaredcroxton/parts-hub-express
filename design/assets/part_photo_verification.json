@@ -1,0 +1,126 @@
+{
+  "purpose": "Client verification list. DESIGN_CHARACTERISTICS.md 10.5 requires every part photo used anywhere on the site to be confirmed by ACBG as showing that part. Until verified_by_client is true, the photo is unverified and the page says a photo shows one part from the group, not every part in it.",
+  "created": "2026-09-14",
+  "rows": [
+    {
+      "sku": "J47000000E-S",
+      "odoo_name": "C12 Extec Fixed Jaw18%Mn QJ341",
+      "file": "assets/img_large/J47000000E-S.jpg",
+      "category_group": "Manganese",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "1078769",
+      "odoo_name": "TPU Screen Star 170mm107",
+      "file": "assets/img/1078769.jpg",
+      "category_group": "Screen Media & Accessories",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "15-10-0112",
+      "odoo_name": "LS315 Centre Roller 358FL/102/20&25",
+      "file": "assets/img_large/15-10-0112.png",
+      "category_group": "Rollers",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "SR10/100-BB 10m",
+      "odoo_name": "Skirting Buff 10mm/100mm/10m",
+      "file": "assets/img/SR10_100-BB_10m.jpg",
+      "category_group": "Conveyors Rubber and Accessories",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "0312-0002",
+      "odoo_name": "M12 Nyloc Nut",
+      "file": "assets/img/0312-0002.jpg",
+      "category_group": "Fasteners",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "B96394008A",
+      "odoo_name": "840 Top Plt 990/7150/B9100",
+      "file": "assets/img_large/B96394008A.png",
+      "category_group": "Wear Parts",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "442.9406-01",
+      "odoo_name": "H4000 Eccentric Bushing",
+      "file": "assets/img/442_9406-01.jpg",
+      "category_group": "Power Transmission Parts",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "01-05-0001",
+      "odoo_name": "1012 Reduction G/Box Motor",
+      "file": "assets/img/01-05-0001.jpg",
+      "category_group": "Hydraulics",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "NOZ07",
+      "odoo_name": "Blue 7mm Spray Nozzle",
+      "file": "assets/img/NOZ07.jpg",
+      "category_group": "Other",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "0116-0010",
+      "odoo_name": "0116-0003 Pressure Filter",
+      "file": "assets/img/0116-0010.jpg",
+      "category_group": "Filters",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "MSCG-0003",
+      "odoo_name": "MS25 Joiner Kit 1200mm Gal",
+      "file": "assets/img/MSCG-0003.jpg",
+      "category_group": "Belt Joiners & Clips",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    },
+    {
+      "sku": "C2132L",
+      "odoo_name": "3 x 2 C-AH Discharge Joint",
+      "file": "assets/img/C2132L.jpg",
+      "category_group": "Gravel and Slurry Pumps",
+      "where_used": "homepage, Shop by part",
+      "verified_by_client": false,
+      "verified_date": null,
+      "client_note": ""
+    }
+  ]
+}

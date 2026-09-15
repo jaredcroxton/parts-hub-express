@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parts Hub Express</title>
+<meta name="description" content="5,702 crusher, screen and conveyor wear parts across 214 categories. Search by part number or pick your machine. Priced ex and inc GST, stock counts synced from our stock system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* LOCKED 2026-09-14: Option B Title Block, Inter Tight, Original B colours with Codex contrast fix. See DESIGN_CHARACTERISTICS.md 10.4. */
+/* Option B: Title Block. Engineering drawing set on a white sheet. Ink does the work, orange marks the drawing. */
+:root{
+  --canvas:#fafafa; --surface:#ffffff; --ground:#f1f3f2; --gridline:#e6e8e7;
+  --ink:#000000; --ink-hover:#222222; --on-ink:#ffffff; --muted:#6c6c6c; --hair:#d9dcdb;
+  --accent:#f45120; --accent-text:#c63a00; --ok:#1f7a3f; --low:#b45309;
+  --foot-bg:#000000; --foot-text:#ffffff; --foot-muted:#b3b3b3; --foot-rule:#333333;
+  --chev:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6l4 4 4-4'/></svg>"); --chev-muted:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%236c6c6c' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6l4 4 4-4'/></svg>");
+  --sans:"Inter Tight",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --mono:"Inter Tight",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --gutter:32px; --max:1280px;
+  --t:150ms ease;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;font-feature-settings:"ss01"}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{margin:0;text-wrap:balance;line-height:1.2;letter-spacing:-0.02em}
+p{margin:0;max-width:65ch}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+/* Sheet frame: the content column carries two full-height hairlines from the selector band to the footer */
+.frame{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+@media (min-width:1025px){
+  .sheet .frame{border-left:1px solid var(--hair);border-right:1px solid var(--hair)}
+}
+
+/* Buttons and controls: drawn with 1px Ink, 4px radius */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border:1px solid var(--ink);border-radius:4px;background:var(--ink);color:var(--on-ink);font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background var(--t),color var(--t),border-color var(--t)}
+.btn:hover{background:var(--ink-hover);border-color:var(--ink-hover);text-decoration:none}
+.btn.ghost{background:var(--surface);color:var(--ink)}
+.btn.ghost:hover{background:var(--ground)}
+.btn.sm{height:32px;padding:0 14px;font-size:14px}
+.field{height:44px;border:1px solid var(--ink);border-radius:4px;background:var(--surface);padding:0 12px;width:100%;transition:border-color var(--t)}
+.field::placeholder{color:var(--muted)}
+select.field{appearance:none;-webkit-appearance:none;padding-right:36px;background-image:var(--chev);background-repeat:no-repeat;background-position:right 12px center}
+select.field:disabled{border-style:dashed;color:var(--muted);background-color:var(--surface);background-image:var(--chev-muted)}
+.lbl{display:block;font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.chip{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 10px;border:1px solid var(--ink);border-radius:0;background:var(--surface);font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;cursor:pointer;transition:background var(--t),color var(--t)}
+.chip:hover{background:var(--ink);color:var(--on-ink);text-decoration:none}
+.chip .c{color:var(--muted)}
+.chip:hover .c{color:var(--foot-muted)}
+.icon{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--ink)}
+.util{height:32px;border-bottom:1px solid var(--hair);font-family:var(--mono);font-size:12px;letter-spacing:0.04em}
+.util .frame{display:flex;align-items:center;justify-content:space-between;height:32px;gap:16px}
+.util .l,.util .r{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.util .r a{color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:4px;overflow:hidden;height:22px}
+.seg button{background:var(--surface);border:0;padding:0 8px;font-family:var(--mono);font-size:11px;letter-spacing:0.04em;cursor:pointer;color:var(--ink);transition:background var(--t),color var(--t)}
+.seg button+button{border-left:1px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink)}
+.main{height:72px}
+.main .frame{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;height:72px}
+.wordmark{font-weight:800;font-size:26px;letter-spacing:-0.04em;line-height:1;text-transform:uppercase;white-space:nowrap;color:var(--ink)}
+.wordmark:hover{text-decoration:none}
+.search{position:relative;display:flex;align-items:center;width:100%;gap:12px}
+.search .sbox{display:flex;align-items:stretch;flex:1;min-width:0}
+.search input{height:44px;flex:1;min-width:0;border:1px solid var(--ink);border-right:0;border-radius:4px 0 0 4px;background:var(--surface);padding:0 14px;font-size:15px;caret-color:var(--accent)}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{outline:none;border-bottom-color:var(--accent);transition:none}
+.search .sbox:focus-within{box-shadow:4px 4px 0 0 var(--ink);border-radius:4px;transition:none}
+.search .go{height:44px;border:1px solid var(--ink);border-radius:0 4px 4px 0;background:var(--ink);color:var(--on-ink);font-size:15px;font-weight:600;padding:0 20px;cursor:pointer;transition:background var(--t)}
+.search .go:hover{background:var(--ink-hover)}
+.search .mchip{flex:none}
+.search .mchip .chip{white-space:nowrap}
+.main .r{display:flex;align-items:center;gap:20px;white-space:nowrap;font-size:14px;font-weight:500}
+.main .r .mono{font-size:13px}
+.main .r a,.main .r button{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer;color:var(--ink)}
+.main .r button:hover{text-decoration:underline;text-underline-offset:3px}
+.util .r a,.util .r button{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer;color:var(--ink);font:inherit;letter-spacing:inherit}
+.util .r button:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* Autocomplete */
+.ac{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--surface);border:1px solid var(--ink);z-index:50;display:none;opacity:0;transform:translateY(4px);transition:opacity 120ms ease-out,transform 120ms ease-out}
+.ac.open{display:block}
+.ac.in{opacity:1;transform:translateY(0)}
+.ac h4{margin:0;padding:8px 12px 4px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:500;border-top:1px solid var(--hair)}
+.ac h4:first-child{border-top:0}
+.ac a{display:flex;justify-content:space-between;gap:16px;padding:7px 12px;font-size:14px}
+.ac a .mono{font-size:13px}
+.ac a .cnt{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ac a:hover,.ac a:focus{background:var(--ground);text-decoration:none}
+.ac .empty{padding:12px;font-size:14px;color:var(--muted)}
+
+/* Mega menu */
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--ink);z-index:45;display:none}
+.mega.open{display:block}
+.mega .frame{display:grid;grid-template-columns:280px 1fr;min-height:360px}
+.mega .rail{border-right:1px solid var(--hair);padding:16px 0}
+.mega .rail button{display:flex;width:100%;justify-content:space-between;gap:12px;background:none;border:0;padding:8px 16px 8px 0;text-align:left;font-size:15px;font-weight:500;cursor:pointer;border-radius:0}
+.mega .rail button .cnt{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mega .rail button[aria-selected="true"]{font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.mega .kids{padding:16px 0 16px 32px}
+.mega .kids h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.mega .kids ul{list-style:none;margin:0;padding:0;columns:2;column-gap:32px}
+.mega .kids li{break-inside:avoid;border-bottom:1px solid var(--hair)}
+.mega .kids li a{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:14px}
+.mega .kids li a .cnt{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Selector band */
+.band{background:var(--ground);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.band .frame{min-height:88px;display:flex;align-items:flex-end;gap:16px;padding-top:12px;padding-bottom:16px;flex-wrap:wrap}
+.band .lead{display:flex;flex-direction:column;gap:6px;min-width:190px;padding-bottom:10px}
+.band .steps{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.band .steps b{color:var(--ink);font-weight:600}
+.band .steps b,.band .steps span{transition:color var(--t)}
+.band .sel{display:grid;grid-template-columns:1fr 1fr 1fr auto auto;gap:16px;align-items:end;flex:1;min-width:0}
+.band .sel .f{min-width:0}
+.band .reset{height:44px;display:inline-flex;align-items:center;font-size:14px;font-weight:500;padding:0 4px;background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.band .mopen{display:none}
+.band .close{display:none}
+.sel .lead2{display:none}
+/* Model combobox (Chargetrip pattern: grouped by make, count on every row, type-ahead inside) */
+.combo{position:relative}
+.combo .cb{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;cursor:pointer}
+.combo .cb[aria-disabled="true"]{border-style:dashed;color:var(--muted);cursor:not-allowed}
+.combo .cb .mono{font-size:13px}
+.combo .cb svg{stroke:currentColor}
+.combo .pop{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--surface);border:1px solid var(--ink);z-index:30;display:none;opacity:0;transform:translateY(4px);transition:opacity 120ms ease-out,transform 120ms ease-out;min-width:260px}
+.combo .pop.open{display:block}
+.combo .pop.in{opacity:1;transform:translateY(0)}
+.combo .pop input{width:100%;height:40px;border:0;border-bottom:1px solid var(--ink);padding:0 12px;font-family:var(--mono);font-size:13px;background:var(--surface)}
+.combo .pop input:focus{outline:none;background:var(--ground)}
+.combo .pop .list{max-height:300px;overflow:auto}
+.combo .pop .g{padding:8px 12px 2px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.combo .pop button.o{display:flex;width:100%;justify-content:space-between;gap:12px;background:none;border:0;padding:7px 12px;text-align:left;cursor:pointer;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;border-radius:0}
+.combo .pop button.o .cnt{color:var(--muted);font-size:12px}
+.combo .pop button.o:hover,.combo .pop button.o:focus{background:var(--ground)}
+.combo .pop .none{padding:12px;font-size:13px;color:var(--muted)}
+
+/* Section openers: a hairline carrying a mono eyebrow */
+.sec{padding-top:48px}
+.sec.deep{padding-top:64px}
+.rule{position:relative;height:1px;background:var(--hair);margin-bottom:24px}
+.rule .eyebrow{position:absolute;left:0;top:50%;transform:translateY(-50%);background:var(--canvas);padding-right:8px}
+.rule .right{position:absolute;right:0;top:50%;transform:translateY(-50%);background:var(--canvas);padding-left:8px;font-size:14px;font-weight:500;color:var(--ink)}
+
+/* Hero */
+.hero{padding-top:48px}
+.hero .frame{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.hero .copy{grid-column:span 6;padding-top:8px}
+.hero h1{font-size:56px;font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin:16px 0 24px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--accent);white-space:nowrap}
+.hero p{font-size:16px;color:var(--ink);max-width:48ch}
+.hero .cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.hero .panel{grid-column:span 6;background:var(--ground);border:1px solid var(--hair);background-image:repeating-linear-gradient(0deg,var(--gridline) 0 1px,transparent 1px 8px),repeating-linear-gradient(90deg,var(--gridline) 0 1px,transparent 1px 8px);padding:16px}
+.sch{display:block;width:100%;height:auto}
+.sch line,.sch polyline,.sch polygon,.sch path,.sch circle,.sch rect{fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:miter;stroke-linecap:butt}
+.sch .hatch{stroke:var(--ink);stroke-width:1}
+.sch .dash{stroke-dasharray:4 3}
+.sch .lead{stroke:var(--accent)}
+.sch .dot{fill:var(--accent);stroke:none}
+.sch .sq{fill:var(--surface);stroke:var(--ink);transition:fill var(--t)}
+.sch .n{font-family:var(--mono);font-size:10px;font-weight:500;fill:var(--ink);text-anchor:middle;dominant-baseline:central;transition:fill var(--t)}
+.sch a:hover .sq,.sch a:focus .sq{fill:var(--ink)}
+.sch a:hover .n,.sch a:focus .n{fill:var(--on-ink)}
+.sch a:focus{outline:none}
+.sch .lab{font-family:var(--mono);font-size:10px;fill:var(--muted);letter-spacing:0.08em}
+.sch .lab.t{font-size:9px}
+.key{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;border-top:1px solid var(--hair);background:var(--ground)}
+.key a{display:flex;align-items:center;gap:12px;height:36px;border-bottom:1px solid var(--hair);font-size:14px;transition:none}
+.key a:hover{text-decoration:none}
+.key a:hover .name,.key.h1 a[data-k="1"] .name,.key.h2 a[data-k="2"] .name,.key.h3 a[data-k="3"] .name,.key.h4 a[data-k="4"] .name,.key.h5 a[data-k="5"] .name,.key.h6 a[data-k="6"] .name{text-decoration:underline;text-underline-offset:3px}
+.key .ksq{width:16px;height:16px;border:1px solid var(--ink);background:var(--surface);font-family:var(--mono);font-size:10px;font-weight:500;display:inline-flex;align-items:center;justify-content:center;flex:none;transition:background var(--t),color var(--t)}
+.key a:hover .ksq{background:var(--ink);color:var(--on-ink)}
+.key .cnt{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Parts to suit */
+.makes{display:flex;flex-wrap:wrap;border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.makes a{display:inline-flex;align-items:baseline;gap:8px;padding:12px 16px;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);font-weight:600;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);transition:color var(--t);flex:1 1 auto;justify-content:center}
+.makes a:hover{color:var(--ink);text-decoration:none}
+.makes a .cnt{font-family:var(--mono);font-size:12px;letter-spacing:0;font-weight:400;font-variant-numeric:tabular-nums}
+@media (min-width:1281px){
+  .makes{flex-wrap:nowrap}
+  .makes a{padding:12px 12px;font-size:14px;flex:1 1 0;min-width:0;white-space:nowrap;gap:6px}
+}
+.models{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.note{font-size:12px;color:var(--muted);margin-top:16px;max-width:none}
+
+/* Lattices */
+.lattice{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.cell{position:relative;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:16px;background:var(--canvas);display:flex;flex-direction:column;gap:8px;transition:outline-color var(--t)}
+.cell:hover{outline:1px solid var(--ink);outline-offset:-1px;z-index:1;text-decoration:none}
+a.cell:hover{text-decoration:none}
+.cell:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.img{background:var(--ground);display:flex;align-items:center;justify-content:center}
+.img img{width:auto;height:auto;max-width:calc(100% - 32px);max-height:calc(100% - 32px);outline:1px solid var(--ink);outline-offset:0}
+.cat .img{width:128px;height:128px}
+.cat .img img{max-width:112px;max-height:112px}
+.cat .img.type{font-family:var(--mono);font-size:40px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
+.cat h3{font-size:20px;font-weight:600;margin-top:8px}
+.cat .cnt{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cat ul{list-style:none;margin:8px 0 0;padding:0;width:100%}
+.cat li{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--hair);padding:6px 0;font-size:13px}
+.cat li:last-child{border-bottom:1px solid var(--hair)}
+.cat li .cnt{font-size:12px}
+.cat{min-height:260px}
+
+/* Product tile */
+.prod .img{width:100%;height:200px}
+.prod .img.type{flex-direction:column;gap:6px}
+.prod .img.type .pn{font-family:var(--mono);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums}
+.prod .img.type small{font-size:12px;color:var(--muted)}
+.tb{display:grid;grid-template-columns:1fr auto;height:32px;border-top:1px solid var(--hair);margin-top:8px;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tb .pn{display:flex;align-items:center;font-size:13px;color:var(--ink);padding-right:12px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tb .mc{display:flex;align-items:center;font-size:12px;color:var(--muted);padding-left:12px;border-left:1px solid var(--hair);transition:border-color var(--t),color var(--t);min-width:56px;justify-content:flex-end}
+.tb .mc:empty{border-left:0;min-width:0;padding:0}
+.tb .mc.fit{color:var(--accent-text)}
+.cell:hover .tb .mc{border-left-color:var(--ink)}
+.cell:hover .tb{border-top-color:var(--ink)}
+.prod .name{font-size:15px;font-weight:500;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+.prod .attr{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.price{font-family:var(--mono);font-variant-numeric:tabular-nums;margin-top:auto;padding-top:4px}
+.price .p{font-size:16px;font-weight:600}
+.price .g{font-size:12px;color:var(--muted);margin-left:6px}
+.price .inc{font-size:13px;color:var(--muted);display:block}
+.price .tag{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.stock{display:flex;align-items:center;gap:8px;font-size:12px;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.stock i{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none}
+.stock.ok{color:var(--ok)}
+.stock.low{color:var(--low)}.stock.low i{background:var(--low)}
+.stock.q{color:var(--muted)}.stock.q i{background:transparent;border:1px solid var(--muted)}
+.act{display:flex;gap:8px;margin-top:8px}
+.qty{display:inline-flex;border:1px solid var(--ink);border-radius:4px;height:32px;overflow:hidden}
+.qty button{width:32px;border:0;background:var(--surface);cursor:pointer;font-family:var(--mono);font-size:14px;transition:background var(--t)}
+.qty button:hover{background:var(--ground)}
+.qty output{width:36px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;border-left:1px solid var(--ink);border-right:1px solid var(--ink);font-variant-numeric:tabular-nums}
+.act .btn{flex:1}
+
+/* The difference */
+.diff .frame{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.diff .intro{grid-column:span 4}
+.diff .intro h2{font-size:28px;font-weight:600;margin:8px 0 16px}
+.diff .reg{grid-column:span 8;border-top:1px solid var(--hair)}
+.diff .row{display:grid;grid-template-columns:40px 1fr 1.4fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--hair)}
+.diff .row .i{font-family:var(--mono);font-size:13px;font-weight:500;font-variant-numeric:tabular-nums;padding-top:2px}
+.diff .row b{font-size:16px;font-weight:600;line-height:1.35}
+.diff .row p{font-size:15px;color:var(--ink);max-width:none}
+
+/* Trade and quote */
+.trade{margin-top:48px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.trade .frame{display:grid;grid-template-columns:1fr 1fr}
+.trade .half{padding:40px 0}
+.trade .half+.half{border-left:1px solid var(--hair);padding-left:40px}
+.trade .half:first-child{padding-right:40px}
+.trade h2{font-size:28px;font-weight:600;margin-bottom:16px}
+.trade p{margin-bottom:24px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form .full{grid-column:1/-1}
+.form textarea{font-family:var(--mono);font-size:13px;height:120px;padding:10px 12px;resize:vertical;border:1px solid var(--ink);border-radius:4px;width:100%;background:var(--surface)}
+.form textarea::placeholder{color:var(--muted)}
+.form .mchip{display:inline-flex;margin-top:6px}
+
+/* Footer */
+.foot{margin-top:48px;background:var(--foot-bg);color:var(--foot-text)}
+.foot .frame{padding-top:48px;padding-bottom:24px}
+.foot .wordmark{color:var(--foot-text);margin-bottom:32px;display:inline-block}
+.foot .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--foot-rule);padding-top:24px}
+.foot h3{font-size:14px;font-weight:600;margin-bottom:12px;color:var(--foot-text);letter-spacing:0}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{font-size:14px;color:var(--foot-muted);padding:3px 0;display:flex;justify-content:space-between;gap:12px}
+.foot li a{color:var(--foot-muted)}
+.foot li a:hover{color:var(--foot-text)}
+.foot li .cnt{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums}
+.foot .small{font-family:var(--mono);font-size:12px;color:var(--foot-muted);margin-top:12px;max-width:none}
+.foot .bottom{border-top:1px solid var(--foot-rule);margin-top:32px;padding-top:16px;display:flex;flex-wrap:wrap;gap:16px 24px;font-size:12px;color:var(--foot-muted);align-items:center}
+.foot .bottom .pay{margin-left:auto;font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase;display:flex;gap:12px}
+.foot .fn{font-family:var(--mono);font-size:12px;color:var(--foot-muted);margin-top:8px;max-width:none}
+
+/* Quote drawer */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--surface);border-left:1px solid var(--ink);z-index:60;transform:translateX(100%);transition:transform 200ms ease-out;display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer header{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px;border-bottom:1px solid var(--ink)}
+.drawer header h2{font-size:16px;font-weight:600}
+.drawer .rows{flex:1;overflow:auto}
+.drawer .rw{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--hair);font-family:var(--mono);font-size:13px}
+.drawer .rw .nm{font-family:var(--sans);font-size:13px;color:var(--muted);display:block;font-variant-numeric:normal}
+.drawer .rw .x{margin-left:auto;background:none;border:0;cursor:pointer;padding:4px}
+.drawer .empty{padding:24px 16px;color:var(--muted);font-size:14px}
+.drawer footer{padding:16px;border-top:1px solid var(--hair)}
+.drawer footer .btn{width:100%}
+.scrim{position:fixed;inset:0;background:transparent;z-index:55;display:none}
+.scrim.open{display:block}
+
+/* Option switcher */
+.sw{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;border:1px solid var(--ink);background:var(--surface);font-family:var(--mono);font-size:12px}
+.sw a{padding:6px 10px;border-right:1px solid var(--ink);color:var(--ink)}
+.sw a:last-child{border-right:0}
+.sw a:hover{text-decoration:none;background:var(--ground)}
+.sw a[aria-current="page"]{background:var(--ink);color:var(--on-ink)}
+
+/* Responsive */
+@media (max-width:1280px){.lattice{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:1100px){
+  .hero h1{font-size:44px}
+}
+@media (max-width:1024px){
+  .lattice{grid-template-columns:repeat(3,1fr)}
+  .hero .copy,.hero .panel{grid-column:span 12}
+  .diff .intro,.diff .reg{grid-column:span 12}
+  .mega .frame{grid-template-columns:220px 1fr}
+  .band .lead{flex:1 1 100%;padding-bottom:0;flex-direction:row;gap:16px;align-items:baseline}
+  .band .sel{grid-template-columns:1fr 1fr 1fr auto auto}
+}
+@media (max-width:820px){
+  .band .sel{grid-template-columns:1fr 1fr 1fr}
+  .band .sel .btn{grid-column:1/3}
+}
+@media (max-width:860px){
+  .util .l span.txt{display:none}
+  .util .r .hide{display:none}
+  .util .r{gap:12px}
+}
+@media (max-width:720px){
+  :root{--gutter:16px}
+  .lattice{grid-template-columns:repeat(2,1fr)}
+  .main{height:auto}
+  .main .frame{grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;height:auto;padding-top:12px;padding-bottom:12px;gap:12px 12px}
+  .main .r{gap:12px}
+  .search{grid-column:1/-1;grid-row:1}
+  .wordmark,.main .r{grid-row:2}
+  .search .mchip{display:none}
+  .hero h1{font-size:40px;max-width:none}
+  .wordmark{font-size:18px;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding-top:32px}
+  .hero .panel{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .sch{min-width:560px}
+  .trade .frame{grid-template-columns:1fr}
+  .trade .half{padding:32px 0}
+  .trade .half:first-child{padding-right:0;order:2;border-top:1px solid var(--hair)}
+  .trade .half+.half{border-left:0;padding-left:0;order:1}
+  .foot .cols{grid-template-columns:1fr 1fr}
+  .diff .row{grid-template-columns:32px 1fr;gap:8px 16px}
+  .diff .row p{grid-column:2}
+  .key{grid-template-columns:1fr}
+  .mega .frame{grid-template-columns:1fr}
+  .mega .rail{border-right:0;border-bottom:1px solid var(--hair)}
+  .mega .kids{padding-left:0}
+  /* Selector band becomes one button that opens a full-height sheet */
+  .band .frame{min-height:0;padding:12px var(--gutter)}
+  .band .lead{display:none}
+  .band .mopen{display:inline-flex;width:100%}
+  .band .sel{display:none}
+  body.sheet-open #selBand .sel{display:grid;position:fixed;inset:0;z-index:80;background:var(--surface);grid-template-columns:1fr;align-content:start;gap:16px;padding:72px 16px 16px;overflow:auto}
+  body.sheet-open #selBand .close{display:flex;position:fixed;top:12px;right:16px;z-index:81}
+  body.sheet-open #selBand .sel .lead2{display:block}
+  body.sheet-open .sel .lead2{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+  .combo .pop{position:static;margin-top:8px}
+  .foot .bottom .pay{margin-left:0}
+}
+@media (max-width:480px){
+  .lattice{grid-template-columns:1fr}
+  .makes a{flex:1 1 50%}
+  .foot .cols{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .hero .cta .btn{flex:1}
+  .prod .img{height:160px}
+  .prod .img img{max-width:calc(100% - 32px)}
+  .util .r{gap:10px}
+  .util .l .seg{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important}
+  .drawer{transition:none}
+  .ac,.combo .pop{transform:none!important}
+}
+</style>
+</head>
+<body>
+<!-- Header: two rows on white with a 1px Ink bottom rule -->
+<header class="hdr">
+  <div class="util">
+    <div class="frame">
+      <div class="l">
+        <span id="gstLine" class="txt">GST REGISTERED · PRICES EX GST</span>
+        <div class="seg" role="group" aria-label="Price display">
+          <button type="button" id="gstEx" aria-pressed="true">EX GST</button>
+          <button type="button" id="gstInc" aria-pressed="false">INC GST</button>
+        </div>
+      </div>
+      <div class="r">
+        <a href="tel:1300000000"><svg class="icon" style="width:14px;height:14px" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span class="hide">1300 000 000</span><span class="sr">Phone</span></a>
+        <a href="#trade">Trade login</a>
+        <button type="button" id="quoteOpen">Quote list · <span id="quoteCount" class="num">0</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="frame">
+      <a class="wordmark" href="#top" aria-label="Parts Hub Express, home">Parts Hub Express</a>
+      <form class="search" role="search" id="searchForm" autocomplete="off">
+        <span class="mchip" id="machineChip" hidden></span>
+        <div class="sbox">
+          <label class="sr" for="q">Search by part number, machine model or keyword</label>
+          <input id="q" name="q" type="search" placeholder="Part number, machine model or keyword, e.g. HP300 or 949647154300" aria-autocomplete="list" aria-controls="ac" aria-expanded="false">
+          <button class="go" type="submit">Find</button>
+        </div>
+        <div class="ac" id="ac" role="listbox" aria-label="Search suggestions"></div>
+      </form>
+      <div class="r">
+        <button type="button" id="catOpen" aria-expanded="false" aria-controls="mega">Categories <svg class="icon" style="width:14px;height:14px" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <a href="#cart" aria-label="Cart, 0 items"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.5"/><circle cx="9.5" cy="20" r="1"/><circle cx="17.5" cy="20" r="1"/></svg><span class="mono num">0</span></a>
+      </div>
+    </div>
+  </div>
+  <!-- Categories mega menu: left rail of 12 groups, children with counts on the right -->
+  <div class="mega" id="mega">
+    <div class="frame">
+      <div class="rail" id="megaRail" role="tablist" aria-label="Category groups"></div>
+      <div class="kids" id="megaKids"></div>
+    </div>
+  </div>
+</header>
+
+<div class="sheet" id="top">
+
+<!-- Selector band: Brand, Machine model, Part category -->
+<section class="band" id="selBand" aria-labelledby="selTitle">
+  <div class="frame">
+    <div class="lead">
+      <span class="eyebrow" id="selTitle">Find parts to fit your machine</span>
+      <span class="steps" aria-hidden="true"><b data-step="1">1</b> · <span data-step="2">2</span> · <span data-step="3">3</span></span>
+    </div>
+    <button type="button" class="btn ghost mopen" id="sheetOpen">Select your machine</button>
+    <button type="button" class="btn ghost sm close" id="sheetClose">Close</button>
+    <div class="sel" id="selector">
+      <span class="lead2">Find parts to fit your machine · 1 · 2 · 3</span>
+      <div class="f">
+        <label class="lbl" for="brand">Brand</label>
+        <select class="field" id="brand">
+          <option value="">Select brand</option>
+          <option value="Kleemann">Kleemann · 31</option>
+          <option value="Finlay">Finlay · 26</option>
+          <option value="Metso">Metso · 25</option>
+          <option value="Extec">Extec · 21</option>
+          <option value="McCloskey">McCloskey · 19</option>
+          <option value="Symons">Symons · 15</option>
+          <option value="Flexco">Flexco · 12</option>
+          <option value="Powerscreen">Powerscreen · 7</option>
+          <option value="Sandvik">Sandvik · 4</option>
+          <option value="Terex">Terex · 3</option>
+        </select>
+      </div>
+      <div class="f combo">
+        <span class="lbl" id="modelLbl">Machine model</span>
+        <button type="button" class="field cb" id="modelBtn" aria-disabled="true" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="modelLbl modelVal"><span id="modelVal">Select brand first</span><svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="pop" id="modelPop">
+          <label class="sr" for="modelQ">Type a model code</label>
+          <input id="modelQ" type="text" placeholder="Type a model code, e.g. HP300">
+          <div class="list" id="modelList" role="listbox" aria-label="Machine models"></div>
+        </div>
+      </div>
+      <div class="f">
+        <label class="lbl" for="pcat">Part category</label>
+        <select class="field" id="pcat">
+          <option value="">All categories · 5,702</option>
+          <option>Manganese · 1,055</option>
+          <option>Screen Media &amp; Accessories · 703</option>
+          <option>Rollers · 684</option>
+          <option>Conveyors Rubber and Accessories · 505</option>
+          <option>Fasteners · 417</option>
+          <option>Wear Parts · 416</option>
+          <option>Power Transmission Parts · 285</option>
+          <option>Hydraulics · 169</option>
+          <option>Other · 127</option>
+          <option>Filters · 87</option>
+          <option>Belt Joiners &amp; Clips · 80</option>
+          <option>Gravel and Slurry Pumps · 26</option>
+        </select>
+      </div>
+      <button type="button" class="btn" id="showParts">Show parts</button>
+      <button type="button" class="reset" id="resetSel">Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- Hero: title sheet with the annotated crusher -->
+<section class="hero">
+  <div class="frame">
+    <div class="copy">
+      <span class="eyebrow">Crusher · Screen · Conveyor wear parts</span>
+      <h1>Crusher, screen and conveyor wear parts. Priced and <em>in stock</em> in Australia.</h1>
+      <p>5,702 parts across 214 categories, synced from our stock system. Search by part number or pick your machine. Ex and inc GST on every line.</p>
+      <div class="cta">
+        <a class="btn" href="#categories">Browse manganese</a>
+        <a class="btn ghost" href="#quote">Request a quote</a>
+      </div>
+    </div>
+    <div class="panel" aria-labelledby="schTitle">
+      <svg class="sch" viewBox="0 0 600 440" role="img" aria-labelledby="schTitle schDesc">
+        <title id="schTitle">Jaw crusher section with numbered callouts to part categories</title>
+        <desc id="schDesc">Side section of a single-toggle jaw crusher: fixed jaw, swing jaw, pitman, eccentric shaft and flywheel, toggle plate, tension rod, with two detail views of a cone crusher and an impactor. Six callouts point to Jaws, Cheek Plates, Concave and Mantle, Wedges, Blow Bars and Impact Plates.</desc>
+        <defs>
+          <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line class="hatch" x1="0" y1="0" x2="0" y2="8"/>
+          </pattern>
+        </defs>
+
+        <!-- Main drawing: single-toggle jaw crusher, side section -->
+        <g id="jaw">
+          <!-- base and ground -->
+          <line x1="30" y1="392" x2="392" y2="392"/>
+          <line x1="40" y1="392" x2="32" y2="400"/><line x1="70" y1="392" x2="62" y2="400"/><line x1="100" y1="392" x2="92" y2="400"/><line x1="130" y1="392" x2="122" y2="400"/><line x1="160" y1="392" x2="152" y2="400"/><line x1="190" y1="392" x2="182" y2="400"/><line x1="220" y1="392" x2="212" y2="400"/><line x1="250" y1="392" x2="242" y2="400"/><line x1="280" y1="392" x2="272" y2="400"/><line x1="310" y1="392" x2="302" y2="400"/><line x1="340" y1="392" x2="332" y2="400"/><line x1="370" y1="392" x2="362" y2="400"/>
+          <!-- frame: front wall, rear wall, top rail -->
+          <polyline points="48,392 48,64 76,56"/>
+          <polyline points="392,392 392,300 380,300 380,220 392,220 392,120 372,120 372,64"/>
+          <line x1="48" y1="64" x2="60" y2="64"/>
+          <!-- cheek plate region (side liner), hatched -->
+          <polygon points="112,72 268,84 226,344 166,344" fill="url(#hatch)"/>
+          <!-- fixed jaw die and its backing -->
+          <polygon points="94,72 112,72 166,344 150,344"/>
+          <polyline points="76,56 94,72 150,344 134,352 76,352"/>
+          <!-- wedge, top clamp of fixed jaw -->
+          <polygon points="84,52 116,52 108,72 90,72"/>
+          <!-- wedge, bottom clamp of fixed jaw -->
+          <polygon points="150,344 168,344 176,360 146,360"/>
+          <!-- pitman with swing jaw die -->
+          <polygon points="270,84 286,84 230,344 216,344"/>
+          <polygon points="286,84 334,86 334,146 262,362 232,362 230,344"/>
+          <polygon points="264,68 292,68 286,84 270,84"/>
+          <!-- eccentric shaft and flywheel (flywheel drawn dashed, behind the section plane) -->
+          <circle cx="310" cy="66" r="12"/>
+          <circle cx="310" cy="66" r="4"/>
+          <circle class="dash" cx="310" cy="66" r="54"/>
+          <circle class="dash" cx="310" cy="66" r="42"/>
+          <line class="dash" x1="310" y1="24" x2="310" y2="54"/><line class="dash" x1="310" y1="78" x2="310" y2="108"/>
+          <line class="dash" x1="268" y1="66" x2="298" y2="66"/><line class="dash" x1="322" y1="66" x2="352" y2="66"/>
+          <line class="dash" x1="280" y1="36" x2="301" y2="57"/><line class="dash" x1="319" y1="75" x2="340" y2="96"/>
+          <line class="dash" x1="340" y1="36" x2="319" y2="57"/><line class="dash" x1="301" y1="75" x2="280" y2="96"/>
+          <!-- toggle plate and toggle seat -->
+          <polygon points="262,352 352,360 352,368 262,360"/>
+          <rect x="352" y="350" width="22" height="26"/>
+          <!-- tension rod and spring -->
+          <line x1="248" y1="366" x2="322" y2="334"/>
+          <polyline points="322,334 328,326 334,340 340,324 346,338 352,322 358,336 364,320 372,318"/>
+          <line x1="372" y1="306" x2="372" y2="330"/>
+          <!-- feed and discharge marks -->
+          <line class="dash" x1="112" y1="40" x2="264" y2="40"/>
+          <text class="lab t" x="188" y="35" text-anchor="middle">FEED</text>
+          <line class="dash" x1="166" y1="376" x2="216" y2="376"/>
+          <text class="lab t" x="191" y="388" text-anchor="middle">CSS</text>
+        </g>
+
+        <!-- Detail A: cone crusher, concave and mantle -->
+        <g id="cone">
+          <rect x="410" y="24" width="180" height="176" class="dash"/>
+          <text class="lab" x="418" y="192">DETAIL A · CONE</text>
+          <!-- mantle on main shaft -->
+          <line x1="500" y1="44" x2="500" y2="176"/>
+          <polygon points="500,54 452,160 548,160"/>
+          <line x1="452" y1="160" x2="548" y2="160"/>
+          <!-- concave (bowl liner) with thickness -->
+          <polyline points="466,40 434,160"/><polyline points="456,38 424,160"/>
+          <line x1="456" y1="38" x2="466" y2="40"/><line x1="424" y1="160" x2="434" y2="160"/>
+          <polyline points="534,40 566,160"/><polyline points="544,38 576,160"/>
+          <line x1="534" y1="40" x2="544" y2="38"/><line x1="566" y1="160" x2="576" y2="160"/>
+          <!-- eccentric and head bush -->
+          <rect x="488" y="160" width="24" height="16"/>
+        </g>
+
+        <!-- Detail B: horizontal shaft impactor, blow bars and impact plates -->
+        <g id="impactor">
+          <rect x="410" y="232" width="180" height="176" class="dash"/>
+          <text class="lab" x="418" y="400">DETAIL B · IMPACTOR</text>
+          <!-- housing -->
+          <polyline points="420,380 420,262 500,246 578,262 578,380"/>
+          <!-- rotor with four blow bars -->
+          <circle cx="474" cy="326" r="36"/>
+          <circle cx="474" cy="326" r="6"/>
+          <rect x="470" y="284" width="8" height="18"/>
+          <rect x="470" y="350" width="8" height="18"/>
+          <rect x="432" y="322" width="18" height="8"/>
+          <rect x="498" y="322" width="18" height="8"/>
+          <!-- impact plates (aprons) -->
+          <polygon points="522,266 556,278 552,286 518,274"/>
+          <polygon points="556,278 574,304 566,308 548,282"/>
+          <polygon points="548,332 574,350 568,356 542,338"/>
+          <line class="dash" x1="556" y1="278" x2="566" y2="260"/>
+          <line class="dash" x1="548" y1="332" x2="560" y2="318"/>
+        </g>
+
+        <!-- Callouts: orange dot, orange leader, mono numeral in an Ink-outlined square -->
+        <g id="callouts">
+          <a href="#categories" data-k="1" aria-label="01 Jaws, 221 parts"><line class="lead" x1="40" y1="206" x2="124" y2="206"/><circle class="dot" cx="128" cy="206" r="4"/><rect class="sq" x="16" y="198" width="16" height="16"/><text class="n" x="24" y="206">01</text></a>
+          <a href="#categories" data-k="2" aria-label="02 Cheek Plates, 107 parts"><line class="lead" x1="196" y1="22" x2="196" y2="160"/><circle class="dot" cx="196" cy="164" r="4"/><rect class="sq" x="188" y="6" width="16" height="16"/><text class="n" x="196" y="14">02</text></a>
+          <a href="#categories" data-k="3" aria-label="03 Concave and Mantle, 132 parts"><line class="lead" x1="580" y1="98" x2="548" y2="118"/><circle class="dot" cx="546" cy="120" r="4"/><rect class="sq" x="576" y="82" width="16" height="16"/><text class="n" x="584" y="90">03</text></a>
+          <a href="#categories" data-k="4" aria-label="04 Wedges, 69 parts"><line class="lead" x1="40" y1="54" x2="92" y2="60"/><circle class="dot" cx="96" cy="60" r="4"/><rect class="sq" x="16" y="46" width="16" height="16"/><text class="n" x="24" y="54">04</text></a>
+          <a href="#categories" data-k="5" aria-label="05 Blow Bars, 105 parts"><line class="lead" x1="412" y1="326" x2="432" y2="326"/><circle class="dot" cx="436" cy="326" r="4"/><rect class="sq" x="396" y="318" width="16" height="16"/><text class="n" x="404" y="326">05</text></a>
+          <a href="#categories" data-k="6" aria-label="06 Impact Plates, 39 parts"><line class="lead" x1="582" y1="248" x2="562" y2="284"/><circle class="dot" cx="560" cy="288" r="4"/><rect class="sq" x="578" y="232" width="16" height="16"/><text class="n" x="586" y="240">06</text></a>
+        </g>
+        <text class="lab" x="30" y="428">SCHEMATIC, NOT TO SCALE · SINGLE TOGGLE JAW</text>
+        <text class="lab" x="570" y="428" text-anchor="end">PHE-B-01</text>
+      </svg>
+      <nav class="key" id="key" aria-label="Callout key">
+        <a href="#categories" data-k="1"><span class="ksq">01</span><span class="name">Jaws</span><span class="cnt">221</span></a>
+        <a href="#categories" data-k="4"><span class="ksq">04</span><span class="name">Wedges</span><span class="cnt">69</span></a>
+        <a href="#categories" data-k="2"><span class="ksq">02</span><span class="name">Cheek Plates</span><span class="cnt">107</span></a>
+        <a href="#categories" data-k="5"><span class="ksq">05</span><span class="name">Blow Bars</span><span class="cnt">105</span></a>
+        <a href="#categories" data-k="3"><span class="ksq">03</span><span class="name">Concave &amp; Mantle</span><span class="cnt">132</span></a>
+        <a href="#categories" data-k="6"><span class="ksq">06</span><span class="name">Impact Plates</span><span class="cnt">39</span></a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Parts to suit: ten OEM makes as text wordmarks, eleven machine chips, non-affiliation line -->
+<section class="sec" aria-labelledby="suitTitle">
+  <div class="frame">
+    <div class="rule"><span class="eyebrow" id="suitTitle">Parts to suit</span></div>
+    <div class="makes">
+      <a href="#" data-brand="Kleemann">Kleemann <span class="cnt">31</span></a>
+      <a href="#" data-brand="Finlay">Finlay <span class="cnt">26</span></a>
+      <a href="#" data-brand="Metso">Metso <span class="cnt">25</span></a>
+      <a href="#" data-brand="Extec">Extec <span class="cnt">21</span></a>
+      <a href="#" data-brand="McCloskey">McCloskey <span class="cnt">19</span></a>
+      <a href="#" data-brand="Symons">Symons <span class="cnt">15</span></a>
+      <a href="#" data-brand="Flexco">Flexco <span class="cnt">12</span></a>
+      <a href="#" data-brand="Powerscreen">Powerscreen <span class="cnt">7</span></a>
+      <a href="#" data-brand="Sandvik">Sandvik <span class="cnt">4</span></a>
+      <a href="#" data-brand="Terex">Terex <span class="cnt">3</span></a>
+    </div>
+    <div class="models" id="modelChips">
+      <button type="button" class="chip" data-model="ST 45">ST 45 <span class="c">· 74</span></button>
+      <button type="button" class="chip" data-model="HP300">HP300 <span class="c">· 71</span></button>
+      <button type="button" class="chip" data-model="C160">C160 <span class="c">· 52</span></button>
+      <button type="button" class="chip" data-model="C130">C130 <span class="c">· 48</span></button>
+      <button type="button" class="chip" data-model="C12">C12 <span class="c">· 41</span></button>
+      <button type="button" class="chip" data-model="J1175">J1175 <span class="c">· 32</span></button>
+      <button type="button" class="chip" data-model="HP400">HP400 <span class="c">· 31</span></button>
+      <button type="button" class="chip" data-model="GP200">GP200 <span class="c">· 28</span></button>
+      <button type="button" class="chip" data-model="C120">C120 <span class="c">· 24</span></button>
+      <button type="button" class="chip" data-model="LT1213">LT1213 <span class="c">· 23</span></button>
+      <button type="button" class="chip" data-model="HP200">HP200 <span class="c">· 16</span></button>
+    </div>
+    <p class="note">Independent supplier. OEM names are used for fitment reference only. Australia Crushing &amp; Belting Group is not an authorised dealer for these makes.</p>
+  </div>
+</section>
+
+<!-- Categories: 12 top groups in a hairline lattice, ordered by count -->
+<section class="sec" id="categories" aria-labelledby="catTitle">
+  <div class="frame">
+    <div class="rule"><span class="eyebrow" id="catTitle">Categories · 214</span></div>
+    <div class="lattice">
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/550-003-056.jpg" width="96" height="128" alt="I44 McCloskey Blow Bar 27%Cr"></div>
+        <h3>Manganese</h3><span class="cnt">1,055 parts</span>
+        <ul><li>Amsted <span class="cnt mono">238</span></li><li>Jaws <span class="cnt mono">221</span></li><li>Concave &amp; Mantle <span class="cnt mono">132</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img type" aria-hidden="true">703</div>
+        <h3>Screen Media &amp; Accessories</h3><span class="cnt">703 parts</span>
+        <ul><li>Wire <span class="cnt mono">534</span></li><li>Accessories <span class="cnt mono">53</span></li><li>Piano Harp <span class="cnt mono">50</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/19_25_4035.jpg" width="96" height="128" alt="Finlay Feeder Roller 900FL/102"></div>
+        <h3>Rollers</h3><span class="cnt">684 parts</span>
+        <ul><li>Troughing <span class="cnt mono">110</span></li><li>Return <span class="cnt mono">105</span></li><li>Centre <span class="cnt mono">99</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/Imp_Bar1524_100_50.jpg" width="128" height="96" alt="Impact Bar 1524 x 100 x 50mm Single Chamfer"></div>
+        <h3>Conveyors Rubber and Accessories</h3><span class="cnt">505 parts</span>
+        <ul><li>Manufactured Drawings <span class="cnt mono">125</span></li><li>Belt Rubber <span class="cnt mono">113</span></li><li>Skirting &amp; Sliders <span class="cnt mono">65</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/MM0264797.jpg" width="96" height="128" alt="C160 Hammer Screw"></div>
+        <h3>Fasteners</h3><span class="cnt">417 parts</span>
+        <ul><li>Bolts <span class="cnt mono">198</span></li><li>Washers <span class="cnt mono">73</span></li><li>Nuts <span class="cnt mono">56</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/N65558321.jpg" width="96" height="128" alt="HP300 Feed Cone (HP4) XT710 18%Mn"></div>
+        <h3>Wear Parts</h3><span class="cnt">416 parts</span>
+        <ul><li>Impactor <span class="cnt mono">218</span></li><li>Side Liners <span class="cnt mono">36</span></li><li>VSI <span class="cnt mono">10</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/1062440045.jpg" width="128" height="88" alt="HP300 Drive Ring Gear"></div>
+        <h3>Power Transmission Parts</h3><span class="cnt">285 parts</span>
+        <ul><li>Bearings <span class="cnt mono">61</span></li><li>V Belts <span class="cnt mono">58</span></li><li>Bushes <span class="cnt mono">38</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/501-011-070.jpg" width="96" height="128" alt="Accumulator 4L 8bar"></div>
+        <h3>Hydraulics</h3><span class="cnt">169 parts</span>
+        <ul><li>Seals <span class="cnt mono">57</span></li><li>Motors <span class="cnt mono">30</span></li><li>Valves <span class="cnt mono">18</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/585042.jpg" width="96" height="128" alt="Metso Jaw 5000Kg Lifting Link"></div>
+        <h3>Other</h3><span class="cnt">127 parts</span>
+        <ul><li>Electricals <span class="cnt mono">37</span></li><li>Tools <span class="cnt mono">21</span></li><li>Dust Suppression <span class="cnt mono">5</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img type" aria-hidden="true">87</div>
+        <h3>Filters</h3><span class="cnt">87 parts</span>
+        <ul><li>Hydraulic <span class="cnt mono">28</span></li><li>Air <span class="cnt mono">16</span></li><li>Fuel <span class="cnt mono">13</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/MSCG-0003.jpg" width="128" height="107" alt="MS25 Joiner Kit 1200mm Gal"></div>
+        <h3>Belt Joiners &amp; Clips</h3><span class="cnt">80 parts</span>
+        <ul><li>All joiners and clips <span class="cnt mono">80</span></li></ul>
+      </a>
+      <a class="cell cat" href="#">
+        <div class="img"><img src="assets/img/6_4D-AHR-R55-E4147R.jpg" width="87" height="128" alt="6/4D AHR Bare Shaft Pump R/Lin"></div>
+        <h3>Gravel and Slurry Pumps</h3><span class="cnt">26 parts</span>
+        <ul><li>Pumps <span class="cnt mono">18</span></li><li>Parts All <span class="cnt mono">7</span></li></ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured parts: 8 real SKUs, title-block strip under every print -->
+<section class="sec" id="featured" aria-labelledby="featTitle">
+  <div class="frame">
+    <div class="rule"><span class="eyebrow" id="featTitle">Featured parts · 8</span><a class="right" href="#categories">All 5,702 parts</a></div>
+    <div class="lattice" id="products">
+
+      <article class="cell prod" data-machine="C160">
+        <div class="img"><img src="assets/img/949647154300.jpg" width="96" height="128" alt="C160 Cheek Plate Lower Mn"></div>
+        <div class="tb"><span class="pn">949647154300</span><span class="mc">C160</span></div>
+        <h3 class="name">C160 Cheek Plate Lower Mn</h3>
+        <div class="price"><span class="p">Quote</span><span class="tag">Manganese casting, quoted by grade</span></div>
+        <div class="stock q"><i></i>Quote only · 4 in stock</div>
+        <div class="act"><button type="button" class="btn ghost sm rq" data-ref="949647154300" data-name="C160 Cheek Plate Lower Mn" style="flex:1">Request quote</button></div>
+      </article>
+
+      <article class="cell prod" data-machine="HP300">
+        <div class="img"><img src="assets/img/N65558321.jpg" width="96" height="128" alt="HP300 Feed Cone (HP4) XT710 18%Mn"></div>
+        <div class="tb"><span class="pn">N65558321</span><span class="mc">HP300</span></div>
+        <h3 class="name">HP300 Feed Cone (HP4) XT710 18%Mn</h3>
+        <div class="attr">18%Mn · XT710</div>
+        <div class="price"><span class="p">Quote</span><span class="tag">Manganese casting, quoted by grade</span></div>
+        <div class="stock q"><i></i>Quote only · 1 in stock</div>
+        <div class="act"><button type="button" class="btn ghost sm rq" data-ref="N65558321" data-name="HP300 Feed Cone (HP4) XT710 18%Mn" style="flex:1">Request quote</button></div>
+      </article>
+
+      <article class="cell prod" data-machine="I44">
+        <div class="img"><img src="assets/img/550-003-056.jpg" width="96" height="128" alt="I44 McCloskey Blow Bar 27%Cr"></div>
+        <div class="tb"><span class="pn">550-003-056</span><span class="mc">I44</span></div>
+        <h3 class="name">I44 McCloskey Blow Bar 27%Cr</h3>
+        <div class="attr">27%Cr</div>
+        <div class="price"><span class="p">Quote</span><span class="tag">Chrome casting, quoted by grade</span></div>
+        <div class="stock q"><i></i>Quote only · Backorder 2 to 3 wks</div>
+        <div class="act"><button type="button" class="btn ghost sm rq" data-ref="550-003-056" data-name="I44 McCloskey Blow Bar 27%Cr" style="flex:1">Request quote</button></div>
+      </article>
+
+      <article class="cell prod" data-machine="C130">
+        <div class="img"><img src="assets/img/MM1155334.jpg" width="128" height="74" alt="C130 Toggle Plate (MM1006270)"></div>
+        <div class="tb"><span class="pn">MM1155334</span><span class="mc">C130</span></div>
+        <h3 class="name">C130 Toggle Plate (MM1006270)</h3>
+        <div class="attr">Supersedes MM1006270</div>
+        <div class="price" data-ex="890.00"><span class="p">$890.00</span><span class="g">ex GST</span><span class="inc">$979.00 inc GST</span><span class="tag">Sample price</span></div>
+        <div class="stock ok"><i></i>In stock · 9</div>
+        <div class="act"><div class="qty" role="group" aria-label="Quantity"><button type="button" aria-label="Decrease">&minus;</button><output>1</output><button type="button" aria-label="Increase">+</button></div><button type="button" class="btn sm">Add</button></div>
+      </article>
+
+      <article class="cell prod" data-machine="">
+        <div class="img"><img src="assets/img/19_30_1119.jpg" width="128" height="96" alt="Disc Return Roller (Finlay) 1119FL"></div>
+        <div class="tb"><span class="pn">19.30.1119</span><span class="mc"></span></div>
+        <h3 class="name">Disc Return Roller (Finlay) 1119FL</h3>
+        <div class="price" data-ex="186.00"><span class="p">$186.00</span><span class="g">ex GST</span><span class="inc">$204.60 inc GST</span><span class="tag">Sample price</span></div>
+        <div class="stock ok"><i></i>In stock · 14</div>
+        <div class="act"><div class="qty" role="group" aria-label="Quantity"><button type="button" aria-label="Decrease">&minus;</button><output>1</output><button type="button" aria-label="Increase">+</button></div><button type="button" class="btn sm">Add</button></div>
+      </article>
+
+      <article class="cell prod" data-machine="LT1213">
+        <div class="img"><img src="assets/img/706204115000.jpg" width="96" height="128" alt="LT1213 Trough Roller Set 315/600FL"></div>
+        <div class="tb"><span class="pn">706204115000</span><span class="mc">LT1213</span></div>
+        <h3 class="name">LT1213 Trough Roller Set 315/600FL</h3>
+        <div class="price" data-ex="412.00"><span class="p">$412.00</span><span class="g">ex GST</span><span class="inc">$453.20 inc GST</span><span class="tag">Sample price</span></div>
+        <div class="stock low"><i></i>Low stock · 3</div>
+        <div class="act"><div class="qty" role="group" aria-label="Quantity"><button type="button" aria-label="Decrease">&minus;</button><output>1</output><button type="button" aria-label="Increase">+</button></div><button type="button" class="btn sm">Add</button></div>
+      </article>
+
+      <article class="cell prod" data-machine="HP300">
+        <div class="img"><img src="assets/img/1022145975.jpg" width="128" height="109" alt="HP300 Lower Head Bush"></div>
+        <div class="tb"><span class="pn">1022145975</span><span class="mc">HP300</span></div>
+        <h3 class="name">HP300 Lower Head Bush</h3>
+        <div class="price" data-ex="1240.00"><span class="p">$1,240.00</span><span class="g">ex GST</span><span class="inc">$1,364.00 inc GST</span><span class="tag">Sample price</span></div>
+        <div class="stock ok"><i></i>In stock · 6</div>
+        <div class="act"><div class="qty" role="group" aria-label="Quantity"><button type="button" aria-label="Decrease">&minus;</button><output>1</output><button type="button" aria-label="Increase">+</button></div><button type="button" class="btn sm">Add</button></div>
+      </article>
+
+      <article class="cell prod" data-machine="">
+        <div class="img"><img src="assets/img/MSCG-0003.jpg" width="128" height="107" alt="MS25 Joiner Kit 1200mm Gal"></div>
+        <div class="tb"><span class="pn">MSCG-0003</span><span class="mc"></span></div>
+        <h3 class="name">MS25 Joiner Kit 1200mm Gal</h3>
+        <div class="price" data-ex="148.50"><span class="p">$148.50</span><span class="g">ex GST</span><span class="inc">$163.35 inc GST</span><span class="tag">Sample price</span></div>
+        <div class="stock ok"><i></i>In stock · 22</div>
+        <div class="act"><div class="qty" role="group" aria-label="Quantity"><button type="button" aria-label="Decrease">&minus;</button><output>1</output><button type="button" aria-label="Increase">+</button></div><button type="button" class="btn sm">Add</button></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- The difference: numbered register, ink numerals, no icons, no cards -->
+<section class="sec deep diff" aria-labelledby="diffTitle">
+  <div class="frame">
+    <div class="intro">
+      <span class="eyebrow">The difference</span>
+      <h2 id="diffTitle">Why quarries and contractors buy here</h2>
+      <p>Every claim on this page carries a number the stock system can back.</p>
+    </div>
+    <div class="reg">
+      <div class="row"><span class="i">01</span><b>Priced online, ex and inc GST on every stocked part.</b><p>Castings are quoted by grade. Everything else shows the price that lands on the invoice.</p></div>
+      <div class="row"><span class="i">02</span><b>Stock counts synced from our stock system.</b><p>So "in stock" means in stock. The count on the tile is the count on the shelf at the last sync.</p></div>
+      <div class="row"><span class="i">03</span><b>Manganese grade stated on the casting.</b><p>18%Mn, 22%Mn or 27%Cr shown wherever the data has it. Grade options quoted on request.</p></div>
+      <div class="row"><span class="i">04</span><b>Part numbers cross-referenced.</b><p>Superseded numbers resolve to the current part. MM1006270 is now MM1155334, and the search says so.</p></div>
+      <div class="row"><span class="i">05</span><b>Fitment shown only where it is confirmed.</b><p>Never guessed from a name. Where fitment is not listed, the page says so and our team confirms it.</p></div>
+      <div class="row"><span class="i">06</span><b>Trade accounts and quotes for anything not priced online.</b><p>Paste a parts list, one number per line, and get a quote back on every line.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Trade account and request a quote -->
+<section class="trade" id="trade">
+  <div class="frame">
+    <div class="half">
+      <span class="eyebrow">Trade account</span>
+      <h2 style="margin-top:8px">Open a trade account</h2>
+      <p>Buy on account with a purchase order number on every order and one statement at month end.</p>
+      <a class="btn" href="#">Apply for a trade account</a>
+    </div>
+    <div class="half" id="quote">
+      <span class="eyebrow">Request a quote</span>
+      <h2 style="margin-top:8px">Request a quote</h2>
+      <p>Paste your part numbers. We price every line, including castings and anything not listed.</p>
+      <form class="form" id="quoteForm">
+        <div><label class="lbl" for="qCompany">Company</label><input class="field" id="qCompany" type="text" autocomplete="organization"></div>
+        <div><label class="lbl" for="qEmail">Email</label><input class="field" id="qEmail" type="email" autocomplete="email"></div>
+        <div class="full"><span class="lbl">Machine</span><span class="mchip chip" id="quoteMachine" role="status">No machine selected</span></div>
+        <div class="full"><label class="lbl" for="qParts">Part numbers</label><textarea id="qParts" placeholder="Paste part numbers, one per line"></textarea></div>
+        <div class="full"><button class="btn" type="submit">Send quote request</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- The selector band repeats before the footer -->
+<section class="band" style="margin-top:48px" aria-labelledby="selTitle2">
+  <div class="frame">
+    <div class="lead">
+      <span class="eyebrow" id="selTitle2">Find parts to fit your machine</span>
+      <span class="steps" aria-hidden="true"><b data-step="1">1</b> · <span data-step="2">2</span> · <span data-step="3">3</span></span>
+    </div>
+    <button type="button" class="btn ghost mopen" data-open-sheet>Select your machine</button>
+    <div class="sel">
+      <div class="f">
+        <label class="lbl" for="brand2">Brand</label>
+        <select class="field" id="brand2">
+          <option value="">Select brand</option>
+          <option value="Kleemann">Kleemann · 31</option><option value="Finlay">Finlay · 26</option><option value="Metso">Metso · 25</option><option value="Extec">Extec · 21</option><option value="McCloskey">McCloskey · 19</option><option value="Symons">Symons · 15</option><option value="Flexco">Flexco · 12</option><option value="Powerscreen">Powerscreen · 7</option><option value="Sandvik">Sandvik · 4</option><option value="Terex">Terex · 3</option>
+        </select>
+      </div>
+      <div class="f">
+        <label class="lbl" for="model2">Machine model</label>
+        <select class="field" id="model2" disabled><option value="">Select brand first</option></select>
+      </div>
+      <div class="f">
+        <label class="lbl" for="pcat2">Part category</label>
+        <select class="field" id="pcat2">
+          <option value="">All categories · 5,702</option>
+          <option>Manganese · 1,055</option><option>Screen Media &amp; Accessories · 703</option><option>Rollers · 684</option><option>Conveyors Rubber and Accessories · 505</option><option>Fasteners · 417</option><option>Wear Parts · 416</option><option>Power Transmission Parts · 285</option><option>Hydraulics · 169</option><option>Other · 127</option><option>Filters · 87</option><option>Belt Joiners &amp; Clips · 80</option><option>Gravel and Slurry Pumps · 26</option>
+        </select>
+      </div>
+      <button type="button" class="btn" data-show2>Show parts</button>
+      <button type="button" class="reset" data-reset2>Reset</button>
+    </div>
+  </div>
+</section>
+
+</div><!-- /sheet -->
+
+<!-- Footer: the only dark surface on the page -->
+<footer class="foot">
+  <div class="frame">
+    <span class="wordmark">Parts Hub Express</span>
+    <div class="cols">
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:1300000000">1300 000 000</a></li>
+          <li><a href="mailto:sales@partshubexpress.com">sales@partshubexpress.com</a></li>
+          <li>Australia Crushing &amp; Belting Group</li>
+          <li>Dispatch address to confirm</li>
+          <li>Hours to confirm</li>
+        </ul>
+        <p class="small">All prices in AUD, GST shown ex and inc</p>
+      </div>
+      <div>
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#categories">Manganese</a><span class="cnt">1,055</span></li>
+          <li><a href="#categories">Screen Media &amp; Accessories</a><span class="cnt">703</span></li>
+          <li><a href="#categories">Rollers</a><span class="cnt">684</span></li>
+          <li><a href="#categories">Conveyors Rubber and Accessories</a><span class="cnt">505</span></li>
+          <li><a href="#categories">Fasteners</a><span class="cnt">417</span></li>
+          <li><a href="#categories">Wear Parts</a><span class="cnt">416</span></li>
+          <li><a href="#categories">Power Transmission Parts</a><span class="cnt">285</span></li>
+          <li><a href="#categories">Hydraulics</a><span class="cnt">169</span></li>
+          <li><a href="#categories">Other</a><span class="cnt">127</span></li>
+          <li><a href="#categories">Filters</a><span class="cnt">87</span></li>
+          <li><a href="#categories">Belt Joiners &amp; Clips</a><span class="cnt">80</span></li>
+          <li><a href="#categories">Gravel and Slurry Pumps</a><span class="cnt">26</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Parts to suit</h3>
+        <ul>
+          <li>Kleemann</li><li>Finlay</li><li>Metso</li><li>Extec</li><li>McCloskey</li><li>Symons</li><li>Flexco</li><li>Powerscreen</li><li>Sandvik</li><li>Terex</li>
+        </ul>
+        <p class="small">Independent supplier. OEM names are for fitment reference only. Not an authorised dealer.</p>
+      </div>
+      <div>
+        <h3>Trade</h3>
+        <ul>
+          <li><a href="#trade">Trade account</a></li>
+          <li><a href="#" id="quoteOpen2">Quote list</a></li>
+          <li><a href="#quote">Request a quote</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>&copy; 2026 Australia Crushing &amp; Belting Group</span>
+      <a href="#">Privacy</a>
+      <span class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Bank transfer</span></span>
+    </div>
+    <p class="fn">Prices shown are placeholders until the Odoo sync is live.</p>
+  </div>
+</footer>
+
+<!-- Quote list drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Quote list" aria-hidden="true">
+  <header><h2>Quote list · <span id="drawerCount" class="mono">0</span></h2><button type="button" class="btn ghost sm" id="drawerClose">Close</button></header>
+  <div class="rows" id="drawerRows"><p class="empty">No parts yet. Use Request quote on any part, or paste a list in the quote form.</p></div>
+  <footer><a class="btn" href="#quote" id="drawerSend">Send</a></footer>
+</aside>
+
+<!-- Option switcher -->
+
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s,c){ return (c||document).querySelector(s); };
+  var $$ = function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
+
+  /* Data from the Odoo export */
+  var CATS = [
+    ['Manganese',1055,[['Amsted',238],['Jaws',221],['Concave & Mantle',132],['Cheek Plates',107],['Blow Bars',105],['Wedges',69],['Impact Plates',39],['Impactor',35],['Other',33],['VSI Rotor',13],['VSI Rotor Parts',1]]],
+    ['Screen Media & Accessories',703,[['Wire',534],['Accessories',53],['Piano Harp',50],['Punch Plate',37],['Poly',21],['Grizzly Bar',1]]],
+    ['Rollers',684,[['Troughing',110],['Return',105],['Centre',99],['Wing',80],['Disc Return',72],['Impact',60],['Head & Tail Drum',48],['Frames',22],['Guide',20],['Spiral',16],['Beater',14],['Tracking',9],['Brackets',6],['Other',3]]],
+    ['Conveyors Rubber and Accessories',505,[['Manufactured Drawings',125],['Belt Rubber',113],['Skirting & Sliders',65],['Scrapers and Cleaners',59],['Rubber Sheet or Roll',51],['Socks',26],['Repair',17],['Capping',9],['Splice Kits',6],['Belt PVC',5],['Impact Beds',4],['Lagging Rubber Sheet',2],['Glues',2]]],
+    ['Fasteners',417,[['Bolts',198],['Washers',73],['Nuts',56],['Amsted Fasteners',33],['Pins',28],['Other',7],['Clips',4]]],
+    ['Wear Parts',416,[['Impactor',218],['Side Liners',36],['VSI',10],['Other',2]]],
+    ['Power Transmission Parts',285,[['Bearings',61],['V Belts',58],['Bushes',38],['Housings',29],['Seals',28],['Coupling',20],['Sleeves',13],['Accessories',12],['Pulley',9],['Shafts',7],['Gearbox',3],['Chain',2],['Sprockets',2]]],
+    ['Hydraulics',169,[['Seals',57],['Motors',30],['Valves',18],['Pumps',14],['Accumulator',12],['Rams',9],['Hoses',6],['Gauges',4],['Sensors',4],['Solenoid',2],['Other',1],['Switches',1]]],
+    ['Other',127,[['Electricals',37],['Tools',21],['Dust Suppression',5],['Dampners',5],['Backing Products',5],['Track Parts',4],['Lifters',3]]],
+    ['Filters',87,[['Hydraulic',28],['Air',16],['Fuel',13],['Oil',12]]],
+    ['Belt Joiners & Clips',80,[]],
+    ['Gravel and Slurry Pumps',26,[['Pumps',18],['Parts All',7]]]
+  ];
+  var MODELS = [
+    ['Metso',[['HP300',71],['C160',52],['C130',48],['HP400',31],['GP200',28],['C120',24],['LT1213',23],['HP200',16],['LT106',8]]],
+    ['Extec',[['C12',41]]],
+    ['Finlay',[['J1175',32]]],
+    ['McCloskey',[['I44',4],['J45',1]]],
+    ['Kleemann',[['MR130',4]]],
+    ['Sandvik',[['QJ341',2]]],
+    ['Make to confirm',[['ST 45',74]]]
+  ];
+  var BRANDS = ['Kleemann','Finlay','Metso','Extec','McCloskey','Symons','Flexco','Powerscreen','Sandvik','Terex'];
+  var PARTS = [
+    ['949647154300','C160 Cheek Plate Lower Mn'],['576974','C160 Cheek Plate Upper Mn'],['MM1023214/MOD','C160 Jaw Fixed Quarry Tooth+40 1P'],['MM0297742','C160 Lower Cheek Plt Fatboy'],['MM1155334','C130 Toggle Plate (MM1006270)'],['550-003-056','I44 McCloskey Blow Bar 27%Cr'],['N65558321','HP300 Feed Cone (HP4) XT710 18%Mn'],['7065558093','HP300 Feed Cone (HP4) XT720 22%Mn'],['1038018155','HP300 Counterweight Liner'],['1022145975','HP300 Lower Head Bush'],['1062440045','HP300 Drive Ring Gear'],['7063002250','HP300 Pinion (HP4)'],['7004205204','HP300 Damper (0091-3190)'],['937405','GP200 Seal'],['19.30.1119','Disc Return Roller (Finlay) 1119FL'],['19.25.4035','Finlay Feeder Roller 900FL/102'],['706204115000','LT1213 Trough Roller Set 315/600FL'],['CR1043','Impact Side Roller M/Conv C12'],['19-06-1160','Beater Roller 1160FL x 102Diam'],['H0141569','Ammann Rubber Ring'],['MSCG-0001','MS25 Joiner Kit 600mm Gal'],['MSCG-0003','MS25 Joiner Kit 1200mm Gal'],['MSCG-0004','MS25 Joiner Kit 1500mm Gal'],['MM0264797','C160 Hammer Screw'],['112-0130','C160 Hammer Screw M48/1130mm'],['MM0243126','C130 Hammer Bolt Fasterner'],['940950','C130 Washer (C110/125)'],['MM0527972','C160 Fastening Item LWR'],['MM1122599','C130 Fastening Item'],['501-011-070','ACCUMULATOR 4L 8BAR'],['3604-470','3\' Symons Seal Ring Spring & H'],['0116-0010','0116-0003 Pressure Filter'],['3D115.011','Hyd Return'],['0101-2012','Air Safety (6I2510)'],['585042','Metso Jaw 5000Kg Lifting Link'],['12530121','Apron Feeder Gearbox Mount Bkt'],['704209465000','C130 Cup Spring (C80/C110/125)'],['704209485000','C160 Cup Spring'],['575484','C160 Spring Assy (C140/150)'],['940947','C130 Plate Rubber (C110/125)'],['MM0541138','C130 Plate Rubber (C120)'],['MM0541135','C130 Rubber Plate'],['LWBCOS120CT','COS120-B-CT 120lb Crescent Top'],['SC4000/HARDENER','Hardener For SC4000 Glue Kit'],['Imp/Bar1524/100/50','Impact Bar 1524 x 100 x 50mm Single Chamfer'],['E111Q05A','Gland Packing'],['C2132L','3 x 2 C-AH Discharge Joint'],['6/4D-AHR-R55-E4147R','6/4D AHR Bare Shaft Pump R/Lin']
+  ];
+  var SUPERSEDED = { 'MM1006270':'MM1155334' };
+  var fmt = function(n){ return n.toLocaleString('en-AU'); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  /* GST toggle: prices swap ex and inc */
+  var incMode = false;
+  function money(n){ return '$' + n.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+  function renderPrices(){
+    $$('.price[data-ex]').forEach(function(el){
+      var ex = parseFloat(el.getAttribute('data-ex')), inc = Math.round(ex*110)/100;
+      $('.p',el).textContent = money(incMode ? inc : ex);
+      $('.g',el).textContent = incMode ? 'inc GST' : 'ex GST';
+      $('.inc',el).textContent = incMode ? money(ex)+' ex GST' : money(inc)+' inc GST';
+    });
+    $('#gstEx').setAttribute('aria-pressed', String(!incMode));
+    $('#gstInc').setAttribute('aria-pressed', String(incMode));
+    $('#gstLine').textContent = incMode ? 'GST REGISTERED · PRICES INC GST' : 'GST REGISTERED · PRICES EX GST';
+  }
+  $('#gstEx').addEventListener('click',function(){ incMode=false; renderPrices(); });
+  $('#gstInc').addEventListener('click',function(){ incMode=true; renderPrices(); });
+
+  /* Categories mega menu: left rail, children right */
+  var mega = $('#mega'), rail = $('#megaRail'), kids = $('#megaKids'), catBtn = $('#catOpen');
+  CATS.forEach(function(c,i){
+    var b = document.createElement('button'); b.type='button'; b.setAttribute('role','tab'); b.setAttribute('aria-selected', i===0?'true':'false');
+    b.innerHTML = '<span>'+esc(c[0])+'</span><span class="cnt">'+fmt(c[1])+'</span>';
+    b.addEventListener('mouseenter',function(){ showKids(i); });
+    b.addEventListener('click',function(){ showKids(i); });
+    b.addEventListener('focus',function(){ showKids(i); });
+    rail.appendChild(b);
+  });
+  function showKids(i){
+    $$('button',rail).forEach(function(b,j){ b.setAttribute('aria-selected', i===j?'true':'false'); });
+    var c = CATS[i];
+    var html = '<h3>'+esc(c[0])+' <span class="mono" style="font-size:13px;color:var(--muted);font-weight:400">'+fmt(c[1])+' parts</span></h3>';
+    if(c[2].length){ html += '<ul>'+c[2].map(function(k){ return '<li><a href="#categories"><span>'+esc(k[0])+'</span><span class="cnt">'+fmt(k[1])+'</span></a></li>'; }).join('')+'</ul>'; }
+    else { html += '<p style="font-size:14px;color:var(--muted)">No sub-groups. All '+fmt(c[1])+' parts sit under the group.</p>'; }
+    html += '<p style="margin-top:16px;font-size:14px"><a href="#categories">All '+esc(c[0])+' &rarr;</a></p>';
+    kids.innerHTML = html;
+  }
+  showKids(0);
+  function setMega(open){ mega.classList.toggle('open',open); catBtn.setAttribute('aria-expanded',String(open)); }
+  catBtn.addEventListener('click',function(){ setMega(!mega.classList.contains('open')); });
+  document.addEventListener('click',function(e){ if(!mega.contains(e.target) && e.target!==catBtn && !catBtn.contains(e.target)) setMega(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ setMega(false); closeAc(); closeModel(); closeDrawer(); closeSheet(); } });
+
+  /* Autocomplete: three labelled groups, counts right-aligned, supersession rows */
+  var q = $('#q'), ac = $('#ac'), acTimer;
+  function closeAc(){ ac.classList.remove('in'); ac.classList.remove('open'); q.setAttribute('aria-expanded','false'); }
+  function openAc(){ if(!ac.classList.contains('open')){ ac.classList.add('open'); requestAnimationFrame(function(){ ac.classList.add('in'); }); } q.setAttribute('aria-expanded','true'); }
+  function suggest(){
+    var v = q.value.trim(); if(v.length<2){ closeAc(); return; }
+    var lv = v.toLowerCase(), html='';
+    var parts = PARTS.filter(function(p){ return p[0].toLowerCase().indexOf(lv)>-1 || p[1].toLowerCase().indexOf(lv)>-1; }).slice(0,6);
+    var sup = Object.keys(SUPERSEDED).filter(function(k){ return k.toLowerCase().indexOf(lv)>-1; });
+    var machines = []; MODELS.forEach(function(g){ g[1].forEach(function(m){ if(m[0].toLowerCase().replace(/\s/g,'').indexOf(lv.replace(/\s/g,''))>-1) machines.push(m); }); });
+    var cats = []; CATS.forEach(function(c){ if(c[0].toLowerCase().indexOf(lv)>-1) cats.push([c[0],c[1]]); c[2].forEach(function(k){ if(k[0].toLowerCase().indexOf(lv)>-1) cats.push([c[0]+' / '+k[0],k[1]]); }); });
+    if(parts.length||sup.length){ html += '<h4>Part numbers</h4>'; sup.forEach(function(k){ html += '<a href="#featured" role="option"><span class="mono">'+esc(k)+' is now '+esc(SUPERSEDED[k])+'</span><span class="cnt">superseded</span></a>'; }); parts.forEach(function(p){ html += '<a href="#featured" role="option"><span><span class="mono">'+esc(p[0])+'</span> &nbsp;'+esc(p[1])+'</span></a>'; }); }
+    if(machines.length){ html += '<h4>Machines</h4>'; machines.slice(0,5).forEach(function(m){ html += '<a href="#featured" role="option" data-m="'+esc(m[0])+'"><span class="mono">'+esc(m[0])+'</span><span class="cnt">'+fmt(m[1])+'</span></a>'; }); }
+    if(cats.length){ html += '<h4>Categories</h4>'; cats.slice(0,5).forEach(function(c){ html += '<a href="#categories" role="option"><span>'+esc(c[0])+'</span><span class="cnt">'+fmt(c[1])+'</span></a>'; }); }
+    if(!html){ html = '<p class="empty">No match for "'+esc(v)+'". Paste it into the quote form and our team will find it.</p>'; }
+    ac.innerHTML = html; openAc();
+  }
+  q.addEventListener('input',function(){ clearTimeout(acTimer); acTimer = setTimeout(suggest,110); });
+  q.addEventListener('focus',function(){ if(q.value.trim().length>=2) suggest(); });
+  ac.addEventListener('click',function(e){ var a = e.target.closest('a'); if(a && a.getAttribute('data-m')){ setModel(a.getAttribute('data-m')); } closeAc(); });
+  document.addEventListener('click',function(e){ if(!$('#searchForm').contains(e.target)) closeAc(); });
+  $('#searchForm').addEventListener('submit',function(e){ e.preventDefault(); closeAc(); });
+
+  /* Machine selector: Brand enables Model; Model is grouped by make with a type-ahead */
+  var brandSel = $('#brand'), modelBtn = $('#modelBtn'), modelVal = $('#modelVal'), modelPop = $('#modelPop'), modelQ = $('#modelQ'), modelList = $('#modelList');
+  var state = { brand:'', model:'' };
+  function brandOf(model){ for(var i=0;i<MODELS.length;i++){ for(var j=0;j<MODELS[i][1].length;j++){ if(MODELS[i][1][j][0]===model) return MODELS[i][0]; } } return ''; }
+  function setSteps(){
+    var step = state.model ? 3 : (state.brand ? 2 : 1);
+    $$('.steps').forEach(function(s){ $$('[data-step]',s).forEach(function(el){ var n = +el.getAttribute('data-step'); var b = document.createElement(n===step?'b':'span'); b.setAttribute('data-step',n); b.textContent = n; el.replaceWith(b); }); });
+  }
+  function renderModelList(filter){
+    var f = (filter||'').toLowerCase().replace(/\s/g,''), html='', any=false;
+    var groups = MODELS.slice().sort(function(a,b){ return (a[0]===state.brand?-1:0) - (b[0]===state.brand?-1:0); });
+    if(state.brand && !brandOf('') && groups[0][0]!==state.brand){ html += '<div class="g">'+esc(state.brand)+'</div><p class="none">No model codes recorded for '+esc(state.brand)+' yet. Search by part number, or pick a model below.</p>'; }
+    groups.forEach(function(g){
+      var rows = g[1].filter(function(m){ return !f || m[0].toLowerCase().replace(/\s/g,'').indexOf(f)>-1; });
+      if(!rows.length) return; any=true;
+      html += '<div class="g">'+esc(g[0])+'</div>' + rows.map(function(m){ return '<button type="button" class="o" role="option" data-m="'+esc(m[0])+'"><span>'+esc(m[0])+'</span><span class="cnt">· '+fmt(m[1])+'</span></button>'; }).join('');
+    });
+    if(!any) html += '<p class="none">No model matches "'+esc(filter)+'".</p>';
+    modelList.innerHTML = html;
+  }
+  function openModel(){ if(modelBtn.getAttribute('aria-disabled')==='true') return; modelPop.classList.add('open'); requestAnimationFrame(function(){ modelPop.classList.add('in'); }); modelBtn.setAttribute('aria-expanded','true'); renderModelList(''); modelQ.value=''; modelQ.focus(); }
+  function closeModel(){ modelPop.classList.remove('in'); modelPop.classList.remove('open'); modelBtn.setAttribute('aria-expanded','false'); }
+  modelBtn.addEventListener('click',function(){ modelPop.classList.contains('open') ? closeModel() : openModel(); });
+  modelQ.addEventListener('input',function(){ renderModelList(modelQ.value); });
+  modelList.addEventListener('click',function(e){ var b = e.target.closest('button[data-m]'); if(b){ setModel(b.getAttribute('data-m')); closeModel(); modelBtn.focus(); } });
+  document.addEventListener('click',function(e){ if(!$('.combo').contains(e.target)) closeModel(); });
+
+  function modelOptions(){ return '<option value="">Select model</option>' + MODELS.map(function(g){ return '<optgroup label="'+esc(g[0])+'">'+g[1].map(function(m){ return '<option value="'+esc(m[0])+'">'+esc(m[0])+' · '+fmt(m[1])+'</option>'; }).join('')+'</optgroup>'; }).join(''); }
+  function setBrand(b){
+    state.brand = b; brandSel.value = b; $('#brand2').value = b;
+    var on = !!b;
+    modelBtn.setAttribute('aria-disabled', on?'false':'true');
+    if(!on){ state.model=''; modelVal.textContent='Select brand first'; }
+    else if(!state.model || (brandOf(state.model)!==b && brandOf(state.model)!=='Make to confirm')){ state.model=''; modelVal.textContent='Select model'; }
+    /* mirror into the footer band's native select */
+    var m2 = $('#model2'); m2.disabled = !on; m2.innerHTML = on ? modelOptions() : '<option value="">Select brand first</option>';
+    if(state.model) m2.value = state.model;
+    applyMachine();
+  }
+  function setModel(m){
+    var b = brandOf(m); if(b==='Make to confirm') b='';
+    if(b) state.brand = b;
+    setBrand(state.brand);
+    state.model = m;
+    modelBtn.setAttribute('aria-disabled','false'); modelVal.innerHTML = '<span class="mono">'+esc(m)+'</span>';
+    var m2 = $('#model2'); if(m2.disabled){ m2.disabled=false; m2.innerHTML = modelOptions(); } m2.value = m;
+    applyMachine();
+  }
+  function applyMachine(){
+    var chip = $('#machineChip'), qm = $('#quoteMachine');
+    if(state.model){
+      var label = (state.brand ? state.brand.toUpperCase()+' ' : '') + state.model;
+      chip.hidden = false; chip.innerHTML = '<button type="button" class="chip" aria-label="Remove machine '+esc(label)+'">'+esc(label)+' <span aria-hidden="true">&times;</span></button>';
+      $('button',chip).addEventListener('click',function(){ resetSel(); });
+      qm.textContent = label; qm.classList.add('mono');
+    } else { chip.hidden = true; chip.innerHTML=''; qm.textContent='No machine selected'; }
+    $$('.prod').forEach(function(p){ var mc = $('.mc',p); var tok = p.getAttribute('data-machine'); if(!mc) return; if(tok && state.model && tok===state.model){ mc.textContent = 'Fits '+tok; mc.classList.add('fit'); } else { mc.textContent = tok; mc.classList.remove('fit'); } });
+    setSteps();
+  }
+  function resetSel(){ state.brand=''; state.model=''; brandSel.value=''; $('#pcat').value=''; $('#brand2').value=''; $('#pcat2').value=''; setBrand(''); }
+  brandSel.addEventListener('change',function(){ setBrand(brandSel.value); if(brandSel.value) openModel(); });
+  $('#brand2').addEventListener('change',function(){ setBrand($('#brand2').value); });
+  $('#model2').addEventListener('change',function(){ if($('#model2').value) setModel($('#model2').value); });
+  $('#resetSel').addEventListener('click',resetSel);
+  $('[data-reset2]').addEventListener('click',resetSel);
+  $('#showParts').addEventListener('click',function(){ closeSheet(); location.hash = '#featured'; });
+  $('[data-show2]').addEventListener('click',function(){ location.hash = '#featured'; });
+  $$('#modelChips .chip').forEach(function(c){ c.addEventListener('click',function(){ setModel(c.getAttribute('data-model')); $('#top').scrollIntoView({behavior:'smooth',block:'start'}); }); });
+  $$('.makes a').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); setBrand(a.getAttribute('data-brand')); $('#top').scrollIntoView({behavior:'smooth',block:'start'}); }); });
+
+  /* Mobile: the band becomes a button that opens a full-height sheet holding the same three steps */
+  function openSheet(){ document.body.classList.add('sheet-open'); $('#brand').focus(); }
+  function closeSheet(){ document.body.classList.remove('sheet-open'); }
+  $('#sheetOpen').addEventListener('click',openSheet);
+  $('[data-open-sheet]').addEventListener('click',function(){ $('#top').scrollIntoView(); openSheet(); });
+  $('#sheetClose').addEventListener('click',closeSheet);
+
+  /* Qty steppers */
+  $$('.qty').forEach(function(w){ var out = $('output',w), bs = $$('button',w); bs[0].addEventListener('click',function(){ out.textContent = Math.max(1, +out.textContent-1); }); bs[1].addEventListener('click',function(){ out.textContent = +out.textContent+1; }); });
+
+  /* Quote list drawer */
+  var drawer = $('#drawer'), rows = $('#drawerRows'), scrim = $('#scrim'), quote = [];
+  function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); scrim.classList.add('open'); $('#drawerClose').focus(); }
+  function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); scrim.classList.remove('open'); }
+  function renderQuote(){
+    $('#quoteCount').textContent = quote.length; $('#drawerCount').textContent = quote.length;
+    if(!quote.length){ rows.innerHTML = '<p class="empty">No parts yet. Use Request quote on any part, or paste a list in the quote form.</p>'; return; }
+    rows.innerHTML = quote.map(function(r,i){ return '<div class="rw"><span><span>'+esc(r.ref)+'</span><span class="nm">'+esc(r.name)+'</span></span><div class="qty" role="group" aria-label="Quantity"><button type="button" aria-label="Decrease" data-i="'+i+'" data-d="-1">&minus;</button><output>'+r.qty+'</output><button type="button" aria-label="Increase" data-i="'+i+'" data-d="1">+</button></div><button type="button" class="x" aria-label="Remove '+esc(r.ref)+'" data-x="'+i+'"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'; }).join('');
+    $('#qParts').value = quote.map(function(r){ return r.ref + (r.qty>1 ? ' x'+r.qty : ''); }).join('\n');
+  }
+  rows.addEventListener('click',function(e){ var b = e.target.closest('button'); if(!b) return; if(b.hasAttribute('data-x')){ quote.splice(+b.getAttribute('data-x'),1); } else if(b.hasAttribute('data-i')){ var r = quote[+b.getAttribute('data-i')]; r.qty = Math.max(1, r.qty + (+b.getAttribute('data-d'))); } renderQuote(); });
+  $$('.rq').forEach(function(b){ b.addEventListener('click',function(){ var ref = b.getAttribute('data-ref'); var ex = quote.filter(function(r){ return r.ref===ref; })[0]; if(ex) ex.qty++; else quote.push({ref:ref,name:b.getAttribute('data-name'),qty:1}); renderQuote(); openDrawer(); }); });
+  $('#quoteOpen').addEventListener('click',openDrawer);
+  $('#quoteOpen2').addEventListener('click',function(e){ e.preventDefault(); openDrawer(); });
+  $('#drawerClose').addEventListener('click',closeDrawer);
+  $('#drawerSend').addEventListener('click',closeDrawer);
+  scrim.addEventListener('click',closeDrawer);
+  $('#quoteForm').addEventListener('submit',function(e){ e.preventDefault(); });
+
+  /* Hero: hovering a callout underlines its key row, hovering a key row fills its callout square */
+  var key = $('#key');
+  $$('.sch a[data-k]').forEach(function(a){ var k = a.getAttribute('data-k'); a.addEventListener('mouseenter',function(){ key.classList.add('h'+k); }); a.addEventListener('mouseleave',function(){ key.classList.remove('h'+k); }); });
+  $$('#key a[data-k]').forEach(function(a){ var k = a.getAttribute('data-k'); var sq = $('.sch a[data-k="'+k+'"] .sq'), n = $('.sch a[data-k="'+k+'"] .n'); a.addEventListener('mouseenter',function(){ sq.style.fill='var(--ink)'; n.style.fill='var(--on-ink)'; }); a.addEventListener('mouseleave',function(){ sq.style.fill=''; n.style.fill=''; }); });
+
+  renderPrices(); setSteps();
+})();
+</script>
+</body>
+</html>

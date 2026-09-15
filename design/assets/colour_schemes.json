@@ -1,0 +1,253 @@
+{
+ "schemes": [
+  {
+   "key": "blueprint-sheet",
+   "name": "Blueprint Sheet",
+   "one_line": "The site reads like a crisp printed engineering drawing: Stripe's navy ink on cool white drafting paper, with orange marking the exact part you need.",
+   "recommended": true,
+   "tokens": {
+    "canvas": "#f6f8fa",
+    "surface": "#ffffff",
+    "ground": "#edf0f3",
+    "gridline": "#dde2e7",
+    "ink": "#061b31",
+    "inkHover": "#0d2a47",
+    "onInk": "#ffffff",
+    "muted": "#2f4357",
+    "hair": "#d0d7de",
+    "accent": "#f0501f",
+    "accentText": "#c63a00",
+    "ok": "#17703f",
+    "low": "#8a5a00",
+    "footBg": "#061b31",
+    "footText": "#f6f8fa",
+    "footMuted": "#b6c3d1",
+    "footRule": "#233b57"
+   },
+   "changes_from_pitch": "Merged with Sunlit Sheet, as all three judges asked. Kept the exact #061b31 ink, the #0d2a47 hover and the footer as the same sheet in negative. Took roughly a third of the chroma out of the light ladder so the paper reads cool, not Powder Blue: ground #edf1f5 to #edf0f3, gridline #dce3ea to #dde2e7, canvas #f7f9fb to #f6f8fa. Canvas stays 1.07:1 off surface, so the sheet-on-sheet layering survives. Hair went from #d2dae3 to #d0d7de (1.36 canvas, 1.45 surface), a touch firmer for sun. Muted moved from slate-blue #35506c toward ink, to #2f4357 (9.6:1 canvas, 8.9:1 ground). accentText went from rust #bf3e0e to Sunlit's saturated orange #c63a00 (4.9 canvas, 5.2 surface, 4.6 ground), so the hero phrase and the callout dots read as one orange. footMuted took Sunlit's #b6c3d1 (9.7:1). Low stock moved off the orange family to ochre #8a5a00 (hue 39, 5.2:1 or better on every ground), so a low-stock label can't be mistaken for the Fits stamp. No contrast failures: accent 3.13 or better on every ground, and every text token 4.58 or better on every light ground.",
+   "contrast": {
+    "failures": [],
+    "passes": 19,
+    "info": [
+     "hair vs canvas = 1.36 (target 1.25 to 1.7)",
+     "hair vs surface = 1.45 (target 1.25 to 1.75)",
+     "gridline vs ground = 1.14 (target 1.05 to 1.25)",
+     "footRule vs footBg = 1.52 (target 1.2 to 2.5)",
+     "ground vs surface = 1.14 (target 1.03 to 1.2)"
+    ]
+   }
+  },
+  {
+   "key": "graphite",
+   "name": "Graphite",
+   "one_line": "The site looks like machined steel on a concrete floor, still in the navy ink you liked, with orange working like hi-vis safety paint.",
+   "recommended": false,
+   "tokens": {
+    "canvas": "#f2f3f4",
+    "surface": "#ffffff",
+    "ground": "#eaecee",
+    "gridline": "#d9dde0",
+    "ink": "#061b31",
+    "inkHover": "#1a2e44",
+    "onInk": "#f2f3f4",
+    "muted": "#3a4d60",
+    "hair": "#cdd2d6",
+    "accent": "#ec4a10",
+    "accentText": "#bd3d0b",
+    "ok": "#1b6f3d",
+    "low": "#855a00",
+    "footBg": "#061b31",
+    "footText": "#eef1f3",
+    "footMuted": "#aab4be",
+    "footRule": "#26384c"
+   },
+   "changes_from_pitch": "Re-anchored ink and footBg on #061b31 (was graphite #0e1215 and #111417), because every judge flagged dropping the navy as a first-review failure. Bent the steel ladder to the ink's hue, 206 to 210, keeping chroma low (about 8 to 11 percent) so it still reads as steel and concrete rather than blue paper. That's what keeps it clearly different from Blueprint Sheet: a greyer, darker canvas #f2f3f4 (1.11:1 off white against Blueprint's 1.07), a firmer lattice hair #cdd2d6 and a steel ground. Muted went from grey #4d555c to softened navy #3a4d60 (7.8:1 canvas, 7.4:1 ground), as two judges prescribed. inkHover follows the navy, #1a2e44. The footer now shares ink, so ink buttons need spacing or the footRule seam #26384c where they sit against the footer edge. Kept the hi-vis accent #ec4a10 (3.19 on ground) and accentText #bd3d0b (4.62 on ground). Low moved from olive-leaning #8a5600 to a cleaner amber-ochre #855a00 (5.1:1 or better). Ground is 1.18 against surface, inside range. No contrast failures.",
+   "contrast": {
+    "failures": [],
+    "passes": 19,
+    "info": [
+     "hair vs canvas = 1.37 (target 1.25 to 1.7)",
+     "hair vs surface = 1.52 (target 1.25 to 1.75)",
+     "gridline vs ground = 1.15 (target 1.05 to 1.25)",
+     "footRule vs footBg = 1.45 (target 1.2 to 2.5)",
+     "ground vs surface = 1.18 (target 1.03 to 1.2)"
+    ]
+   }
+  },
+  {
+   "key": "quarry",
+   "name": "Quarry",
+   "one_line": "The site sits on pale stone-dust paper in the navy ink you liked, with one hot spark of orange for the marks that matter.",
+   "recommended": false,
+   "tokens": {
+    "canvas": "#f5f5f3",
+    "surface": "#ffffff",
+    "ground": "#ebebe8",
+    "gridline": "#dcdbd7",
+    "ink": "#061b31",
+    "inkHover": "#12304f",
+    "onInk": "#ffffff",
+    "muted": "#34475a",
+    "hair": "#d0cfca",
+    "accent": "#f43e01",
+    "accentText": "#c23500",
+    "ok": "#17693a",
+    "low": "#805800",
+    "footBg": "#061b31",
+    "footText": "#f5f5f3",
+    "footMuted": "#b3bcc6",
+    "footRule": "#243a52"
+   },
+   "changes_from_pitch": "Rebuilt from Ember so there's a real third choice on the warm side. Cooled the neutrals to near-neutral stone, as the judges asked (canvas #f6f5f2 to #f5f5f3, ground #ebe9e4 to #ebebe8, gridline #dcdbd7, hair #d0cfca). That's only about 7 to 9 percent saturation, well clear of cream. Basalt ink was replaced with Jared's #061b31, and the footer followed. Cool navy on a faintly warm stone is a complementary pairing, not a temperature clash, and it keeps the brief's navy. Muted went from brown-grey #5c564e to softened navy #34475a (8.8:1 canvas, 8.0:1 ground), which removes the weakest reading in the set. Fixed ground vs surface: it was 1.21, out of range, and is now 1.19. Kept the hot #f43e01 leader colour, its most distinct trait (3.18 on ground). Lifted accentText from #bd3000 to #c23500 at full saturation (5.1 canvas, 5.5 surface, 4.6 ground), so on stone it reads as orange paint, not terracotta. ok deepened to #17693a (5.6:1 on ground) and low moved from brown #94530a to ochre #805800 (hue 41, 5.3:1 on ground), as both judges asked. No contrast failures.",
+   "contrast": {
+    "failures": [],
+    "passes": 19,
+    "info": [
+     "hair vs canvas = 1.43 (target 1.25 to 1.7)",
+     "hair vs surface = 1.56 (target 1.25 to 1.75)",
+     "gridline vs ground = 1.16 (target 1.05 to 1.25)",
+     "footRule vs footBg = 1.49 (target 1.2 to 2.5)",
+     "ground vs surface = 1.19 (target 1.03 to 1.2)"
+    ]
+   }
+  }
+ ],
+ "recommendation_reason": "Blueprint Sheet was the top scheme with every judge (112 total) and now takes in Sunlit Sheet's best parts. It is the only one of the three that meets every locked item without trade-offs: the exact #061b31 ink and footer, muted text that reads as softened navy rather than grey (9.6:1), a saturated text orange that matches the drawing callouts, and ochre low stock that can't be confused with the Fits stamp. It also has the most contrast headroom for buyers reading a phone in full sun on a quarry site. With the paper's blue pulled back, it reads as a drafting sheet rather than a fintech dashboard, and it stays the closest match to the locked B Title Block drawing set. Graphite is the pick if Jared wants something heavier and more industrial. Quarry is the pick if he wants warmth without cream.",
+ "judgeTotals": {
+  "Blueprint Sheet": 112,
+  "Graphite": 107,
+  "Sunlit Sheet": 107,
+  "Ember": 99
+ },
+ "original": {
+  "tokens": {
+   "canvas": "#fafafa",
+   "surface": "#ffffff",
+   "ground": "#f1f3f2",
+   "gridline": "#e6e8e7",
+   "ink": "#000000",
+   "inkHover": "#222222",
+   "onInk": "#ffffff",
+   "muted": "#6c6c6c",
+   "hair": "#d9dcdb",
+   "accent": "#ff5b29",
+   "accentText": "#ff5b29",
+   "ok": "#1f7a3f",
+   "low": "#b45309",
+   "footBg": "#000000",
+   "footText": "#ffffff",
+   "footMuted": "#b3b3b3",
+   "footRule": "#333333"
+  },
+  "contrast": {
+   "failures": [
+    "accentText on canvas = 2.97 (min 4.5)",
+    "accentText on surface = 3.1 (min 4.5)",
+    "accent on canvas = 2.97 (min 3)",
+    "accent on ground = 2.78 (min 3)"
+   ],
+   "passes": 15,
+   "info": [
+    "hair vs canvas = 1.32 (target 1.25 to 1.7)",
+    "hair vs surface = 1.38 (target 1.25 to 1.75)",
+    "gridline vs ground = 1.1 (target 1.05 to 1.25)",
+    "footRule vs footBg = 1.66 (target 1.2 to 2.5)",
+    "ground vs surface = 1.11 (target 1.03 to 1.2)"
+   ]
+  }
+ },
+ "pitches": [
+  {
+   "name": "Blueprint Sheet",
+   "thesis": "ACBG sells precision to people who live with it: every part matches a drawing, and this scheme makes the whole storefront read as that drawing, printed in Stripe's navy ink on cool drafting paper. Orange is the surveyor's paint on the sheet, marks that say \"this is the one\", never decoration.",
+   "references": [
+    {
+     "title": "Stripe (Refero style ff64110d-58dd-4e18-a500-0a95073943b1)",
+     "url": "https://stripe.com",
+     "borrowed": "Midnight Ink #061b31 as the single text and structure colour; the Porcelain #f8fafd and Powder Blue #e5edf5 surface ladder, pulled back from Stripe's violet lean to the ink's own 211 degree hue so the canvas and plates read as tinted paper rather than blue; the idea of a lighter navy hover (#0a2540) instead of a grey one. Rejected: Deep Violet #533afd, Slate Blue #50617a and Ghost Gray #64748d grey text, all gradients, soft shadows."
+    },
+    {
+     "title": "Timescale (Refero style 520e6739-69c0-4c16-a3ce-1c891c8c77c6)",
+     "url": "https://www.timescale.com",
+     "borrowed": "Industrial blueprint structure: flat colour only, ink doing all structural work (1px control borders, filled buttons, hard 4px offset shadow, ink footer), and Action Orange #ff5b29 reserved for emphasis and marks, separated from action. Orange graphics kept at the same hue, nudged darker to #f0501f so it clears 3:1 on the cooler plates. Rejected: Highlight Yellow second accent, Shadow Gray #6c6c6c muted text."
+    },
+    {
+     "title": "Parts Hub Express design/DESIGN_CHARACTERISTICS.md sections 5, 10, 10.1",
+     "borrowed": "The four orange roles (hero phrase, drawing leaders and dots, search caret and focus underline, Fits stamp), no grey text, ink footer, stock dots in green and amber, drafting grid confined to the hero panel."
+    }
+   ],
+   "failures": []
+  },
+  {
+   "name": "Graphite",
+   "thesis": "ACBG sells machined steel that has to fit first time, so the page should look like the part: graphite ink, brushed steel plates, concrete-pale ground, and nothing decorative. Orange stops being a brand flourish and becomes what it is on a quarry site, a hi-vis safety marking that shows you exactly where to look.",
+   "references": [
+    {
+     "title": "teenage engineering (Refero 2055406e-755a-4276-af43-09d6b06a78f3)",
+     "url": "https://teenage.engineering",
+     "borrowed": "Canvas #f6f8f7 as a barely tinted industrial off-white rather than flat grey, black ink doing all structural work, Steel #e5e5e5 and Smoke #b2b2b2 as the border family, a Graphite #0f0e12 footer, and the rule that one saturated colour behaves like an indicator light. Its violet-leaning graphite was rejected and pushed to a cool steel bias (hue about 206) to honour the no-violet rule."
+    },
+    {
+     "title": "Factory.ai (Refero f1ed1d46-4e76-41fe-a9f8-3017e55dc6ee)",
+     "url": "https://factory.ai",
+     "borrowed": "Factory Black #020202 near-black ink, Factory Light Gray #eeeeee as the recessed ground and #fafafa as the lifted card, Graphite #3d3a39 for secondary text (softened ink, not a mid-grey), and Code Orange #ef6f2e reserved strictly for small high-attention marks. Its warm grey bias was replaced with a cool one so the neutrals read as steel and concrete, not stone."
+    },
+    {
+     "title": "Timescale (Refero 520e6739-69c0-4c16-a3ce-1c891c8c77c6)",
+     "url": "https://www.timescale.com",
+     "borrowed": "The locked B grammar the tokens must serve: 1px ink controls, colour for emphasis kept separate from colour for action, one hard ink offset shadow on search focus. Action Orange #ff5b29 is the starting point the safety orange was tuned from."
+    },
+    {
+     "title": "Stripe (Refero ff64110d-58dd-4e18-a500-0a95073943b1)",
+     "url": "https://stripe.com",
+     "borrowed": "The quality of Midnight Ink #061b31 that Jared loves: a near-black that carries a hue. Graphite takes the same idea with far less chroma so it reads machined rather than navy."
+    }
+   ],
+   "failures": []
+  },
+  {
+   "name": "Ember",
+   "thesis": "ACBG sells the parts that break rock, so the page is quarry dust and basalt: stone neutrals with a faint warm bias, a basalt-black ink, and one hot orange that reads like a spark off a worn jaw plate. The drawing set stays technical and exact, but the sheet feels like it came out of the plant office rather than a software company.",
+   "references": [
+    {
+     "title": "Groq (Refero style 067ee14b-19fe-4a02-989e-f559fdcfc7c8)",
+     "url": "https://groq.com",
+     "borrowed": "Primary. The palette structure: near-achromatic warm greys (Warm Mist #f3f3ee, Ash Concrete #e8e8de, Steel Gray #c2c2be, Soft Stone #69695d) doing all partitioning with no shadows, Deep Pewter #2a2a25 as the dark element, Neon Zest #f43e01 as the sole saturated colour and Deep Ember #c23101 as its darker shade. Accent taken verbatim; neutrals pulled toward grey (Groq's are yellow-green and would drift to cream here) and Deep Ember darkened to #bd3000 so it clears 4.5:1 on the ground plate."
+    },
+    {
+     "title": "Timescale (Refero style 520e6739-69c0-4c16-a3ce-1c891c8c77c6)",
+     "url": "https://www.timescale.com",
+     "borrowed": "Role discipline from the locked B direction: ink does every structural and action job (1px controls, filled buttons), orange is emphasis and marks only, never buttons, borders, links or states."
+    },
+    {
+     "title": "Stripe (Refero style ff64110d-58dd-4e18-a500-0a95073943b1)",
+     "url": "https://stripe.com",
+     "borrowed": "The idea of a tinted near-black instead of pure #000, and of secondary text as a softened ink rather than a separate grey. Stripe's navy #061b31 was tested against the stone neutrals and replaced with a warm basalt, because a blue-black ink on warm stone splits the temperature of the page."
+    }
+   ],
+   "failures": []
+  },
+  {
+   "name": "Sunlit Sheet",
+   "thesis": "ACBG sells to people standing in a quarry with a phone in full sun, so the page behaves like a freshly printed engineering drawing: white paper, near-black ink, and one orange marker that nobody can miss. The premium comes from discipline: every neutral is cut from the same ink hue, every text colour clears 4.5:1 on every ground with room to spare, and orange is split into a bright graphic mark and a deeper text orange so neither one is compromised.",
+   "references": [
+    {
+     "title": "Timescale (Refero 520e6739-69c0-4c16-a3ce-1c891c8c77c6)",
+     "url": "https://www.timescale.com",
+     "borrowed": "The industrial blueprint role map. A near-white canvas with ink doing all the structural work (1px controls, filled buttons, footer background), Action Orange #ff5b29 kept for emphasis and marks, never for action, no gradients and no blur. The accent is pushed a few degrees redder and slightly deeper (#f24e18) so it still clears 3:1 on the tinted drawing ground, which Timescale's pure orange does not."
+    },
+    {
+     "title": "Stripe (Refero ff64110d-58dd-4e18-a500-0a95073943b1)",
+     "url": "https://stripe.com",
+     "borrowed": "Midnight Ink #061b31 as the source hue, taken one step darker to #03152b (same 213 degree hue) so blacks hold up when glare lifts them. The ink hover #0a2540 is Stripe's own deep navy. The Porcelain and Powder Blue surface ladder (#f8fafd, #e5edf5) shows how to tint neutrals off the ink hue, here pulled back to much lower chroma (#fbfcfd, #eff2f6) so it reads as paper, not blue. Violet and every grey text token were rejected."
+    },
+    {
+     "title": "Groq (Refero 067ee14b-19fe-4a02-989e-f559fdcfc7c8)",
+     "url": "https://groq.com",
+     "borrowed": "The two-orange split, a bright Neon Zest for marks and a Deep Ember for text. accentText #c63800 follows that idea but stays at a clean 17 degree orange with full saturation, so it never turns into terracotta or brown."
+    }
+   ],
+   "failures": []
+  }
+ ]
+}

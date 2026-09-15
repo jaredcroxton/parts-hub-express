@@ -1,0 +1,146 @@
+[
+ {
+  "model": "HP300",
+  "slug": "hp300",
+  "brand": "Metso",
+  "type": "cone",
+  "product_count": 63,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "C160",
+  "slug": "c160",
+  "brand": "Metso",
+  "type": "jaw",
+  "product_count": 50,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "C130",
+  "slug": "c130",
+  "brand": "Metso",
+  "type": "jaw",
+  "product_count": 48,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "ST 45",
+  "slug": "st-45",
+  "brand": "Make to confirm",
+  "type": "unknown",
+  "product_count": 46,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "C12",
+  "slug": "c12",
+  "brand": "Extec",
+  "type": "mobile jaw",
+  "product_count": 40,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "J1175",
+  "slug": "j1175",
+  "brand": "Finlay",
+  "type": "mobile jaw",
+  "product_count": 30,
+  "image": "/img/machines/commons-terex-finlay-j-1175-single-toggle-jaw-crusher-at-construct-expo-utilaj.jpg",
+  "image_credit": "Gabinho, CC BY 3.0, via Wikimedia Commons"
+ },
+ {
+  "model": "HP400",
+  "slug": "hp400",
+  "brand": "Metso",
+  "type": "cone",
+  "product_count": 30,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "GP200",
+  "slug": "gp200",
+  "brand": "Metso",
+  "type": "cone",
+  "product_count": 28,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "C120",
+  "slug": "c120",
+  "brand": "Metso",
+  "type": "jaw",
+  "product_count": 22,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "LT1213",
+  "slug": "lt1213",
+  "brand": "Metso",
+  "type": "mobile impact",
+  "product_count": 21,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "HP200",
+  "slug": "hp200",
+  "brand": "Metso",
+  "type": "cone",
+  "product_count": 16,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "LT106",
+  "slug": "lt106",
+  "brand": "Metso",
+  "type": "mobile jaw",
+  "product_count": 8,
+  "image": "/img/machines/commons-lokotrack-lt106-newyork.jpg",
+  "image_credit": "MetsoFrance, CC BY-SA 3.0, via Wikimedia Commons"
+ },
+ {
+  "model": "I44",
+  "slug": "i44",
+  "brand": "McCloskey",
+  "type": "mobile impact",
+  "product_count": 4,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "MR130",
+  "slug": "mr130",
+  "brand": "Kleemann",
+  "type": "mobile impact",
+  "product_count": 4,
+  "image": "/img/machines/commons-kleemann-mr-130-z-evo-mobile-impact-crusher.jpg",
+  "image_credit": "Knud Winckelmann, CC BY-SA 3.0, via Wikimedia Commons"
+ },
+ {
+  "model": "QJ341",
+  "slug": "qj341",
+  "brand": "Sandvik",
+  "type": "mobile jaw",
+  "product_count": 2,
+  "image": null,
+  "image_credit": null
+ },
+ {
+  "model": "J45",
+  "slug": "j45",
+  "brand": "McCloskey",
+  "type": "mobile jaw",
+  "product_count": 1,
+  "image": null,
+  "image_credit": null
+ }
+]

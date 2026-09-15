@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-labelledby="jawTitle">
+  <title id="jawTitle">Single toggle jaw crusher, side section, with callouts to jaws, cheek plates and wedges</title>
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatchline" x1="0" y1="0" x2="0" y2="6"/></pattern>
+  </defs>
+
+  <!-- ground, broken under the discharge pit -->
+  <path class="heavy" d="M60,284 H130 M200,284 H366"/>
+
+  <!-- front frame: outer wall, top rail, inner plate face, backing top, ledge and leg -->
+  <polyline class="thin" points="72,284 72,76 96,76"/>
+  <line class="thin" x1="84" y1="76" x2="84" y2="264"/>
+  <line class="thin" x1="84" y1="94" x2="106" y2="94"/>
+  <polyline class="thin" points="84,264 130,264 130,284"/>
+
+  <!-- rear frame: closed box with a top flange, clear of the pitman, toggle seat pocket on the inner wall -->
+  <polyline class="thin" points="324,284 324,118 288,118 288,130 312,130 312,246 300,246 300,266 312,266 312,284"/>
+
+  <!-- pitman: front edge to the swing die, bottom, rear edge, head around the eccentric -->
+  <path class="thin" d="M241,75 L222,94 M178,252 L184,266 L228,266 L280,73 A22,22 0 1 0 241,75"/>
+  <circle class="thin" cx="260" cy="64" r="7"/>
+  <circle class="dash" cx="260" cy="64" r="38"/>
+  <line class="dash" x1="228" y1="64" x2="292" y2="64"/>
+  <line class="dash" x1="260" y1="32" x2="260" y2="96"/>
+
+  <!-- toggle plate from the pitman rear edge into the rear seat, tension rod lug, rod, spring and nut -->
+  <polygon class="thin" points="232,252 300,256 300,262 230.5,258"/>
+  <rect class="thin" x="214" y="266" width="14" height="12"/>
+  <line class="thin" x1="228" y1="272" x2="328" y2="272"/>
+  <polyline class="thin" points="328,272 331,266 337,278 343,266 349,278 352,272"/>
+  <rect class="thin" x="352" y="267" width="6" height="10"/>
+
+  <!-- closed side setting marker under the die tips -->
+  <path class="thin" d="M154,254 v5 M166,254 v5 M154,256.5 H166"/>
+
+  <!-- cheek plate, side liner on the far wall behind the chamber, inset from the dies so the cavity reads open: hatch region, then its dashed outline -->
+  <polygon data-k="2" class="part" points="134,118 193,118 167,220 153,220"/>
+  <polygon data-k="2" class="dash" points="134,118 193,118 167,220 153,220"/>
+
+  <!-- wear parts: fixed die, swing die, top and bottom clamp wedges -->
+  <polygon data-k="1" class="part heavy" points="116,92 150,250 140,252 106,94"/>
+  <polygon data-k="1" class="part heavy" points="212,92 168,250 178,252 222,94"/>
+  <polygon data-k="4" class="part heavy" points="96,76 116,76 116,92 106,94"/>
+  <polygon data-k="4" class="part heavy" points="140,252 150,250 152,264 130,264"/>
+
+  <!-- feed and discharge -->
+  <text class="lab" x="138" y="31" text-anchor="middle">FEED</text>
+  <line class="dash" x1="138" y1="36" x2="138" y2="60"/>
+  <polyline class="thin" points="134,57 138,62 142,57"/>
+  <line class="dash" x1="160" y1="262" x2="160" y2="297"/>
+  <polyline class="thin" points="156,292 160,297 164,292"/>
+  <text class="lab" x="168" y="296">DISCHARGE</text>
+
+  <!-- callouts -->
+  <a href="__HREF_1__" data-k="1" aria-label="Jaws, fixed and swing jaw dies">
+    <line class="lead" x1="117" y1="98" x2="160" y2="48"/>
+    <line class="lead" x1="210" y1="100" x2="172" y2="48"/>
+    <circle class="dot" cx="117" cy="98" r="4.5"/>
+    <circle class="dot" cx="210" cy="100" r="4.5"/>
+    <rect class="sq" x="158" y="32" width="16" height="16"/>
+    <text class="n" x="166" y="40" text-anchor="middle" dominant-baseline="central">1</text>
+  </a>
+  <a href="__HREF_2__" data-k="2" aria-label="Cheek plates, side liners behind the jaws">
+    <line class="lead" x1="166" y1="118" x2="166" y2="78"/>
+    <circle class="dot" cx="166" cy="118" r="4.5"/>
+    <rect class="sq" x="158" y="62" width="16" height="16"/>
+    <text class="n" x="166" y="70" text-anchor="middle" dominant-baseline="central">2</text>
+  </a>
+  <a href="__HREF_4__" data-k="4" aria-label="Wedges, top and bottom clamp wedges on the fixed jaw">
+    <line class="lead" x1="104" y1="76" x2="86" y2="48"/>
+    <circle class="dot" cx="104" cy="76" r="4.5"/>
+    <rect class="sq" x="78" y="32" width="16" height="16"/>
+    <text class="n" x="86" y="40" text-anchor="middle" dominant-baseline="central">4</text>
+  </a>
+
+  <text class="cap" x="24" y="312">Single toggle jaw crusher, section, not to scale</text>
+</svg>

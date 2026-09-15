@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320">
+  <title>Horizontal shaft impact crusher, side section, with callouts to blow bars and impact plates</title>
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatchline" x1="0" y1="0" x2="0" y2="6"/></pattern>
+  </defs>
+
+  <!-- ground and foundation under each wall, open under the discharge -->
+  <path class="heavy" d="M48,272 H108 M300,272 H344"/>
+  <path class="thin" d="M64,272 l-6,6 M88,272 l-6,6 M316,272 l-6,6 M340,272 l-6,6"/>
+
+  <!-- housing: left wall, feed chute plate, chute upper wall, top, right wall -->
+  <path class="thin" d="M76,272 V64 L128,116 M98,42 L152,96 H318 V272"/>
+
+  <!-- feed -->
+  <line class="dash" x1="66" y1="32" x2="87" y2="53"/>
+  <polyline class="thin" points="84.6,45.6 87,53 79.6,50.6"/>
+  <text class="lab" x="24" y="34">FEED</text>
+
+  <!-- rotor: disc drawn between the bars, shaft, rotation arc -->
+  <path class="thin" d="M207.7,193 A40,40 0 0 1 173,227.7 M163,227.7 A40,40 0 0 1 128.3,193 M128.3,183 A40,40 0 0 1 163,148.3 M173,148.3 A40,40 0 0 1 207.7,183"/>
+  <circle class="thin" cx="168" cy="188" r="8"/>
+  <path class="dash" d="M125.6,145.6 A60,60 0 0 1 210.4,145.6"/>
+  <polyline class="thin" points="208,138.2 210.4,145.6 203,143.2"/>
+
+  <!-- 5 blow bars, four set into the rotor at 90 degrees -->
+  <polygon data-k="5" class="part heavy" points="163,136 173,136 173,158 163,158"/>
+  <polygon data-k="5" class="part heavy" points="198,183 220,183 220,193 198,193"/>
+  <polygon data-k="5" class="part heavy" points="163,218 173,218 173,240 163,240"/>
+  <polygon data-k="5" class="part heavy" points="116,183 138,183 138,193 116,193"/>
+
+  <!-- primary apron: frame, hinge pin and hanger, swing arc, adjustment rod with spring through the roof -->
+  <polygon class="thin" points="229.6,113.3 265.6,171.3 275.8,164.9 239.8,106.9"/>
+  <circle class="thin" cx="234.7" cy="110.1" r="4"/>
+  <line class="thin" x1="234.7" y1="96" x2="234.7" y2="106"/>
+  <path class="dash" d="M268.9,180.2 A78,78 0 0 1 241.5,187.8"/>
+  <line class="thin" x1="255.4" y1="132" x2="306" y2="68"/>
+  <polyline class="thin" points="286.5,92.8 292,91.4 289.3,83.6 297.6,84.3 294.8,76.5 303.1,77.2 303.1,71.5"/>
+
+  <!-- secondary apron: straight frame hung from its pin, swing arc, adjustment rod with spring through the rear wall -->
+  <polygon class="thin" points="297.2,125.8 268.6,249.5 276.4,251.3 305,127.6"/>
+  <circle class="thin" cx="298.5" cy="120" r="4"/>
+  <line class="thin" x1="298.5" y1="96" x2="298.5" y2="116"/>
+  <path class="dash" d="M310.9,261.5 A142,142 0 0 1 281.2,260.9"/>
+  <line class="thin" x1="283.8" y1="219" x2="342" y2="219"/>
+  <polyline class="thin" points="322,219 325,215 328,223 331,215 334,223 337,215 340,219"/>
+
+  <!-- 6 impact plates, the two apron liners on the rotor-facing side -->
+  <polygon data-k="6" class="part heavy" points="222,118 258,176 265.6,171.3 229.6,113.3"/>
+  <polygon data-k="6" class="part heavy" points="286.1,173.6 269.3,246.6 260.5,244.6 277.3,171.6"/>
+
+  <!-- discharge -->
+  <line class="dash" x1="212" y1="248" x2="212" y2="282"/>
+  <polyline class="thin" points="208,276 212,283 216,276"/>
+  <text class="lab" x="212" y="297" text-anchor="middle">DISCHARGE</text>
+
+  <!-- callouts -->
+  <a href="__HREF_5__" data-k="5" aria-label="Blow bars">
+    <line class="lead" x1="168" y1="240" x2="128" y2="292"/>
+    <circle class="dot" cx="168" cy="240" r="4.5"/>
+    <rect class="sq" x="120" y="284" width="16" height="16"/>
+    <text class="n" x="128" y="292" text-anchor="middle" dominant-baseline="central">5</text>
+  </a>
+  <a href="__HREF_6__" data-k="6" aria-label="Impact plates">
+    <line class="lead" x1="260.5" y1="244.6" x2="292" y2="292"/>
+    <circle class="dot" cx="260.5" cy="244.6" r="4.5"/>
+    <rect class="sq" x="284" y="284" width="16" height="16"/>
+    <text class="n" x="292" y="292" text-anchor="middle" dominant-baseline="central">6</text>
+  </a>
+
+  <text class="cap" x="24" y="314">Horizontal shaft impact crusher, section, not to scale</text>
+</svg>

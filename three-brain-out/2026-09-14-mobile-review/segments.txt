@@ -1,0 +1,17 @@
+segments/home-1.png
+segments/home-2.png
+segments/home-3.png
+segments/home-4.png
+segments/home-5.png
+segments/home-6.png
+segments/home-7.png
+segments/home-8.png
+segments/parts.png
+segments/category.png
+segments/product-photo.png
+segments/product-nophoto.png
+segments/machines.png
+segments/machine-hp300.png
+segments/search.png
+segments/quote.png
+segments/cart.png

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" role="img" aria-labelledby="coneTitle">
+  <title id="coneTitle">Cone crusher, vertical section, with a callout to the concave and mantle</title>
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatchline" x1="0" y1="0" x2="0" y2="6"/></pattern>
+  </defs>
+
+  <!-- feed -->
+  <line class="dash" x1="200" y1="26" x2="200" y2="42"/>
+  <polyline class="thin" points="195,36 200,43 205,36"/>
+  <text class="lab" x="208" y="36">FEED</text>
+
+  <!-- centre line of the main shaft -->
+  <line class="dash" x1="200" y1="56" x2="200" y2="298"/>
+
+  <!-- feed hopper, a funnel bolted to the bowl top -->
+  <polyline class="thin" points="104,60 120,96"/>
+  <polyline class="thin" points="296,60 280,96"/>
+
+  <!-- distributor plate and locking nut on the head -->
+  <rect class="thin" x="168" y="98" width="64" height="6"/>
+  <rect class="thin" x="182" y="104" width="36" height="14"/>
+
+  <!-- bowl, a ring around the concave, left and right -->
+  <polyline class="thin" points="120,100 120,96 78,96 78,206 86,222"/>
+  <polyline class="thin" points="280,100 280,96 322,96 322,206 314,222"/>
+
+  <!-- adjustment ring, threaded onto the bowl -->
+  <rect class="thin" x="54" y="112" width="24" height="94"/>
+  <rect class="thin" x="322" y="112" width="24" height="94"/>
+  <line class="dash" x1="74" y1="118" x2="74" y2="200"/>
+  <line class="dash" x1="82" y1="118" x2="82" y2="200"/>
+  <line class="dash" x1="326" y1="118" x2="326" y2="200"/>
+  <line class="dash" x1="318" y1="118" x2="318" y2="200"/>
+
+  <!-- main frame, left and right, on the ground line -->
+  <polyline class="thin" points="54,206 54,292 100,292 100,264 70,238 70,206"/>
+  <polyline class="thin" points="346,206 346,292 300,292 300,264 330,238 330,206"/>
+
+  <!-- frame hub holding the eccentric -->
+  <polyline class="thin" points="154,292 154,246 178,246"/>
+  <polyline class="thin" points="222,246 246,246 246,292"/>
+
+  <!-- head, socket under it, main shaft, eccentric and counterweight -->
+  <polygon class="thin" points="182,118 218,118 274,222 126,222"/>
+  <rect class="thin" x="166" y="222" width="68" height="10"/>
+  <rect class="thin" x="193" y="118" width="14" height="170"/>
+  <rect class="thin" x="181" y="232" width="38" height="52"/>
+  <rect class="thin" x="154" y="232" width="27" height="12"/>
+
+  <!-- wear parts: concave liners inside the bowl, mantle on the head -->
+  <polygon data-k="3" class="part heavy" points="120,100 128,100 104,222 86,222"/>
+  <polygon data-k="3" class="part heavy" points="280,100 272,100 296,222 314,222"/>
+  <polygon data-k="3" class="part heavy" points="182,118 126,222 112,222 172,118"/>
+  <polygon data-k="3" class="part heavy" points="218,118 274,222 288,222 228,118"/>
+
+  <!-- discharge between the frame arms -->
+  <line class="dash" x1="126" y1="234" x2="126" y2="288"/>
+  <polyline class="thin" points="122,282 126,289 130,282"/>
+  <line class="dash" x1="274" y1="234" x2="274" y2="288"/>
+  <polyline class="thin" points="270,282 274,289 278,282"/>
+  <text class="lab" x="376" y="308" text-anchor="end">DISCHARGE</text>
+
+  <!-- ground -->
+  <line class="heavy" x1="36" y1="292" x2="364" y2="292"/>
+
+  <!-- callout 3: concave and mantle -->
+  <a href="__HREF_3__" data-k="3" aria-label="Concave and mantle">
+    <line class="lead" x1="112" y1="150" x2="140" y2="52"/>
+    <line class="lead" x1="148" y1="170" x2="140" y2="52"/>
+    <circle class="dot" cx="112" cy="150" r="4.5"/>
+    <circle class="dot" cx="148" cy="170" r="4.5"/>
+    <rect class="sq" x="132" y="36" width="16" height="16"/>
+    <text class="n" x="140" y="44" text-anchor="middle" dominant-baseline="central">3</text>
+  </a>
+
+  <text class="cap" x="24" y="308">Cone crusher, vertical section, not to scale</text>
+</svg>

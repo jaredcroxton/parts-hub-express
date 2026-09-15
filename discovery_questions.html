@@ -1,0 +1,641 @@
+<title>Parts Hub Express Discovery</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  :root {
+    --ground: #EEF0F1;
+    --paper: #FFFFFF;
+    --field: #F6F7F8;
+    --ink: #171E26;
+    --ink-2: #4B5560;
+    --ink-3: #7B8590;
+    --rule: #D3D8DC;
+    --steel: #2F4A63;
+    --steel-ink: #FFFFFF;
+    --steel-soft: #E3EAF0;
+    --amber: #C77D00;
+    --amber-soft: #FBEFD6;
+    --ok: #2E7D4F;
+    --focus: #2F4A63;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #14191F;
+      --paper: #1C232B;
+      --field: #232C36;
+      --ink: #EDF0F2;
+      --ink-2: #B4BCC4;
+      --ink-3: #7F8994;
+      --rule: #313B46;
+      --steel: #8FB3D1;
+      --steel-ink: #14191F;
+      --steel-soft: #253442;
+      --amber: #E8A331;
+      --amber-soft: #3A2C12;
+      --ok: #6CC391;
+      --focus: #8FB3D1;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #14191F;
+    --paper: #1C232B;
+    --field: #232C36;
+    --ink: #EDF0F2;
+    --ink-2: #B4BCC4;
+    --ink-3: #7F8994;
+    --rule: #313B46;
+    --steel: #8FB3D1;
+    --steel-ink: #14191F;
+    --steel-soft: #253442;
+    --amber: #E8A331;
+    --amber-soft: #3A2C12;
+    --ok: #6CC391;
+    --focus: #8FB3D1;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding-block: 40px 80px;
+    padding-inline: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-top: 6px solid var(--steel);
+    padding: 40px 48px 56px;
+  }
+  @media (max-width: 560px) {
+    body { padding-block: 16px 48px; padding-inline: 16px; }
+    .sheet { padding: 28px 22px 40px; }
+  }
+
+  h1, h2, .num, .tag, .meta, .fact b, .btn, .count, label.lbl {
+    font-family: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  }
+
+  header { display: grid; gap: 14px; margin-bottom: 32px; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+    font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .meta span b { color: var(--steel); font-weight: 600; }
+  h1 {
+    font-size: clamp(38px, 7vw, 56px);
+    font-weight: 700; line-height: .95; letter-spacing: -.01em;
+    margin: 0; text-wrap: balance; text-transform: uppercase;
+  }
+  h1 small { display: block; font-size: .42em; font-weight: 500; letter-spacing: .06em; color: var(--steel); margin-top: 8px; }
+  .lede { margin: 0; max-width: 62ch; color: var(--ink-2); font-size: 18px; }
+
+  .who {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin: 24px 0 8px;
+  }
+  @media (max-width: 560px) { .who { grid-template-columns: 1fr; } }
+  .who > div { display: grid; gap: 4px; }
+  label.lbl { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  input[type="text"], input[type="date"], textarea {
+    width: 100%; font: inherit; color: var(--ink);
+    background: var(--field); border: 1px solid var(--rule); border-radius: 0;
+    padding: 9px 11px; line-height: 1.45;
+  }
+  textarea { min-height: 64px; resize: vertical; display: block; }
+  input:focus, textarea:focus { outline: 2px solid var(--focus); outline-offset: -1px; border-color: var(--focus); }
+  textarea::placeholder, input::placeholder { color: var(--ink-3); opacity: 1; }
+
+  .facts {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule);
+    margin: 28px 0 44px;
+  }
+  .fact { background: var(--paper); padding: 12px 14px; display: grid; gap: 2px; }
+  .fact b { font-size: 30px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .fact span { font-size: 13px; color: var(--ink-3); line-height: 1.25; }
+  @media (max-width: 560px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+
+  section { margin-bottom: 44px; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    padding-bottom: 10px; border-bottom: 2px solid var(--ink);
+    margin-bottom: 4px;
+  }
+  h2 { margin: 0; font-size: 26px; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; }
+  .tag {
+    font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    padding: 3px 9px 2px; color: var(--ink-2); background: var(--steel-soft);
+  }
+  .tag.block { color: var(--amber); background: var(--amber-soft); }
+  .sec-note { margin: 10px 0 0; color: var(--ink-3); font-size: 15px; max-width: 62ch; }
+
+  ol.q { list-style: none; margin: 0; padding: 0; }
+  ol.q li {
+    display: grid; grid-template-columns: 52px 1fr; gap: 0 16px;
+    padding: 18px 0; border-bottom: 1px solid var(--rule);
+  }
+  ol.q li:last-child { border-bottom: 0; }
+  .num {
+    font-size: 24px; font-weight: 600; line-height: 1.1; color: var(--steel);
+    font-variant-numeric: tabular-nums; padding-top: 1px;
+  }
+  .num sub { font-size: .6em; vertical-align: baseline; }
+  ol.q li.done .num::after { content: ""; display: block; width: 18px; height: 3px; margin-top: 6px; background: var(--ok); }
+  .q-body { display: grid; gap: 6px; max-width: 64ch; }
+  .q-body p { margin: 0; }
+  .q-body .why { font-size: 15px; color: var(--ink-2); }
+  .q-body .why em { font-style: italic; }
+  .q-body textarea { margin-top: 6px; }
+  ol.q li.sub .num { font-size: 18px; color: var(--ink-3); }
+
+  .submit {
+    margin-top: 12px; padding: 24px; background: var(--steel-soft);
+    display: grid; gap: 14px;
+  }
+  .submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+  .btn {
+    font-size: 18px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    background: var(--steel); color: var(--steel-ink); border: 0; padding: 12px 22px; cursor: pointer;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.ghost { background: transparent; color: var(--steel); border: 1px solid var(--steel); }
+  .count { font-size: 16px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .submit p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 62ch; }
+  .status { font-size: 15px; color: var(--ink-2); min-height: 1.4em; }
+  .status.ok { color: var(--ok); }
+  .status.warn { color: var(--amber); }
+  .out { display: grid; gap: 10px; }
+  .out textarea { min-height: 260px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; }
+
+  footer {
+    margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--rule);
+    display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between;
+    font-size: 14px; color: var(--ink-3);
+  }
+  footer b { color: var(--ink-2); font-weight: 600; }
+
+  a { color: var(--steel); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  @media print {
+    body { background: #fff; padding: 0; font-size: 12pt; }
+    .sheet { max-width: none; padding: 0; border-top-width: 4pt; }
+    section { break-inside: avoid-page; }
+    ol.q li { break-inside: avoid; }
+    .submit, .out { display: none; }
+    textarea { min-height: 48pt; border: 1px solid #999; }
+  }
+</style>
+
+<div class="sheet">
+  <header>
+    <div class="meta">
+      <span>Prepared for <b>Australia Crushing &amp; Belting Group</b></span>
+      <span>By <b>Managed Digital</b></span>
+      <span>14 Sep 2026</span>
+      <span>Ref <b>PHX-DQ-02</b></span>
+    </div>
+    <h1>Before we start<small>Parts Hub Express: 26 questions, in the order they unblock work</small></h1>
+    <p class="lede">Type your answers under each question. Short answers are fine. "Don't know" is a valid answer. Your draft saves in this browser as you go. When you are done, hit Submit at the bottom and send us the file it produces.</p>
+  </header>
+
+  <div class="who">
+    <div>
+      <label class="lbl" for="who-name">Answered by</label>
+      <input type="text" id="who-name" placeholder="Your name">
+    </div>
+    <div>
+      <label class="lbl" for="who-date">Date</label>
+      <input type="date" id="who-date">
+    </div>
+  </div>
+
+  <div class="facts" aria-label="What we are working from">
+    <div class="fact"><b>277</b><span>products live in Shopify today</span></div>
+    <div class="fact"><b>5,702</b><span>products in the Odoo export you sent</span></div>
+    <div class="fact"><b>214</b><span>Odoo categories, ready to become collections</span></div>
+    <div class="fact"><b>4</b><span>products with a shipping weight recorded</span></div>
+  </div>
+
+  <section data-section="Getting the store trading">
+    <div class="sec-head">
+      <h2>Getting the store trading</h2>
+      <span class="tag block">Blocks parcel one</span>
+    </div>
+    <p class="sec-note">Nothing in the first parcel can start until these are settled. The payment gateway is the long pole.</p>
+    <ol class="q">
+      <li data-q="1">
+        <span class="num">1</span>
+        <div class="q-body">
+          <p class="q-text">Which option are we going with: <strong>Open for Business</strong>, or <strong>Open + Finished</strong>?</p>
+          <p class="why">Decides whether the catalogue work below is in scope at all.</p>
+          <textarea id="a-1" placeholder="Open for Business / Open + Finished / still deciding"></textarea>
+        </div>
+      </li>
+      <li data-q="2">
+        <span class="num">2</span>
+        <div class="q-body">
+          <p class="q-text">Company and bank details for the payment gateway. Who sends them, and when?</p>
+          <p class="why">Gateway approval takes days once submitted. Everything else in parcel one waits on it.</p>
+          <textarea id="a-2" placeholder="Name and a date"></textarea>
+        </div>
+      </li>
+      <li data-q="3">
+        <span class="num">3</span>
+        <div class="q-body">
+          <p class="q-text">Who signs off design and content?</p>
+          <p class="why">One name. We send previews to that person and nobody else has to chase.</p>
+          <textarea id="a-3" placeholder="Name and email"></textarea>
+        </div>
+      </li>
+      <li data-q="4">
+        <span class="num">4</span>
+        <div class="q-body">
+          <p class="q-text">Does anyone still have the previous developer's Shopify login, or do we revoke it on sight?</p>
+          <textarea id="a-4" placeholder="Revoke / keep, and why"></textarea>
+        </div>
+      </li>
+      <li data-q="5">
+        <span class="num">5</span>
+        <div class="q-body">
+          <p class="q-text">Who hosts your email?</p>
+          <p class="why">The support@ address bounces until the domain has mail set up. Customers writing to it today get nothing back.</p>
+          <textarea id="a-5" placeholder="Google Workspace, Microsoft 365, your IT provider, not sure"></textarea>
+        </div>
+      </li>
+      <li data-q="5a" class="sub">
+        <span class="num">5<sub>a</sub></span>
+        <div class="q-body">
+          <p class="q-text">The store currently runs on <strong>partshubexpress<em>com</em>.com</strong>, a typo domain. We move it to <strong>partshubexpress.com</strong> and redirect the old one. Any reason not to?</p>
+          <p class="why">We will assume yes unless you say otherwise.</p>
+          <textarea id="a-5a" placeholder="Go ahead / hold on, because..."></textarea>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section data-section="The catalogue">
+    <div class="sec-head">
+      <h2>The catalogue</h2>
+      <span class="tag block">Blocks parcel two</span>
+    </div>
+    <p class="sec-note">Your Odoo export gave us names and categories for all 5,702 products. It did not include price, stock, weight or full-size images. These questions fill the gaps.</p>
+    <ol class="q">
+      <li data-q="6">
+        <span class="num">6</span>
+        <div class="q-body">
+          <p class="q-text">Can you re-export from Odoo with these extra columns: <strong>sale price, quantity on hand, weight, sales description</strong>, and the full-size image field (<strong>image_1920</strong> rather than image_128)?</p>
+          <p class="why">Weight matters most. Only 4 of 277 live products have one, and shipping cannot be re-rated without it.</p>
+          <textarea id="a-6" placeholder="Yes, by when / need help doing it / some columns are empty in Odoo"></textarea>
+        </div>
+      </li>
+      <li data-q="6a" class="sub">
+        <span class="num">6<sub>a</sub></span>
+        <div class="q-body">
+          <p class="q-text">If weights are mostly empty in Odoo, would you accept a <strong>default weight per category</strong> (one number each for Manganese, Rollers, Fasteners and so on, about 14 in total) applied in bulk, with real weights overriding where they exist?</p>
+          <p class="why">Avoids entering 5,702 weights by hand. Keeps parcel two at the lower price.</p>
+          <textarea id="a-6a" placeholder="Yes / no / talk me through it"></textarea>
+        </div>
+      </li>
+      <li data-q="6b" class="sub">
+        <span class="num">6<sub>b</sub></span>
+        <div class="q-body">
+          <p class="q-text">The full-size image export will be large, likely hundreds of megabytes. Can you export in category batches, export a file with just ID and image, or give us a login so we pull images from Odoo directly?</p>
+          <textarea id="a-6b" placeholder="Batches / ID and image only / login / not sure"></textarea>
+        </div>
+      </li>
+      <li data-q="7">
+        <span class="num">7</span>
+        <div class="q-body">
+          <p class="q-text">What does the <strong>"Domestic"</strong> category branch mean? 814 products sit under it, mirroring the main tree.</p>
+          <p class="why">Decides whether Domestic folds into the main collections or stays as its own filter.</p>
+          <textarea id="a-7"></textarea>
+        </div>
+      </li>
+      <li data-q="8">
+        <span class="num">8</span>
+        <div class="q-body">
+          <p class="q-text">The <strong>"MMA / Maximus Machinery - Pronar"</strong> branch has 326 products. Leave it out of Parts Hub Express?</p>
+          <p class="why">Looks like a sister business. We will exclude it unless told otherwise.</p>
+          <textarea id="a-8" placeholder="Leave it out / include it"></textarea>
+        </div>
+      </li>
+      <li data-q="9">
+        <span class="num">9</span>
+        <div class="q-body">
+          <p class="q-text">Around 300 products have a different code at the start of the name than the internal reference. Example: reference <strong>0116-0010</strong>, name <strong>"0116-0003 Pressure Filter"</strong>. Is that the OEM number, an old code, or a superseded part?</p>
+          <p class="why">If it is an old or superseded code, we make it searchable and redirect old links automatically. Free win.</p>
+          <textarea id="a-9" placeholder="OEM number / old code / superseded / mixed"></textarea>
+        </div>
+      </li>
+      <li data-q="9a" class="sub">
+        <span class="num">9<sub>a</sub></span>
+        <div class="q-body">
+          <p class="q-text">Two products have no internal reference and one reference is used twice. Can you fix those three in Odoo?</p>
+          <p class="why">The reference becomes the product's web address and SKU, so it has to be unique.</p>
+          <textarea id="a-9a" placeholder="Yes / send me the three and I will fix them"></textarea>
+        </div>
+      </li>
+      <li data-q="10">
+        <span class="num">10</span>
+        <div class="q-body">
+          <p class="q-text">Is the goal the <strong>277</strong> products already in Shopify, or the full <strong>5,702</strong> in Odoo?</p>
+          <p class="why">The proposal is scoped around the 277. The full catalogue is a different size of job.</p>
+          <textarea id="a-10" placeholder="277 / all 5,702 / somewhere between, e.g. these categories"></textarea>
+        </div>
+      </li>
+      <li data-q="11">
+        <span class="num">11</span>
+        <div class="q-body">
+          <p class="q-text">Where does machine-to-part fitment live: Odoo, a spreadsheet, or in someone's head?</p>
+          <p class="why">Model numbers appear in product names (HP300, C160, ST 45, J1175). Is that reliable enough to build a "shop by machine" filter from?</p>
+          <textarea id="a-11"></textarea>
+        </div>
+      </li>
+      <li data-q="12">
+        <span class="num">12</span>
+        <div class="q-body">
+          <p class="q-text">Do full-size product photos exist anywhere outside Odoo?</p>
+          <p class="why">251 of the 277 live products show a grey "no image" placeholder.</p>
+          <textarea id="a-12" placeholder="Shared drive, supplier catalogues, phone photos, none"></textarea>
+        </div>
+      </li>
+      <li data-q="13">
+        <span class="num">13</span>
+        <div class="q-body">
+          <p class="q-text">The <strong>"Manufactured Drawings"</strong> category has 126 products. Are there drawings or exploded diagrams we could show?</p>
+          <textarea id="a-13"></textarea>
+        </div>
+      </li>
+      <li data-q="14">
+        <span class="num">14</span>
+        <div class="q-body">
+          <p class="q-text">Who processes orders once they come in, and where should trade enquiries land: an inbox, Odoo CRM, or both?</p>
+          <textarea id="a-14"></textarea>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section data-section="Shipping">
+    <div class="sec-head">
+      <h2>Shipping</h2>
+      <span class="tag">Shapes the re-rate</span>
+    </div>
+    <p class="sec-note">Today the store charges $10 or $15 flat for all of Australia. It loses money on anything heavy.</p>
+    <ol class="q">
+      <li data-q="15">
+        <span class="num">15</span>
+        <div class="q-body">
+          <p class="q-text">Do parts ship from one location or several?</p>
+          <textarea id="a-15"></textarea>
+        </div>
+      </li>
+      <li data-q="16">
+        <span class="num">16</span>
+        <div class="q-body">
+          <p class="q-text">Which freight carriers do you use, is pickup an option, and how do oversized manganese and roller items ship today?</p>
+          <textarea id="a-16"></textarea>
+        </div>
+      </li>
+      <li data-q="17">
+        <span class="num">17</span>
+        <div class="q-body">
+          <p class="q-text">Which Odoo edition and plan: Odoo Online, Odoo.sh, or self-hosted? Which version?</p>
+          <p class="why">Decides whether a direct connection between Odoo and the store is possible later, instead of sending exports.</p>
+          <textarea id="a-17" placeholder="Not sure is fine, we can check with whoever set it up"></textarea>
+        </div>
+      </li>
+      <li data-q="17a" class="sub">
+        <span class="num">17<sub>a</sub></span>
+        <div class="q-body">
+          <p class="q-text">Would you install a small paid module (<strong>Sadeem MCP</strong>, about USD 25) on your Odoo so we can read live stock and product data through Claude?</p>
+          <p class="why">Only possible on Odoo.sh or self-hosted. If not, an Odoo API key for a read-only user gives us the same data without installing anything.</p>
+          <textarea id="a-17a" placeholder="Yes / no / need to ask IT"></textarea>
+        </div>
+      </li>
+      <li data-q="17b" class="sub">
+        <span class="num">17<sub>b</sub></span>
+        <div class="q-body">
+          <p class="q-text">Can you create a <strong>read-only Odoo user</strong> for Managed Digital, with access to Inventory and Products?</p>
+          <p class="why">Needed for either route.</p>
+          <textarea id="a-17b" placeholder="Yes, by when / who sets it up"></textarea>
+        </div>
+      </li>
+      <li data-q="18">
+        <span class="num">18</span>
+        <div class="q-body">
+          <p class="q-text">How often can you send a refreshed export: weekly, monthly?</p>
+          <textarea id="a-18"></textarea>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section data-section="Nice to know">
+    <div class="sec-head">
+      <h2>Nice to know</h2>
+      <span class="tag">Not blocking</span>
+    </div>
+    <ol class="q">
+      <li data-q="19">
+        <span class="num">19</span>
+        <div class="q-body">
+          <p class="q-text">Any competitor or reference site you like the feel of?</p>
+          <textarea id="a-19" placeholder="Links welcome"></textarea>
+        </div>
+      </li>
+      <li data-q="20">
+        <span class="num">20</span>
+        <div class="q-body">
+          <p class="q-text">Do terms, refund and shipping policies exist in any form, or do we draft from scratch?</p>
+          <textarea id="a-20"></textarea>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <div class="submit" id="submit-box">
+    <div class="submit-row">
+      <button class="btn" id="btn-submit" type="button">Submit answers</button>
+      <span class="count" id="count">0 of 26 answered</span>
+    </div>
+    <p>Submit builds a file called <strong>parts-hub-express-answers.md</strong> with every question and your answer. Save it and send it back to Managed Digital. Unanswered questions are included and marked, so partial is fine.</p>
+    <div class="status" id="status" aria-live="polite"></div>
+    <div class="out" id="out" hidden>
+      <label class="lbl" for="md-out">Your answers as text. If the download did not appear, copy this and paste it into an email.</label>
+      <textarea id="md-out" readonly></textarea>
+      <div class="submit-row">
+        <button class="btn ghost" id="btn-copy" type="button">Copy to clipboard</button>
+        <button class="btn ghost" id="btn-again" type="button">Try the download again</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span><b>Fastest path:</b> answer 1, 2 and 6 first. The rest can follow on a call.</span>
+    <span>Managed Digital, 14 Sep 2026</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var KEY = "phx-dq-02-draft";
+  var items = Array.prototype.slice.call(document.querySelectorAll("li[data-q]"));
+  var fields = Array.prototype.slice.call(document.querySelectorAll("textarea[id^='a-'], #who-name, #who-date"));
+  var countEl = document.getElementById("count");
+  var statusEl = document.getElementById("status");
+  var outEl = document.getElementById("out");
+  var mdOut = document.getElementById("md-out");
+  var lastMd = "";
+
+  function setStatus(msg, cls) {
+    statusEl.textContent = msg;
+    statusEl.className = "status" + (cls ? " " + cls : "");
+  }
+
+  function readDraft() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var d = JSON.parse(raw);
+      fields.forEach(function (f) { if (d[f.id] != null) f.value = d[f.id]; });
+    } catch (e) {}
+  }
+  function writeDraft() {
+    try {
+      var d = {};
+      fields.forEach(function (f) { d[f.id] = f.value; });
+      localStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+
+  function refreshCount() {
+    var n = 0;
+    items.forEach(function (li) {
+      var t = li.querySelector("textarea");
+      var done = t && t.value.trim().length > 0;
+      li.classList.toggle("done", !!done);
+      if (done) n++;
+    });
+    countEl.textContent = n + " of " + items.length + " answered";
+  }
+
+  function textOf(el) {
+    return el.textContent.replace(/\s+/g, " ").trim();
+  }
+
+  function buildMarkdown() {
+    var name = document.getElementById("who-name").value.trim() || "Not given";
+    var date = document.getElementById("who-date").value || new Date().toISOString().slice(0, 10);
+    var lines = [];
+    lines.push("# Parts Hub Express: Discovery Answers");
+    lines.push("");
+    lines.push("Ref: PHX-DQ-02");
+    lines.push("Client: Australia Crushing and Belting Group");
+    lines.push("Answered by: " + name);
+    lines.push("Date: " + date);
+    lines.push("");
+    var answered = 0;
+    Array.prototype.forEach.call(document.querySelectorAll("section[data-section]"), function (sec) {
+      lines.push("## " + sec.getAttribute("data-section"));
+      lines.push("");
+      Array.prototype.forEach.call(sec.querySelectorAll("li[data-q]"), function (li) {
+        var q = li.getAttribute("data-q");
+        var qt = textOf(li.querySelector(".q-text"));
+        var why = li.querySelector(".why");
+        var a = li.querySelector("textarea").value.trim();
+        lines.push("### Q" + q + ". " + qt);
+        if (why) lines.push("_" + textOf(why) + "_");
+        lines.push("");
+        if (a) {
+          answered++;
+          lines.push(a.split(/\r?\n/).map(function (l) { return "> " + l; }).join("\n"));
+        } else {
+          lines.push("> NO ANSWER");
+        }
+        lines.push("");
+      });
+    });
+    lines.push("---");
+    lines.push(answered + " of " + items.length + " answered.");
+    lines.push("");
+    return lines.join("\n");
+  }
+
+  function fallbackDownload(md) {
+    try {
+      var blob = new Blob([md], { type: "text/markdown" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "parts-hub-express-answers.md";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function submit() {
+    lastMd = buildMarkdown();
+    mdOut.value = lastMd;
+    outEl.hidden = false;
+    setStatus("Preparing your file...");
+    var hasClaude = window.claude && typeof window.claude.use === "function";
+    if (hasClaude) {
+      window.claude.use("downloads").then(function (dl) {
+        if (!dl) {
+          if (fallbackDownload(lastMd)) setStatus("Download started. Check your downloads folder for parts-hub-express-answers.md.", "ok");
+          else setStatus("Download is not available here. Copy the text below instead.", "warn");
+          return;
+        }
+        return dl.save({ filename: "parts-hub-express-answers.md", data: lastMd }).then(function () {
+          setStatus("Saved. Send parts-hub-express-answers.md to Managed Digital.", "ok");
+        }).catch(function (err) {
+          var code = err && err.code;
+          if (code === "declined") setStatus("Download cancelled. Your answers are still here. Try again, or copy the text below.", "warn");
+          else if (code === "rate_limited") setStatus("A download prompt is already open. Answer it, then try again.", "warn");
+          else setStatus("Download is not available here. Copy the text below and paste it into an email.", "warn");
+        });
+      });
+    } else {
+      if (fallbackDownload(lastMd)) setStatus("Download started. Check your downloads folder for parts-hub-express-answers.md.", "ok");
+      else setStatus("Download is not available here. Copy the text below instead.", "warn");
+    }
+  }
+
+  document.getElementById("btn-submit").addEventListener("click", submit);
+  document.getElementById("btn-again").addEventListener("click", submit);
+  document.getElementById("btn-copy").addEventListener("click", function () {
+    mdOut.select();
+    var ok = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(mdOut.value).then(function () { setStatus("Copied.", "ok"); }, function () {
+        try { ok = document.execCommand("copy"); } catch (e) {}
+        setStatus(ok ? "Copied." : "Select the text and copy it manually.", ok ? "ok" : "warn");
+      });
+    } else {
+      try { ok = document.execCommand("copy"); } catch (e) {}
+      setStatus(ok ? "Copied." : "Select the text and copy it manually.", ok ? "ok" : "warn");
+    }
+  });
+
+  fields.forEach(function (f) {
+    f.addEventListener("input", function () { writeDraft(); refreshCount(); });
+  });
+
+  readDraft();
+  if (!document.getElementById("who-date").value) {
+    document.getElementById("who-date").value = new Date().toISOString().slice(0, 10);
+  }
+  refreshCount();
+})();
+</script>

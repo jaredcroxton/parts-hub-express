@@ -1,0 +1,7 @@
+node_modules
+.next
+.vercel
+data/inbox
+.env*
+*.pem
+.DS_Store

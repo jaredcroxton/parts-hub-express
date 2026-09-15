@@ -1,0 +1,24 @@
+{
+ "rows_in": 5702,
+ "excluded": 1145,
+ "written": 4555,
+ "skipped_no_sku": [
+  {
+   "odoo_id": 5694,
+   "name": "hwr1400"
+  },
+  {
+   "odoo_id": 5699,
+   "name": "npm"
+  }
+ ],
+ "skipped_duplicate_sku": [],
+ "images": {
+  "odoo_128": 1020,
+  "client_shopify": 11,
+  "none": 3524
+ },
+ "run_at": "2026-09-14T12:05:26.900944+00:00",
+ "skipped_no_sku_count": 2,
+ "skipped_duplicate_sku_count": 0
+}

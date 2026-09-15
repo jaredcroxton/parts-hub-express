@@ -1,0 +1,338 @@
+[
+ {
+  "ref": "0101-2012",
+  "name": "Air Safety (6I2510)",
+  "group": "Filters",
+  "sub": "Air",
+  "image": "assets/img/0101-2012.jpg"
+ },
+ {
+  "ref": "3D115.011",
+  "name": "Hyd Return",
+  "group": "Filters",
+  "sub": "Hydraulic",
+  "image": "assets/img/3D115_011.jpg"
+ },
+ {
+  "ref": "0116-0010",
+  "name": "0116-0003 Pressure Filter",
+  "group": "Filters",
+  "sub": "Hydraulic",
+  "image": "assets/img/0116-0010.jpg"
+ },
+ {
+  "ref": "MM1122599",
+  "name": "C130 Fastening Item",
+  "group": "Fasteners",
+  "sub": "",
+  "image": "assets/img/MM1122599.jpg"
+ },
+ {
+  "ref": "MM0243126",
+  "name": "C130 Hammer Bolt Fasterner",
+  "group": "Fasteners",
+  "sub": "Bolts",
+  "image": "assets/img/MM0243126.jpg"
+ },
+ {
+  "ref": "940950",
+  "name": "C130 Washer (C110/125)",
+  "group": "Fasteners",
+  "sub": "Washers",
+  "image": "assets/img/940950.jpg"
+ },
+ {
+  "ref": "MM0527972",
+  "name": "C160 Fastening Item LWR",
+  "group": "Fasteners",
+  "sub": "Other",
+  "image": "assets/img/MM0527972.jpg"
+ },
+ {
+  "ref": "MM0264797",
+  "name": "C160 Hammer Screw",
+  "group": "Fasteners",
+  "sub": "Bolts",
+  "image": "assets/img/MM0264797.jpg"
+ },
+ {
+  "ref": "112-0130",
+  "name": "C160 Hammer Screw M48/1130mm",
+  "group": "Fasteners",
+  "sub": "Bolts",
+  "image": "assets/img/112-0130.jpg"
+ },
+ {
+  "ref": "1062440045",
+  "name": "HP300 Drive Ring Gear",
+  "group": "Power Transmission Parts",
+  "sub": "Bushes",
+  "image": "assets/img/1062440045.jpg"
+ },
+ {
+  "ref": "1022145975",
+  "name": "HP300 Lower Head Bush",
+  "group": "Power Transmission Parts",
+  "sub": "Bushes",
+  "image": "assets/img/1022145975.jpg"
+ },
+ {
+  "ref": "7063002250",
+  "name": "HP300 Pinion (HP4)",
+  "group": "Power Transmission Parts",
+  "sub": "Bushes",
+  "image": "assets/img/7063002250.jpg"
+ },
+ {
+  "ref": "LWBCOS120CT",
+  "name": "COS120-B-CT 120lb Crescent Top",
+  "group": "Conveyors Rubber and Accessories",
+  "sub": "Belt PVC",
+  "image": "assets/img/LWBCOS120CT.jpg"
+ },
+ {
+  "ref": "SC4000/HARDENER",
+  "name": "Hardener For SC4000 Glue Kit",
+  "group": "Conveyors Rubber and Accessories",
+  "sub": "Glues",
+  "image": "assets/img/SC4000_HARDENER.jpg"
+ },
+ {
+  "ref": "Imp/Bar1524/100/50",
+  "name": "Impact Bar 1524 x 100 x 50mm Single Chamfer",
+  "group": "Conveyors Rubber and Accessories",
+  "sub": "Impact Beds",
+  "image": "assets/img/Imp_Bar1524_100_50.jpg"
+ },
+ {
+  "ref": "937405",
+  "name": "GP200 Seal",
+  "group": "Hydraulics",
+  "sub": "Seals",
+  "image": "assets/img/937405.jpg"
+ },
+ {
+  "ref": "3604-470",
+  "name": "3' Symons Seal Ring Spring & H",
+  "group": "Hydraulics",
+  "sub": "Seals",
+  "image": "assets/img/3604-470.jpg"
+ },
+ {
+  "ref": "501-011-070",
+  "name": "ACCUMULATOR 4L 8BAR",
+  "group": "Hydraulics",
+  "sub": "Accumulator",
+  "image": "assets/img/501-011-070.jpg"
+ },
+ {
+  "ref": "7004205204",
+  "name": "HP300 Damper (0091-3190)",
+  "group": "Other",
+  "sub": "Dampners",
+  "image": "assets/img/7004205204.jpg"
+ },
+ {
+  "ref": "585042",
+  "name": "Metso Jaw 5000Kg Lifting Link",
+  "group": "Other",
+  "sub": "Lifters",
+  "image": "assets/img/585042.jpg"
+ },
+ {
+  "ref": "12530121",
+  "name": "Apron Feeder Gearbox Mount Bkt",
+  "group": "Other",
+  "sub": "",
+  "image": "assets/img/12530121.jpg"
+ },
+ {
+  "ref": "704209465000",
+  "name": "C130 Cup Spring (C80/C110/125)",
+  "group": "Screen Media & Accessories",
+  "sub": "Accessories",
+  "image": "assets/img/704209465000.jpg"
+ },
+ {
+  "ref": "704209485000",
+  "name": "C160 Cup Spring",
+  "group": "Screen Media & Accessories",
+  "sub": "Accessories",
+  "image": "assets/img/704209485000.jpg"
+ },
+ {
+  "ref": "575484",
+  "name": "C160 Spring Assy (C140/150)",
+  "group": "Screen Media & Accessories",
+  "sub": "Accessories",
+  "image": "assets/img/575484.jpg"
+ },
+ {
+  "ref": "550-003-056",
+  "name": "I44 McCloskey Blow Bar 27%Cr",
+  "group": "Manganese",
+  "sub": "Blow Bars",
+  "image": "assets/img/550-003-056.jpg"
+ },
+ {
+  "ref": "MM1155334",
+  "name": "C130 Toggle Plate (MM1006270)",
+  "group": "Manganese",
+  "sub": "Jaws",
+  "image": "assets/img/MM1155334.jpg"
+ },
+ {
+  "ref": "949647154300",
+  "name": "C160 Cheek Plate Lower Mn",
+  "group": "Manganese",
+  "sub": "Cheek Plates",
+  "image": "assets/img/949647154300.jpg"
+ },
+ {
+  "ref": "576974",
+  "name": "C160 Cheek Plate Upper Mn",
+  "group": "Manganese",
+  "sub": "Cheek Plates",
+  "image": "assets/img/576974.jpg"
+ },
+ {
+  "ref": "MM1023214/MOD",
+  "name": "C160 Jaw Fixed Quarry Tooth+40 1P",
+  "group": "Manganese",
+  "sub": "Jaws",
+  "image": "assets/img/MM1023214_MOD.jpg"
+ },
+ {
+  "ref": "MM0297742",
+  "name": "C160 Lower Cheek Plt Fatboy",
+  "group": "Manganese",
+  "sub": "Cheek Plates",
+  "image": "assets/img/MM0297742.png"
+ },
+ {
+  "ref": "940947",
+  "name": "C130 Plate Rubber (C110/125)",
+  "group": "Wear Parts",
+  "sub": "",
+  "image": "assets/img/940947.jpg"
+ },
+ {
+  "ref": "MM0541138",
+  "name": "C130 Plate Rubber (C120)",
+  "group": "Wear Parts",
+  "sub": "",
+  "image": "assets/img/MM0541138.jpg"
+ },
+ {
+  "ref": "MM0541135",
+  "name": "C130 Rubber Plate",
+  "group": "Wear Parts",
+  "sub": "",
+  "image": "assets/img/MM0541135.jpg"
+ },
+ {
+  "ref": "1038018155",
+  "name": "HP300 Counterweight Liner",
+  "group": "Wear Parts",
+  "sub": "",
+  "image": "assets/img/1038018155.jpg"
+ },
+ {
+  "ref": "N65558321",
+  "name": "HP300 Feed Cone (HP4) XT710 18%Mn",
+  "group": "Wear Parts",
+  "sub": "",
+  "image": "assets/img/N65558321.jpg"
+ },
+ {
+  "ref": "7065558093",
+  "name": "HP300 Feed Cone (HP4) XT720 22%Mn",
+  "group": "Wear Parts",
+  "sub": "",
+  "image": "assets/img/7065558093.jpg"
+ },
+ {
+  "ref": "19.30.1119",
+  "name": "Disc Return Roller (Finlay) 1119FL",
+  "group": "Rollers",
+  "sub": "Disc Return",
+  "image": "assets/img/19_30_1119.jpg"
+ },
+ {
+  "ref": "19.25.4035",
+  "name": "Finlay Feeder Roller 900FL/102",
+  "group": "Rollers",
+  "sub": "",
+  "image": "assets/img/19_25_4035.jpg"
+ },
+ {
+  "ref": "CR1043",
+  "name": "Impact Side Roller M/Conv C12",
+  "group": "Rollers",
+  "sub": "Impact",
+  "image": "assets/img/CR1043.jpg"
+ },
+ {
+  "ref": "706204115000",
+  "name": "LT1213 Trough Roller Set 315/600FL",
+  "group": "Rollers",
+  "sub": "",
+  "image": "assets/img/706204115000.jpg"
+ },
+ {
+  "ref": "H0141569",
+  "name": "Ammann Rubber Ring",
+  "group": "Rollers",
+  "sub": "Disc Return",
+  "image": "assets/img/H0141569.jpg"
+ },
+ {
+  "ref": "19-06-1160",
+  "name": "Beater Roller 1160FL x 102Diam",
+  "group": "Rollers",
+  "sub": "Beater",
+  "image": "assets/img/19-06-1160.jpg"
+ },
+ {
+  "ref": "E111Q05A",
+  "name": "Gland Packing",
+  "group": "Gravel and Slurry Pumps",
+  "sub": "",
+  "image": "assets/img/E111Q05A.jpg"
+ },
+ {
+  "ref": "C2132L",
+  "name": "3 x 2 C-AH Discharge Joint",
+  "group": "Gravel and Slurry Pumps",
+  "sub": "Parts All",
+  "image": "assets/img/C2132L.jpg"
+ },
+ {
+  "ref": "6/4D-AHR-R55-E4147R",
+  "name": "6/4D AHR Bare Shaft Pump R/Lin",
+  "group": "Gravel and Slurry Pumps",
+  "sub": "Pumps",
+  "image": "assets/img/6_4D-AHR-R55-E4147R.jpg"
+ },
+ {
+  "ref": "MSCG-0003",
+  "name": "MS25 Joiner Kit 1200mm Gal",
+  "group": "Belt Joiners & Clips",
+  "sub": "",
+  "image": "assets/img/MSCG-0003.jpg"
+ },
+ {
+  "ref": "MSCG-0004",
+  "name": "MS25 Joiner Kit 1500mm Gal",
+  "group": "Belt Joiners & Clips",
+  "sub": "",
+  "image": "assets/img/MSCG-0004.jpg"
+ },
+ {
+  "ref": "MSCG-0001",
+  "name": "MS25 Joiner Kit 600mm Gal",
+  "group": "Belt Joiners & Clips",
+  "sub": "",
+  "image": "assets/img/MSCG-0001.jpg"
+ }
+]

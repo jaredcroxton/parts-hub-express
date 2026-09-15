@@ -1,0 +1,35 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local, generated and temporary
+.tmp/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+tasks.db
+
+# Site build output and local inbox files
+site/.next/
+site/.vercel/
+site/out/
+site/data/inbox/
+
+# Client documents and scraped material: never in Git (keep private copies outside the repository)
+source/
+
+# Large review artefacts (screenshots, bundles, raw model output). The written reviews stay.
+three-brain-out/**/*.png
+three-brain-out/**/bundle*.txt
+three-brain-out/**/*raw*.txt
+three-brain-out/**/segments/
+three-brain-out/**/shots*/
+three-brain-out/**/img/
+
+# Packaged copies
+video/*.zip
