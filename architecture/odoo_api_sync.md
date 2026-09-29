@@ -88,7 +88,7 @@ Never call `unlink`. Never call `write` on product data. Soft delete only.
 
 ## Sync job (nightly 6am, plus manual "sync now")
 
-Decided 2026-09-15: no site database. The nightly job runs in GitHub Actions (`.github/workflows/odoo-sync.yml`, 20:00 UTC, which is 6am AEST and 7am during daylight saving, plus a manual "Run workflow" button). It runs `tools/odoo_pull.py` then `tools/build_catalogue.py --source odoo`, commits `site/data` and any new product images, and the push makes Vercel redeploy. Public traffic still never reaches Odoo. Secrets live in GitHub Actions (`ODOO_URL`, `ODOO_DB`, `ODOO_LOGIN`, `ODOO_API_KEY`, `ODOO_TRANSPORT`, `ODOO_PRICES_INCLUDE_GST`). Without them the job exits cleanly and changes nothing.
+Decided 2026-09-15: no site database. The nightly job runs in GitHub Actions (`.github/workflows/odoo-sync.yml`, 20:00 UTC, which is 6am AEST and 7am during daylight saving, plus a manual "Run workflow" button). It runs `tools/odoo_pull.py` then `tools/build_catalogue.py --source odoo`, commits `site/data` and any new product images as `github-actions[bot]` (an identity GitHub recognises as automated), and the push makes Vercel redeploy. After the Git connection, confirm Vercel built the first sync commit; if the Deployments list shows it blocked, the repository sits in a GitHub organisation whose commit authors must be Vercel team members (architecture/storefront.md, Deployment). Public traffic still never reaches Odoo. Secrets live in GitHub Actions (`ODOO_URL`, `ODOO_DB`, `ODOO_LOGIN`, `ODOO_API_KEY`, `ODOO_TRANSPORT`, `ODOO_PRICES_INCLUDE_GST`). Without them the job exits cleanly and changes nothing.
 
 Steps:
 

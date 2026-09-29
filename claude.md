@@ -26,6 +26,7 @@ Decision record:
 - No em dashes anywhere, including copy, comments and code.
 - Never use "Sarah" in demo content.
 - Previews are never indexed: the site sends noindex and robots.txt disallows all unless `SITE_LIVE=1`, which is set only on the real domain at launch (2026-09-15). Preview URL: https://partshubexpress.vercel.app.
+- Launch gate (2026-09-29): a build with `SITE_LIVE=1` fails while `site/lib/company.ts` holds placeholder contacts (`contactConfirmed: false`), and at launch the homepage shows only reviews marked `verified_by_client: true`.
 - Do not scrape auscbgroup.com.au and do not use its content as a source (Jared, 2026-09-14). Company name spelling ("Australia" or "Australian") and contact details come from the client directly.
 - Design LOCKED 2026-09-14: option B Title Block layout, Inter Tight font, Original B colours with the Codex contrast fix (accent #f45120, accent text #c63a00). Build target design/homepage.html. See design/DESIGN_CHARACTERISTICS.md sections 10.3 and 10.4. No design decisions without updating that file first.
 
@@ -131,6 +132,7 @@ Requested fields (confirmed to exist in Odoo, not yet seen with data): `list_pri
 - Stack (decided 2026-09-14, build started): Next.js App Router with TypeScript on Vercel, in `site/`. Data store is static JSON in `site/data/` built by `tools/build_catalogue.py`: from the Odoo export until the API is connected, then nightly from the Odoo API through GitHub Actions (commit, Vercel redeploys). No site database (decided 2026-09-15). Stripe Checkout plus webhook; the webhook pushes paid orders to Odoo and Stripe's retries are the order queue. Resend for email. Odoo JSON-2 on Odoo 19, JSON-RPC on 17 and 18 (`ODOO_TRANSPORT`). Integration SOPs: architecture/odoo_api_sync.md, architecture/payments_and_email.md. Storefront SOP: architecture/storefront.md.
 - MCP (Sadeem) is a Layer 2 tool for Claude during build and maintenance. It is never in the runtime path.
 - Public traffic never reaches Odoo. Odoo Online fair use is about one request per second.
+- Hosting (checked against Vercel docs 2026-09-29): ACBG's Vercel team must be on Pro, because Hobby is non-commercial only. The repository stays in Jared's personal GitHub account with ACBG as a collaborator (Jared, 2026-09-30); a personal account, not an organisation, so collaborators' and the sync bot's commits deploy without Vercel seats. Stripe webhooks target a production domain, never a protected preview URL.
 - Odoo API keys expire within three months. Rotation is a scheduled maintenance task.
 - Images live in the site's own storage, named by SKU. Odoo thumbnails are the seed; later client photos replace them by SKU.
 - Design tokens and reference lock live in `design/DESIGN_CHARACTERISTICS.md` once the A/B/C choice is made. Frontend code derives from that file.

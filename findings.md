@@ -220,3 +220,13 @@ Jared raised https://apps.odoo.com/apps/modules/19.0/sadeem_mcp for connecting C
 **Cost and risk.** Cheap module, but it installs code on the client's ERP. Client IT sign-off needed. Write tools should be declined at sign-in for this project, read only.
 
 **Free alternatives if the client will not install a module.** Native Odoo API via a Python XML-RPC tool in `tools/` (already the plan), or an open source MCP server run on our side pointed at the Odoo API: industream/mcp-odoo, rosenvladimirov/odoo-claude-mcp. Those need only an Odoo API key, no module install.
+
+## Handover checks (2026-09-29)
+
+- **Vercel plan.** Hobby is "restricted to non-commercial personal use only"; taking payment, advertising products, or being paid to build or host the site all count as commercial. ACBG needs Pro: US$20 a month platform fee with one deploying seat and US$20 usage credit; extra Owner or Member seats US$20 a month each; Viewer seats free and read only. Source: vercel.com/docs/limits/fair-use-guidelines, vercel.com/docs/plans/pro-plan.
+- **Who can deploy from a private repository.** Pro: the commit author must be a member of the Vercel team. Hobby: the commit author must be the Hobby team owner, and private repositories in a GitHub organisation cannot deploy to Hobby at all. Vercel: this "only applies to commit authors on GitHub organizations ... It does not apply to collaborators on personal Git accounts." Hence the repository goes to ACBG's personal account. Source: vercel.com/docs/git.
+- **Project transfer** needs the person transferring to own the source team and be a member of the target team; domains, variables and the Git link move, logs do not. Importing the repository fresh in ACBG's team avoids the membership step. Source: vercel.com/docs/projects/transferring-projects.
+- **Deploy hooks are not a way round the author check**: Vercel's troubleshooting for a hook that fails to deploy points to the same collaboration rules. Source: vercel.com/docs/deploy-hooks.
+- **Deployment Protection.** Standard Protection covers every deployment except production domains, so a Stripe webhook pointed at a preview or generated URL gets the Vercel login wall. Source: vercel.com/docs/deployment-protection.
+- **Vercel tokens** are created under Account Settings, Tokens and can be scoped to a team. A token acts as the user who made it.
+- **Stripe website review** looks for contact details, product descriptions and refund, returns, shipping and cancellation policies. Source: docs.stripe.com/get-started/checklist/website.

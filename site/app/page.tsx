@@ -18,7 +18,7 @@ const nf = (n: number) => n.toLocaleString("en-AU");
 const TYPE_IMAGE: Record<string, string> = { jaw: "/img/machines/type-jaw.jpg", cone: "/img/machines/type-cone.jpg", "mobile jaw": "/img/machines/type-mobile-jaw.jpg", "mobile impact": "/img/machines/type-mobile-impact.jpg" };
 const TYPE_ORDER = ["jaw", "cone", "mobile jaw", "mobile impact"];
 const TYPE_LABEL: Record<string, string> = { jaw: "Jaw crusher", cone: "Cone crusher", "mobile jaw": "Mobile jaw crusher", "mobile impact": "Mobile impact crusher", unknown: "Machine type to confirm" };
-type Review = { name: string; company: string; quote: string; date?: string; sample?: boolean; rating?: number };
+type Review = { name: string; company: string; quote: string; date?: string; sample?: boolean; rating?: number; verified_by_client?: boolean };
 
 const CSS = `
 .home .hero h1{margin-bottom:8px}
@@ -257,7 +257,8 @@ export default function Home() {
   const heroExists = fs.existsSync(path.join(process.cwd(), "public", "img", "hero", "hero.jpg"));
   const dispatchExists = fs.existsSync(path.join(process.cwd(), "public", "img", "hero", "dispatch.jpg"));
   const showSamples = process.env.NEXT_PUBLIC_SHOW_SAMPLE_REVIEWS === "1";
-  const reviews = readReviews().filter((r) => r.quote && r.name && (!r.sample || showSamples));
+  const live = process.env.SITE_LIVE === "1"; // at launch only reviews ACBG has confirmed render (content_to_confirm.md)
+  const reviews = readReviews().filter((r) => r.quote && r.name && (!r.sample || showSamples) && (!live || r.verified_by_client === true));
   const hasSample = reviews.some((r) => r.sample);
   const rated = reviews.filter((r) => typeof r.rating === "number");
   const avg = rated.length ? rated.reduce((t, r) => t + (r.rating as number), 0) / rated.length : 0;

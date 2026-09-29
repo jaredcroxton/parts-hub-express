@@ -514,7 +514,7 @@ Not on the homepage: category tiles, product tiles, blog, clearance banners, mar
 - Parts by machine is a tile grid: one tile per model with a machine type illustration (unbranded, generated in Higgsfield Nano Banana Pro, one image per type, never per model), model code, brand, type label, part count. Tiles link to /machines/<model>. Caption states the images are type illustrations, not the specific model.
 - Order: search hero, parts by machine, why Parts Hub Express, where each part fits, our clients say, get connected, footer.
 - Homepage has one search only, the big one in the hero. The header search is hidden on the homepage and shown on every other page.
-- Reviews: site/data/reviews.json. Entries with "sample": true render only when NEXT_PUBLIC_SHOW_SAMPLE_REVIEWS=1 (local preview). Real entries (no sample flag) always render. Nothing sample can reach production.
+- Reviews: site/data/reviews.json. Entries with "sample": true render only when NEXT_PUBLIC_SHOW_SAMPLE_REVIEWS=1 (local preview). Real entries (no sample flag) render on previews. At launch (SITE_LIVE=1) only entries with "verified_by_client": true render, so an unconfirmed review drops out on its own (added 2026-09-29). Nothing sample can reach production.
 
 **Search amendment (Jared, 2026-09-14, overrides the search line in 10.9):** the text search (part number, machine model or keyword) lives in the header on every page, including the homepage. The homepage hero has no text search and no divider line; its only control is the Brand then Machine model finder.
 
