@@ -40,7 +40,7 @@ Layer 1 SOP for the site in `site/`. Design locked in design/DESIGN_CHARACTERIST
 
 ## Environment
 
-`site/.env.local` (never committed): `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `RESEND_API_KEY`, `ENQUIRY_TO_EMAIL`, `ORDER_FROM_EMAIL`, `NEXT_PUBLIC_SITE_URL`. All optional in development.
+Every key the site reads, with where to get it, is in `site/.env.example`. Production values live in Vercel (Settings, Environment Variables); `site/.env.local` (never committed) is for local testing only. No Stripe publishable key is used.
 
 `SITE_LIVE=1` is set only on the real domain at launch. Without it the site sends `noindex, nofollow` and robots.txt disallows everything, so previews never reach search results with placeholder contacts or unconfirmed content.
 
@@ -51,7 +51,7 @@ Layer 1 SOP for the site in `site/`. Design locked in design/DESIGN_CHARACTERIST
 - `next.config.ts` `outputFileTracingIncludes` ships `data/*.json` and `data/drawings/*.svg` with every server route, because the loaders compute file names. `.vercelignore` keeps `data/inbox`, `.env*` and build folders out of the upload.
 - Vercel functions have a read-only filesystem. Quote and subscribe write the inbox file where they can and otherwise need Resend; with neither they return 503 with a plain message and the quote draft stays on the device. The Stripe webhook writes nothing locally; it pushes paid orders to Odoo (architecture/payments_and_email.md).
 - Launch gate (2026-09-29): `site/lib/company.ts` throws during the build when `SITE_LIVE=1` and `contactConfirmed` is false, so a launch build with placeholder contacts fails and Vercel keeps serving the previous deployment. At launch the homepage shows only reviews marked `verified_by_client: true`.
-- Handover rules (checked against Vercel docs 2026-09-29): a selling site must run on a Vercel Pro team (Hobby is non-commercial only). With the repository in a GitHub organisation, every commit author, the sync bot included, must be a member of that Pro team or Vercel blocks the deployment; Vercel documents that this check does not apply to collaborators on personal GitHub accounts. Standard Deployment Protection puts preview and generated deployment URLs behind Vercel login, so Stripe webhooks must target a production domain.
+- Handover (Jared, 2026-10-13): ACBG's own GitHub copy linked to ACBG's Vercel project on the free plan, Root Directory `site`, Jared as collaborator. Vercel's GitHub link on the free plan publishes only commits authored by the Vercel account owner (this stalled the 2026-09-30 handover), so: ACBG's copy starts from a commit in ACBG's name, ACBG merges Jared's pull requests with a normal merge commit to publish them, and the nightly sync commits as the repository owner. Standard Deployment Protection puts preview and generated deployment URLs behind Vercel login, so Stripe webhooks must target a production domain.
 
 ## Motion (DESIGN_CHARACTERISTICS 10.12)
 
