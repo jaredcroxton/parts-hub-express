@@ -3,6 +3,9 @@
 
 SOP: architecture/build_catalogue.md and architecture/odoo_api_sync.md. Deterministic. Re-runnable.
 
+Thumbnails listed in design/assets/watermark_register.json have ACBG's own text stamp painted out before they are
+written (architecture/strip_watermark.md).
+
 Sources:
   --source xlsx  the Odoo product export in source/ (original build, until the API is connected)
   --source odoo  the folder written by tools/odoo_pull.py; merges with the previous catalogue so products missing from
@@ -23,6 +26,8 @@ from datetime import datetime, timezone
 from decimal import ROUND_HALF_UP, Decimal
 
 from PIL import Image
+
+import strip_watermark
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "source", "odoo_products_export_2026-09.xlsx")
@@ -185,6 +190,7 @@ def main():
     model_re = {m: token_pattern(m) for m in models}
     brand_re = {b: re.compile(r"\b" + re.escape(b) + r"\b", re.I) for b in brands}
     sources = load_image_sources()
+    watermarks = strip_watermark.load_register()
 
     previous = []
     prev_catalogue = os.path.join(args.out_data, "catalogue.json")
@@ -201,7 +207,7 @@ def main():
                 large[base] = fn
 
     manifest = {"rows_in": 0, "excluded": 0, "written": 0, "skipped_no_sku": [], "skipped_duplicate_sku": [],
-                "images": {"odoo_128": 0, "client_shopify": 0, "none": 0}, "run_at": synced_at}
+                "images": {"odoo_128": 0, "client_shopify": 0, "none": 0}, "watermarks_stripped": 0, "run_at": synced_at}
     seen_sku, seen_slug = set(), set()
     products = []
     pending_images = []  # written only after the guardrails pass
@@ -260,6 +266,8 @@ def main():
                     pil = bg
                 else:
                     pil = pil.convert("RGB")
+                pil, stripped = strip_watermark.strip(pil, watermarks.get(safe))  # ACBG's own stamp only
+                manifest["watermarks_stripped"] += stripped
                 pending_images.append((os.path.join(args.out_img, thumb_fn), pil))
                 image_thumb = f"/img/products/{thumb_fn}"
                 image_path, image_source, iw, ih = image_thumb, "odoo_128", pil.size[0], pil.size[1]

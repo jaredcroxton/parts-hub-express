@@ -230,3 +230,12 @@ Jared raised https://apps.odoo.com/apps/modules/19.0/sadeem_mcp for connecting C
 - **Deployment Protection.** Standard Protection covers every deployment except production domains, so a Stripe webhook pointed at a preview or generated URL gets the Vercel login wall. Source: vercel.com/docs/deployment-protection.
 - **Vercel tokens** are created under Account Settings, Tokens and can be scoped to a team. A token acts as the user who made it.
 - **Stripe website review** looks for contact details, product descriptions and refund, returns, shipping and cancellation policies. Source: docs.stripe.com/get-started/checklist/website.
+
+## Watermarks on product photos (2026-10-13)
+
+- **Where the stamp is.** 127 of the 1,023 Odoo thumbnails carry ACBG's own text stamp, burned into the image Odoo serves. By group: wing rollers 43, centre 24, return 21, troughing 20, disc return 7, impact 4, the rest in ones and twos. No other image the site ships has it.
+- **Colour cannot find it.** A red text detector flagged 164 thumbnails for 127 real ones and missed 11: red and orange parts, timber and painted hubs all read as stamp. So the tool works from a checked list (design/assets/watermark_register.json), never from detection.
+- **Removal is interpolation, not generation.** Part photos are real only, so the stamp box is filled from the surrounding pixels. At 128 pixels this leaves a soft band, not a restored part. Unstamped originals from ACBG are the only way to a clean photo.
+- **A box needs 5 pixels of margin.** JPEG colour bleed carries red about 2 pixels past the letters; a tight box leaves pink haze beside the band.
+- **Left alone, not ACBG's stamp:** camera date stamps (yellow date in a corner of some older photos), two photos with small red note text at the top (6630306, 6930524), maker labels on products (the SC 4000 tin, the Black Tak cartridge), and part numbers written or cast on the parts.
+- **Stale file noticed:** site/public/img/machines/commons-nordberg-hp400-cone-crusher.jpg (the Westate dealer sign photo) is marked site_excluded in image_sources.json and no page uses it, but the file is still in the public folder, so its URL still answers.

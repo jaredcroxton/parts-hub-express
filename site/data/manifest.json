@@ -18,7 +18,8 @@
   "client_shopify": 11,
   "none": 3524
  },
- "run_at": "2026-09-14T12:05:26.900944+00:00",
+ "watermarks_stripped": 127,
+ "run_at": "2026-10-13T00:41:52.536311+00:00",
  "skipped_no_sku_count": 2,
  "skipped_duplicate_sku_count": 0
 }

@@ -12,6 +12,7 @@ Produce `site/data/catalogue.json`, `site/data/categories.json`, `site/data/mach
 - `design/assets/img_large/*` (client-owned Shopify photos named by SKU). Used as the main image when present; thumbnail kept as `image_thumb`.
 - `design/assets/brand_model_tokens.json` (machine model tokens and brands).
 - `design/assets/image_sources.json` (image register: licensed machine photos, hero, curated group photos).
+- `design/assets/watermark_register.json` (thumbnails that carry ACBG's own text stamp, and where it sits). SOP: `architecture/strip_watermark.md`.
 
 ## Rules (from claude.md)
 
@@ -22,6 +23,7 @@ Produce `site/data/catalogue.json`, `site/data/categories.json`, `site/data/mach
 - `fits`: empty. Fitment is never inferred. `machine_tokens`: model tokens found in the name (word boundary, case-insensitive, spaces and hyphens ignored) for search and filtering only.
 - Price and stock: `null`. The storefront shows "Price on request".
 - Images: thumbnail written at native size as JPEG quality 88 (PNG flattened on white). Client photo written as-is with its extension. Never upscale.
+- Watermarks: a thumbnail listed in the watermark register has ACBG's own text stamp painted out by `tools/strip_watermark.py` before it is written (added 2026-10-13). Client photos are not touched.
 - No em dashes in any output.
 
 ## Output contracts
@@ -34,7 +36,7 @@ Produce `site/data/catalogue.json`, `site/data/categories.json`, `site/data/mach
 
 `search-index.json`: `[{sku, sku_norm, name, alt, alt_norm, slug, cat, tokens}]`, lowercased; `_norm` fields strip spaces, hyphens, dots and slashes.
 
-`manifest.json`: counts in, excluded, written, skipped lists, images by source, run timestamp.
+`manifest.json`: counts in, excluded, written, skipped lists, images by source, `watermarks_stripped`, run timestamp.
 
 ## Failure modes
 
@@ -44,6 +46,7 @@ Produce `site/data/catalogue.json`, `site/data/categories.json`, `site/data/mach
 | Slug collision | Same SKU and name twice | Duplicate SKU rule applies |
 | PNG saves black | Alpha channel | Flatten on white before JPEG |
 | Category "False" | Odoo writes False for blank | Put under `Other` |
+| "AUSCB GROUP" text across a thumbnail | Stamped photo with no register entry, or the photo changed size in Odoo | Add or update the entry (`architecture/strip_watermark.md`) |
 
 ## Re-run
 

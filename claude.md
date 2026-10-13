@@ -22,6 +22,7 @@ Decision record:
 - Exclude the "MMA / Maximus Machinery" branch. Treat "Domestic" as excluded until the client explains it.
 - Prices in AUD, GST inclusive, stated on the page. Trade pricing is a later phase.
 - Images: part photos are real only (Odoo thumbnails, client-owned Shopify store photos matched by SKU), never AI-generated. Machine photos only if openly licensed or client-owned, with source and licence logged in design/assets/image_sources.json. Manufacturer and supplier site photos are not used without written permission. Hero image may be AI-generated (no logos, no parts). Part photos are kept to a minimum on the homepage, and every part photo used anywhere is listed in design/assets/parts_to_verify.md for ACBG to confirm before launch. Never upscale beyond 1.5x. Designed no-photo state for products without one.
+- Watermarks (Jared, 2026-10-13): no image on the site shows a watermark. ACBG's own "AUSCB GROUP" text stamp is painted out of Odoo thumbnails at build time, only for thumbnails listed in design/assets/watermark_register.json, by plain interpolation of the photo's own pixels (never generative). Another company's watermark is never removed: that photo is dropped.
 - Frontend: single monolithic file pattern per page. Never componentise into a component library.
 - No em dashes anywhere, including copy, comments and code.
 - Never use "Sarah" in demo content.
@@ -96,6 +97,16 @@ Requested fields (confirmed to exist in Odoo, not yet seen with data): `list_pri
 }
 ```
 
+### Watermark register entry (design/assets/watermark_register.json)
+
+Keyed by thumbnail file stem (the SKU made file-safe). `box` is `[x0, y0, x1, y1]` in thumbnail pixels, upper bounds exclusive. `size` is the thumbnail `[width, height]` the box was read from; a different size means the photo changed and the entry is skipped. Optional `stamp` is `yellow` (default red). Optional `fill` is `text` (fill only the stamp pixels, default the whole box).
+
+```json
+{
+  "19-21-0220-P": { "box": [15, 43, 83, 56], "size": [113, 128], "stamp": "yellow" }
+}
+```
+
 ### Order push: Odoo `sale.order` create payload
 
 ```json
@@ -134,7 +145,7 @@ Requested fields (confirmed to exist in Odoo, not yet seen with data): `list_pri
 - Public traffic never reaches Odoo. Odoo Online fair use is about one request per second.
 - Hosting (Jared, 2026-10-13): Vercel free plan. ACBG keeps its own copy of the repository in ACBG's GitHub account and links it to ACBG's Vercel project (Root Directory `site`); Jared is a collaborator on that repository and ACBG publishes. On the free plan Vercel's GitHub link publishes only commits authored by the Vercel account owner, so ACBG's copy must start from a commit in ACBG's name, Jared's changes go live when ACBG merges his pull request, and the nightly sync commits under the repository owner's name. Stripe webhooks target a production domain, never a protected preview URL.
 - Odoo API keys expire within three months. Rotation is a scheduled maintenance task.
-- Images live in the site's own storage, named by SKU. Odoo thumbnails are the seed; later client photos replace them by SKU.
+- Images live in the site's own storage, named by SKU. Odoo thumbnails are the seed; later client photos replace them by SKU. `tools/build_catalogue.py` removes ACBG's text stamp from the registered thumbnails on the way in (architecture/strip_watermark.md).
 - Design tokens and reference lock live in `design/DESIGN_CHARACTERISTICS.md` once the A/B/C choice is made. Frontend code derives from that file.
 - Review protocol (three-brain, set by Jared 2026-09-14): Claude builds, Codex reviews. Codex review runs only when Jared asks for it (he declined automatic runs twice on 2026-09-14). Claude never self-reviews its own code. Command shape: `cat <file> | codex exec -m gpt-6-astra --skip-git-repo-check "<review brief>"`. Findings are integrated and the reply states "(Routed via three-brain to Codex review.)". Gemini CLI handles media and whole-repo scans when needed.
 
