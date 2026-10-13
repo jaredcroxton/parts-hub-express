@@ -12,6 +12,17 @@
         "design"
       ],
       "port": 8731
+    },
+    {
+      "name": "site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "site",
+        "run",
+        "dev"
+      ],
+      "port": 3000
     }
   ]
 }

@@ -58,6 +58,7 @@ Every key the site reads, with where to get it, is in `site/.env.example`. Produ
 - Tokens in `app/globals.css` (`--ease-settle`, `--ease-gentle`, `--ease-press`, `--t-*`). `--t` is the 160ms settle used by every hover and state transition.
 - Press dip, linked highlight timing and the suggestions drop are CSS only. Section arrivals and the star wipe are `MOTION_SCRIPT` in `app/page.tsx`. The drawing plot is `DRAW_SCRIPT` in `lib/drawings.ts`, used on `/` and `/parts`.
 - Scripts hold only elements below the fold at load, as paused Web Animations (no inline styles), play once when they reach the viewport edge (IntersectionObserver, no negative margin) and cancel when finished. They also cancel on focus inside a held group, on pointer or focus inside a drawing section (the linked highlight is never masked), on a viewport width change mid-draw, before printing, and when reduced motion is switched on. Drawing dash lengths are measured just before playback. Reduced motion at load, no IntersectionObserver or no Web Animations means nothing is held.
+- Inline scripts run while the page is parsed, before React hydrates. An element whose server-rendered attribute a script changes at load carries `suppressHydrationWarning`, or the dev console reports a hydration mismatch. Today that is only the Enlarge buttons (`.dzbtn` on `/` and `/parts`): rendered `hidden`, shown by `ZOOM_SCRIPT` when the dialog is supported (added 2026-10-13).
 - Highlight fill: `lib/drawings.ts` injects an orange `.part-hl` copy (attribute `data-hk`, no `data-k`) under each wear part so the hatch crossfades to orange in the same 160ms beat.
 - Header controls carry a negative `scroll-margin-top` equal to `--hdr-h` so keyboard focus on them never scrolls the page to clear the sticky header they sit in; content focus still clears it through `html{scroll-padding-top}`.
 - Phone header: wordmark row on top, search, Quote and Cart row below; `.hdr{top:-44px}` lets the top row scroll away so the search row pins at 61px. No height tween.
@@ -82,6 +83,7 @@ Every key the site reads, with where to get it, is in `site/.env.example`. Produ
 | Quote lost | Email fails | Inbox file written first where writable; on Vercel without Resend the API returns 503 and the draft stays on the device |
 | Every page 404 on Vercel | Project framework preset "Other" | `site/vercel.json` pins `nextjs` |
 | Search or category 500 on Vercel | `data/` not traced into functions | `outputFileTracingIncludes` in `next.config.ts` |
+| Hydration mismatch in the dev console naming an attribute | An inline script changed that server-rendered attribute before React hydrated | `suppressHydrationWarning` on that one element (Motion section) |
 | Build too large | Images | 9 MB total today; move to Vercel Blob if it grows past 100 MB |
 
 ## Verification before handover

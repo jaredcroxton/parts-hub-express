@@ -142,7 +142,8 @@ export const DRAW_SCRIPT = `
   if(mq){ var onPref=function(e){ if(e.matches) releaseAll(); }; if(mq.addEventListener) mq.addEventListener('change',onPref); else if(mq.addListener) mq.addListener(onPref); }
 })();`;
 
-/** Enlarge drawing: each [data-zoom] button opens its full-screen dialog. Escape closes natively; buttons stay hidden without JS. */
+/** Enlarge drawing: each [data-zoom] button opens its full-screen dialog. Escape closes natively; buttons stay hidden without JS.
+ * This runs before React hydrates and removes the server-rendered hidden attribute, so the buttons carry suppressHydrationWarning. */
 export const ZOOM_SCRIPT = `
 (function(){
   document.querySelectorAll('[data-zoom]').forEach(function(btn){

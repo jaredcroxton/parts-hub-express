@@ -391,7 +391,7 @@ export default function Home() {
               <div className="dpanel" key={d.key}>
                 <div className="dhead">
                   <h3>{d.title}</h3>
-                  <button className="btn ghost dzbtn" type="button" data-zoom={`zoom-${d.key}`} aria-label={`Enlarge ${d.title.toLowerCase()} drawing`} hidden>Enlarge</button>
+                  <button className="btn ghost dzbtn" type="button" data-zoom={`zoom-${d.key}`} aria-label={`Enlarge ${d.title.toLowerCase()} drawing`} hidden suppressHydrationWarning>Enlarge</button>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: d.svg }} />
                 <nav className="key dlinks" aria-label={`${d.title} parts`}>
